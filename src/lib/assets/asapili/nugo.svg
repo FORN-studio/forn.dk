@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="120" height="120" xmlns="http://www.w3.org/2000/svg">
+ <g>
+  <title>nugo</title>
+  <g>
+   <polygon stroke-width="3" stroke="black" fill="none" points="10,10 110,10 10,110 110,110"/>
+  </g>
+ </g>
+</svg>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="120" height="120" xmlns="http://www.w3.org/2000/svg">
+ <g>
+  <title>bete</title>
+  <g>
+   <circle stroke-width="3" stroke="black" fill="none" r="48" cy="60" cx="60"/>
+   <line stroke-width="3" stroke="black" y2="106" x2="60" y1="30" x1="25"/>
+   <line stroke-width="3" stroke="black" y2="106" x2="60" y1="30" x1="95"/>
+   <line stroke-width="3" stroke="black" y2="106" x2="60" y1="12" x1="60"/>
+  </g>
+ </g>
+</svg>

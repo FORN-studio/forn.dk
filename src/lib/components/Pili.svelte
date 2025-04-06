@@ -1,0 +1,114 @@
+<script>
+
+    import Asa from '$lib/assets/asapili/asa.svg';
+    import Bete from '$lib/assets/asapili/bete.svg';
+    import Bolo from '$lib/assets/asapili/bolo.svg';
+    import Buni from '$lib/assets/asapili/buni.svg';
+    import Dala from '$lib/assets/asapili/dala.svg';
+    import Dudi from '$lib/assets/asapili/dudi.svg';
+    import Fasi from '$lib/assets/asapili/fasi.svg';
+    import Feno from '$lib/assets/asapili/feno.svg';
+    import Fudo from '$lib/assets/asapili/fudo.svg';
+    import Gano from '$lib/assets/asapili/gano.svg';
+    import Kana from '$lib/assets/asapili/kana.svg';
+    import Kene from '$lib/assets/asapili/kene.svg';
+    import Kodu from '$lib/assets/asapili/kodu.svg';
+    import Mafa from '$lib/assets/asapili/mafa.svg';
+    import Muno from '$lib/assets/asapili/muno.svg';
+    import Nima from '$lib/assets/asapili/nima.svg';
+    import Nugo from '$lib/assets/asapili/nugo.svg';
+    import Pali from '$lib/assets/asapili/pali.svg';
+    import Pili from '$lib/assets/asapili/pili.svg';
+    import Sadi from '$lib/assets/asapili/sadi.svg';
+    import Sibi from '$lib/assets/asapili/sibi.svg';
+    import Sila from '$lib/assets/asapili/sila.svg';
+    import Sufu from '$lib/assets/asapili/sufu.svg';
+    import Sumi from '$lib/assets/asapili/sumi.svg';
+    import Taku from '$lib/assets/asapili/taku.svg';
+    import Tega from '$lib/assets/asapili/tega.svg';
+    import Yaka from '$lib/assets/asapili/yaka.svg';
+    import Yalu from '$lib/assets/asapili/yalu.svg';
+
+    import { onMount } from 'svelte'
+    import { scale } from 'svelte/transition'
+
+    const piliComponents = [
+        Asa,
+        Bete,
+        Bolo,
+        Buni,
+        Dala,
+        Dudi,
+        Fasi,
+        Feno,
+        Fudo,
+        Gano,
+        Kana,
+        Kene,
+        Kodu,
+        Mafa,
+        Muno,
+        Nima,
+        Nugo,
+        Pali,
+        Pili,
+        Sadi,
+        Sibi,
+        Sila,
+        Sufu,
+        Sumi,
+        Taku,
+        Tega,
+        Yaka,
+        Yalu
+    ];
+
+    const pickRandom = () => piliComponents[Math.floor(Math.random() * piliComponents.length)]
+    let selectedPili = $state(pickRandom())
+
+    onMount(() => {
+        const changePili = () => {
+            // Pick a random sleep duration between 10 and 60 seconds
+            const sleepDuration = Math.random() * 3 + 1; // 1-4 range (floating point)
+            
+            setTimeout(() => {
+                // Select a new random Pili
+                selectedPili = pickRandom();
+                // Call again to create an infinite loop
+                changePili();
+            }, sleepDuration * 1000); // Convert to milliseconds
+        };
+        
+        // Start the cycle
+        changePili();
+    })
+
+</script>
+
+<div class="pili">
+    {#key selectedPili}
+        <img in:scale={{ duration: 500, start: 0.8 }} out:scale={{ duration: 500, start: 1.2 }} src={selectedPili} alt="Pili" />
+    {/key}
+</div>
+
+<style lang="scss">
+
+    @use 'src/lib/scss/variables' as *;
+
+    .pili {
+        width: 60px;
+        height: 60px;
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr;
+        
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            grid-column: 1;
+            grid-row: 1;
+        }
+    }
+
+</style>

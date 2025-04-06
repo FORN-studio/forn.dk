@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="120" height="120" xmlns="http://www.w3.org/2000/svg">
+ <g>
+  <title>buni</title>
+  <g>
+   <line stroke="black" stroke-width="3" fill="none" y2="110" x2="60" y1="10" x1="60"/>
+   <path stroke="black" stroke-width="3" fill="none" d="m10,110c0,-65 100,-65 100,0"/>
+   <path stroke="black" stroke-width="3" fill="none" d="m10,60c0,-65 100,-65 100,0"/>
+  </g>
+ </g>
+</svg>
