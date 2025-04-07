@@ -37,59 +37,65 @@
     let ping = $state(false)
     let timeoutId = $state(null)
     let isTabActive = $state(true)
+    let initialPauseComplete = $state(false)
+    let isInViewport = $state(false)
+    let piliElement;
 
     onMount(() => {
-        const changePili = () => {
-            // Only schedule next change if tab is active
-            if (isTabActive) {
-                // Pick a random sleep duration between 1 and 4 seconds
-                const sleepDuration = Math.random() * 3 + 1;
-                
-                timeoutId = setTimeout(() => {
-                    // Select a new random Pili
-                    selectedPili = pickRandom();
-                    // Call again to create an infinite loop
-                    changePili();
-                }, sleepDuration * 1000); // Convert to milliseconds
+        const observer = new IntersectionObserver((entries) => {
+            const [entry] = entries;
+            isInViewport = entry.isIntersecting;
+            
+            if (isInViewport && isTabActive && initialPauseComplete) {
+                if (!timeoutId) changePili();
+            } else if (!isInViewport && timeoutId) {
+                clearTimeout(timeoutId);
+                timeoutId = null;
             }
-        };
+        }, { threshold: 0.1 });
         
-        // Start the cycle
-        changePili();
+        if (piliElement) {
+            observer.observe(piliElement);
+        }
 
-        // Add event listeners for visibility change
+        setTimeout(() => {
+            initialPauseComplete = true;
+            if (isTabActive && isInViewport) {
+                changePili();
+            }
+        }, 1000);
+
         document.addEventListener('visibilitychange', handleVisibilityChange);
 
-        // Cleanup on component unmount
         return () => {
             if (timeoutId) clearTimeout(timeoutId);
             document.removeEventListener('visibilitychange', handleVisibilityChange);
+            if (piliElement) observer.unobserve(piliElement);
         };
     });
 
     function handleVisibilityChange() {
         if (document.hidden) {
-            // Tab is not visible, pause the animation
             isTabActive = false;
             if (timeoutId) {
                 clearTimeout(timeoutId);
                 timeoutId = null;
             }
         } else {
-            // Tab is visible again, resume the animation
             isTabActive = true;
-            changePili();
+            if (initialPauseComplete && isInViewport) {
+                changePili();
+            }
         }
     }
 
     function changePili() {
-        // Pick a random sleep duration between 1 and 4 seconds
+        if (!initialPauseComplete || !isInViewport) return;
+        
         const sleepDuration = Math.random() * 3 + 1;
         
         timeoutId = setTimeout(() => {
-            // Select a new random Pili
             selectedPili = pickRandom();
-            // Call again to create an infinite loop
             changePili();
         }, sleepDuration * 1000);
     }
@@ -104,7 +110,7 @@
 
 </script>
 
-<div class="pili">
+<div class="pili" bind:this={piliElement}>
     {#key selectedPili}
         <img class:ping onmouseenter={handleMouseEnter} in:scale={{ duration: 500, start: 0.8 }} out:scale={{ duration: 500, start: 1.2 }} src={`/asapili/${selectedPili}.svg`} alt="Pili" />
     {/key}
