@@ -26,7 +26,7 @@
     let circleElement = $state(null);
     let parallaxOffset = spring(0, {
         stiffness: 0.02,
-        damping: 0.05
+        damping: 0.5
     })
 
     const handleScroll = () => {
@@ -35,7 +35,7 @@
         const rect = circleElement.getBoundingClientRect();
         const scrolled = (rect.top + rect.height / 2) - (window.innerHeight / 2);
 
-        $parallaxOffset = scrolled / 10;
+        $parallaxOffset = scrolled / 20;
     }
 
 </script>

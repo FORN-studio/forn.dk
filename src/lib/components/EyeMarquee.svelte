@@ -35,8 +35,8 @@
     let marqueeElement;
     let scrollY = $state(0);
     let parallaxOffset = spring(0, {
-        stiffness: 0.01,
-        damping: 0.05
+        stiffness: 0.02,
+        damping: 0.5
     })
 
     const handleScroll = () => {

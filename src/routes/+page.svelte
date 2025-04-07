@@ -28,6 +28,10 @@
 
 </script>
 
+<svelte:head>
+    <title>FORN | Web Production and Development</title>
+</svelte:head>
+
 <div class="wrapper">
     {#each components as Component}
         <Component />
