@@ -47,6 +47,8 @@
 
 <style lang="scss">
 
+    @use 'src/lib/scss/variables' as *;
+
     .footer {
         margin-top: 8rem;
 
@@ -74,6 +76,12 @@
             flex-wrap: wrap;
             opacity: .5;
             font-size: .8rem;
+            margin-bottom: -16rem;
+
+            @media (max-width: $mobile) {
+                flex-direction: column;
+                gap: 1rem;
+            }
 
             .inline-icon svg {
                 transform: translateY(0.1rem);

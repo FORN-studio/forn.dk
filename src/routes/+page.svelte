@@ -60,6 +60,22 @@
     <meta name="twitter:title" content="FORN | Web Production and Development">
     <meta name="twitter:description" content="FORN is a one-man army production and design studio based in Copenhagen, Denmark, aimed at web production, extraordinary designs and reliable development.">
     <meta name="twitter:image" content="/og_image.jpg">
+
+    {@html `<script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            "name": "FORN",
+            "description": "FORN is a one-man army production and design studio based in Copenhagen, Denmark, aimed at web production, extraordinary designs and reliable development.",
+            "url": "https://forn.dk",
+            "image": "/og_image.jpg",
+            "publisher": {
+                "@type": "Organization",
+                "name": "FORN"
+            }
+        }
+    </script>`}
+    
 </svelte:head>
 
 <div class="wrapper">
