@@ -139,6 +139,7 @@
                     width: 1.5rem;
                     height: 1.5rem;
                     transform: translateY(5px);
+                    flex-shrink: 0;
                 }
             }
 
@@ -154,6 +155,7 @@
                     height: 1.5rem;
                     color: $accent;
                     margin-top: -3px;
+                    flex-shrink: 0;
                 }
 
                 .text {
