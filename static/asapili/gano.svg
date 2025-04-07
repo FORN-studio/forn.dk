@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="120" height="120" xmlns="http://www.w3.org/2000/svg">
+ <g>
+  <title>gano</title>
+  <g>
+   <polyline stroke-width="3" stroke="black" fill="none" points="10,110 60,14 110,110"/>
+   <line stroke-width="3" stroke="black" fill="none" x1="10" y1="10" x2="110" y2="10"/>
+  </g>
+ </g>
+</svg>

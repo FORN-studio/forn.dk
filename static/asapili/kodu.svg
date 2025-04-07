@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="120" height="120" xmlns="http://www.w3.org/2000/svg">
+<title>kodu</title>
+<path stroke="black" stroke-width="3" fill="none" d="m10,10q50,50
+50,100q0,-50 50-100M10,90H100m0,20H10"/>
+</svg>

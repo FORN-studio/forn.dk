@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="120" height="120" xmlns="http://www.w3.org/2000/svg">
+ <g>
+  <title>pili</title>
+  <g>
+   <polyline stroke-width="3" stroke="black" fill="none" points="85,10 10,10 10,110 85,110"/>
+   <line stroke-width="3" stroke="black" fill="none" y2="60" x2="110" y1="60" x1="10"/>
+   <line stroke-width="3" stroke="black" fill="none" y2="110" x2="110" y1="10" x1="110"/>
+  </g>
+ </g>
+</svg>

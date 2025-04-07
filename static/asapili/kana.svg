@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="120" height="120" xmlns="http://www.w3.org/2000/svg">
+ <g>
+  <title>kana</title>
+  <g>
+   <polyline stroke-width="3" stroke="black" fill="none" points="10,110 60,14 110,110"/>
+   <rect stroke-width="3" stroke="black" fill="none" height="100" width="100" x="10" y="10"/>
+  </g>
+ </g>
+</svg>

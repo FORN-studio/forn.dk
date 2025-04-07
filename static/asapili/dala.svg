@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="120" height="120" xmlns="http://www.w3.org/2000/svg">
+ <g>
+  <title>dala</title>
+  <g>
+   <polyline stroke="black" stroke-width="3" fill="none" points="10,10 60,110, 110,10"/>
+   <path stroke="black" stroke-width="3" fill="none" d="m10,110c0,-65 100,-65 100,0"/>
+  </g>
+ </g>
+</svg>

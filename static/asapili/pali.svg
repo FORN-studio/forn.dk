@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="120" height="120" xmlns="http://www.w3.org/2000/svg">
+ <g>
+  <title>pali</title>
+  <g>
+   <path d="m10,10c65,0 65,100 0,100" fill="none" stroke-width="3" stroke="black"/>
+   <path d="m110,10c-65,0 -65,100 0,100" fill="none" stroke-width="3" stroke="black"/>
+  </g>
+ </g>
+</svg>

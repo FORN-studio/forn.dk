@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="120" height="120" xmlns="http://www.w3.org/2000/svg">
+ <g>
+  <title>fasi</title>
+  <g>
+   <line y2="60" x2="120" y1="60" x1="0" fill="none" stroke="black" stroke-width="3"/>
+   <circle cx="60" cy="60" r="48" fill="none" stroke="black" stroke-width="3"/>
+  </g>
+ </g>
+</svg>

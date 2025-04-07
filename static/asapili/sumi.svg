@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="120" height="120" xmlns="http://www.w3.org/2000/svg">
+ <g>
+  <title>sumi</title>
+  <g>
+   <circle cx="60" cy="60" r="48" fill="none" stroke="black" stroke-width="3"/>
+   <polyline points="25,30 65,60 25,90" fill="none" stroke="black" stroke-width="3"/>
+   <polyline points="95,30 55,60 95,90" fill="none" stroke="black" stroke-width="3"/>
+  </g>
+ </g>
+</svg>

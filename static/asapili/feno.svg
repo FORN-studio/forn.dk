@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="120" height="120" xmlns="http://www.w3.org/2000/svg">
+ <g>
+  <title>feno</title>
+  <g>
+   <line stroke-width="3" stroke="black" y2="50" x2="110" y1="50" x1="10"/>
+   <line stroke-width="3" stroke="black" y2="70" x2="110" y1="70" x1="10"/>
+   <line stroke-width="3" stroke="black" y2="110" x2="50" y1="10" x1="50"/>
+   <line stroke-width="3" stroke="black" y2="110" x2="70" y1="10" x1="70"/>
+  </g>
+ </g>
+</svg>
