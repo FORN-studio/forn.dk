@@ -50,7 +50,7 @@
 </script>
 
 <svelte:head>
-    <title>FORN | Production and Development</title>
+    <title>FORN | Web Production and Development</title>
     <meta name="description" content="FORN is a one-man army production and design studio based in Copenhagen, Denmark, focused on reliable web development, functional designs and grand ideas.">
     <meta property="og:title" content="FORN | Web Production and Development">
     <meta property="og:description" content="FORN is a one-man army production and design studio based in Copenhagen, Denmark, focused on reliable web development, functional designs and grand ideas.">
