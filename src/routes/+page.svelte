@@ -12,6 +12,8 @@
     import Contact from '$lib/components/Contact.svelte';
     import Footer from '$lib/components/Footer.svelte';
 
+    import { onMount } from 'svelte'
+
     const components = [
         Splash,
         TextOne,
@@ -26,11 +28,38 @@
         Footer
     ]
 
+    let title = $state('FORN | Web Production and Development')
+
+    onMount(() => {
+        const handleVisibilityChange = () => {
+            if (document.hidden) {
+                title = 'Was i too much?';
+            } else {
+                title = 'FORN | Web Production and Development';
+            }
+            document.title = title;
+        };
+        
+        document.addEventListener('visibilitychange', handleVisibilityChange);
+        
+        return () => {
+            document.removeEventListener('visibilitychange', handleVisibilityChange);
+        };
+    })
+
 </script>
 
 <svelte:head>
     <title>FORN | Web Production and Development</title>
     <meta name="description" content="FORN is a one-man army production and design studio based in Copenhagen, Denmark, aimed at web production, extraordinary designs and reliable development.">
+    <meta property="og:title" content="FORN | Web Production and Development">
+    <meta property="og:description" content="FORN is a one-man army production and design studio based in Copenhagen, Denmark, aimed at web production, extraordinary designs and reliable development.">
+    <meta property="og:image" content="/og_image.jpg">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="FORN | Web Production and Development">
+    <meta name="twitter:description" content="FORN is a one-man army production and design studio based in Copenhagen, Denmark, aimed at web production, extraordinary designs and reliable development.">
+    <meta name="twitter:image" content="/og_image.jpg">
 </svelte:head>
 
 <div class="wrapper">
