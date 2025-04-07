@@ -39,7 +39,7 @@
             })
         })
 
-        setTimeout(() => ready = true, 300)
+        setTimeout(() => ready = true, 500)
     })
 
 </script>
