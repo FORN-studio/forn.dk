@@ -1,6 +1,6 @@
 <script>
     import { onMount } from 'svelte'
-    import { fly } from 'svelte/transition'
+    import { fly, scale } from 'svelte/transition'
 
     const ids = [
         'asa',
@@ -92,12 +92,10 @@
     function changePili() {
         if (!initialPauseComplete || !isInViewport) return;
         
-        const sleepDuration = Math.random() * 3 + 1;
-        
         timeoutId = setTimeout(() => {
             selectedPili = pickRandom();
             changePili();
-        }, sleepDuration * 1000);
+        }, 1000);
     }
 
     const handleMouseEnter = () => {
@@ -112,7 +110,7 @@
 
 <div class="pili" bind:this={piliElement}>
     {#key selectedPili}
-        <img class:ping onmouseenter={handleMouseEnter} in:fly={{ duration: 500, y: -100, delay: 150 }} out:fly={{ duration: 500, y: 100 }} src={`/asapili/${selectedPili}.svg`} alt="Pili" />
+        <img class:ping onmouseenter={handleMouseEnter} in:fly={{ duration: 500, y: -100, delay: 150 }} out:scale={{ duration: 500, start: 0.8 }} src={`/asapili/${selectedPili}.svg`} alt="Pili" />
     {/key}
 </div>
 
