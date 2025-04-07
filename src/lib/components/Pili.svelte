@@ -64,23 +64,64 @@
     const pickRandom = () => piliComponents[Math.floor(Math.random() * piliComponents.length)]
     let selectedPili = $state(pickRandom())
     let ping = $state(false)
+    let timeoutId = $state(null)
+    let isTabActive = $state(true)
 
     onMount(() => {
         const changePili = () => {
-            // Pick a random sleep duration between 10 and 60 seconds
-            const sleepDuration = Math.random() * 3 + 1; // 1-4 range (floating point)
-            
-            setTimeout(() => {
-                // Select a new random Pili
-                selectedPili = pickRandom();
-                // Call again to create an infinite loop
-                changePili();
-            }, sleepDuration * 1000); // Convert to milliseconds
+            // Only schedule next change if tab is active
+            if (isTabActive) {
+                // Pick a random sleep duration between 1 and 4 seconds
+                const sleepDuration = Math.random() * 3 + 1;
+                
+                timeoutId = setTimeout(() => {
+                    // Select a new random Pili
+                    selectedPili = pickRandom();
+                    // Call again to create an infinite loop
+                    changePili();
+                }, sleepDuration * 1000); // Convert to milliseconds
+            }
         };
         
         // Start the cycle
         changePili();
-    })
+
+        // Add event listeners for visibility change
+        document.addEventListener('visibilitychange', handleVisibilityChange);
+
+        // Cleanup on component unmount
+        return () => {
+            if (timeoutId) clearTimeout(timeoutId);
+            document.removeEventListener('visibilitychange', handleVisibilityChange);
+        };
+    });
+
+    function handleVisibilityChange() {
+        if (document.hidden) {
+            // Tab is not visible, pause the animation
+            isTabActive = false;
+            if (timeoutId) {
+                clearTimeout(timeoutId);
+                timeoutId = null;
+            }
+        } else {
+            // Tab is visible again, resume the animation
+            isTabActive = true;
+            changePili();
+        }
+    }
+
+    function changePili() {
+        // Pick a random sleep duration between 1 and 4 seconds
+        const sleepDuration = Math.random() * 3 + 1;
+        
+        timeoutId = setTimeout(() => {
+            // Select a new random Pili
+            selectedPili = pickRandom();
+            // Call again to create an infinite loop
+            changePili();
+        }, sleepDuration * 1000);
+    }
 
     const handleMouseEnter = () => {
         ping = true

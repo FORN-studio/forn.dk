@@ -64,12 +64,46 @@
     const pickRandom = () => piliComponents[Math.floor(Math.random() * piliComponents.length)]
     let selectedPili = $state(pickRandom())
     let ping = $state(false)
+    let intervalId = $state(null)
+    let isTabActive = $state(true)
 
     onMount(() => {
-        setInterval(() => {
-            selectedPili = pickRandom()
-        }, 1500);
-    })
+        // Start the interval
+        startPiliInterval();
+        
+        // Add event listeners for visibility change
+        document.addEventListener('visibilitychange', handleVisibilityChange);
+
+        // Cleanup on component unmount
+        return () => {
+            if (intervalId) clearInterval(intervalId);
+            document.removeEventListener('visibilitychange', handleVisibilityChange);
+        };
+    });
+
+    function handleVisibilityChange() {
+        if (document.hidden) {
+            // Tab is not visible, pause the animation
+            isTabActive = false;
+            if (intervalId) {
+                clearInterval(intervalId);
+                intervalId = null;
+            }
+        } else {
+            // Tab is visible again, resume the animation
+            isTabActive = true;
+            startPiliInterval();
+        }
+    }
+
+    function startPiliInterval() {
+        // Only start if not already running and tab is active
+        if (!intervalId && isTabActive) {
+            intervalId = setInterval(() => {
+                selectedPili = pickRandom();
+            }, 1500);
+        }
+    }
 
     const handleMouseEnter = () => {
         ping = true

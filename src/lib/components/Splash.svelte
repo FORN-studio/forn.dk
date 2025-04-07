@@ -23,6 +23,8 @@
         return piliCounts[idx - 1]?.extraRowCounts || [2, 4, 7, 5, 3]
     })
 
+    let ready = $state(false)
+
     onMount(() => {
         const logoElements = document.querySelectorAll('#FORN > path')
         logoElements.forEach(element => {
@@ -36,13 +38,15 @@
                 }
             })
         })
+
+        setTimeout(() => ready = true, 300)
     })
 
 </script>
 
 <svelte:window bind:innerWidth />
 
-<div class="splash">
+<div class="splash" class:ready>
     <div class="inner">
         <div class="image-wrapper">
             <svg xmlns="http://www.w3.org/2000/svg" id="FORN" fill="#00218f" viewBox="0 0 747.22 423"><path id="f" d="M108 423H0V0h180v72h-9.03s0-63-81.74-63.5C-1.53 7.94 8 71.5 8 71.5V144h172v72h-9.19c-.5-62.5-63.82-62.5-80.82-63.06-.44-.01-.89.06-1.33.06H8v198s.5 63.5 100 63.5v8.5Z" style="stroke-width:0"/><path id="o" d="M279 0h-90v351s-.51 72 90 72h90l.5-350.5S369 0 279 0Zm80 305c-.5 53.5-45 45-45 45H197s.5-170.5 0-225 54-54 54-54h108s.5 180.5 0 234Z" style="stroke-width:0"/><path id="r" d="M558.4 89.71C558 0 468.69 0 468.69 0H378l-.5 423H558v-72h-9c-.5 71.5-81 63-81 63h-81v-17.27C387.5 343 468.85 343 468.85 343l89.55-1c0-117.5-90.05-117-90.05-117h-81.34v-9h171s.44-117.1.4-126.29ZM441 72s23.5-.5 38.5 14.5S495 126 495 126s-24.5 3.5-39.5-12.5C440.02 96.99 441 72 441 72Z" style="stroke-width:0"/><path id="n" d="M747 72c-.5-72.5-90-72-90-72h-90v423h9V125.83c0-17.19 6.04-29.01 14.8-37.12C600.64 78.32 618.69 72 634.13 72H738v279c0 62.5-81 63-81 63v9h90s.5-278.5 0-351Z" style="stroke-width:0"/></svg>
@@ -87,6 +91,18 @@
         height: calc(100vh - 2rem);
         position: relative;
 
+        &:not(.ready) {
+            .pili-wrapper, .text-wrapper { opacity: 0; }
+
+            .image-wrapper {
+                transform: translateX(10%);
+            }
+
+            .image-wrapper path {
+                fill: $white;
+            }
+        }
+
         .inner {
             display: flex;
             flex-direction: row;
@@ -126,6 +142,8 @@
 
         .pili-wrapper {
             position: relative;
+            transition: ease all 500ms;
+            transition-delay: 200ms;
 
             @media (max-width: $mobile) {
                 display: flex;
@@ -151,6 +169,7 @@
             display: flex;
             justify-content: flex-start;
             align-items: flex-start;
+            transition: ease all 500ms;
 
             @media (max-width: $mobile) {
                 flex-grow: 0;
@@ -161,6 +180,15 @@
                 height: 100%;
                 object-fit: contain;
                 align-self: flex-start;
+
+                > path {
+                    transition: ease all 500ms;
+
+                    &:nth-child(1) { transition-delay: 0ms; }
+                    &:nth-child(2) { transition-delay: 100ms; }
+                    &:nth-child(3) { transition-delay: 200ms; }
+                    &:nth-child(4) { transition-delay: 300ms; }
+                }
             }
         }
 
@@ -169,6 +197,8 @@
             flex-direction: column;
             align-items: flex-start;
             margin-left: 1rem;
+            transition: ease all 500ms;
+            transition-delay: 100ms;
 
             @media (max-width: $mobile) {
                 margin-left: 0;
