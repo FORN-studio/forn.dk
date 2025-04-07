@@ -27,7 +27,7 @@
   "contact_email": "forn@forn.dk",
   "contact_phone": "+45 28 68 81 40",
   "contact_response_time": "2 days",
-  "contact_header_my_way": "Or the right way",
+  "contact_header_my_way": "Or the highway",
   "contact_header_my_way_alt": "Or my way",
   "contact_placeholder_name": "NAME",
   "contact_placeholder_organization": "ORGANIZATION",
@@ -40,5 +40,8 @@
   "footer_symbols": "Symbols from Asa'Pili by P. M.",
   "footer_crafted_with": "Crafted with",
   "footer_by": "by",
-  "footer_name": "Adrian E. Bratlann // FORN"
+  "footer_name": "Adrian E. Bratlann // FORN",
+  "meta_title": "FORN | Web Production and Development",
+  "meta_description": "FORN is a one-man army production and design studio based in Copenhagen, Denmark, focused on reliable web development, functional designs and grand ideas.",
+  "tab_away_message": "Talk again soon"
 }

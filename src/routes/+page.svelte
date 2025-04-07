@@ -1,5 +1,4 @@
 <script>
-
     import Splash from '$lib/components/Splash.svelte';
     import TextOne from '$lib/components/TextOne.svelte';
     import TextTwo from '$lib/components/TextTwo.svelte';
@@ -11,8 +10,9 @@
     import TextThree from '$lib/components/TextThree.svelte';
     import Contact from '$lib/components/Contact.svelte';
     import Footer from '$lib/components/Footer.svelte';
-
-    import { onMount } from 'svelte'
+    import { onMount } from 'svelte';
+    import { m } from '$lib/paraglide/messages.js';
+    import { getLocale } from '$lib/paraglide/runtime.js';
 
     const components = [
         Splash,
@@ -28,16 +28,15 @@
         Footer
     ]
 
-    let title = $state('FORN | Web Production and Development')
+    let currentLanguage = $state(getLocale())
 
     onMount(() => {
         const handleVisibilityChange = () => {
             if (document.hidden) {
-                title = 'Was i too much?';
+                document.title = m.tab_away_message();
             } else {
-                title = 'FORN | Web Production and Development';
+                document.title = m.meta_title();
             }
-            document.title = title;
         };
         
         document.addEventListener('visibilitychange', handleVisibilityChange);
@@ -46,19 +45,18 @@
             document.removeEventListener('visibilitychange', handleVisibilityChange);
         };
     })
-
 </script>
 
 <svelte:head>
-    <title>FORN | Web Production and Development</title>
-    <meta name="description" content="FORN is a one-man army production and design studio based in Copenhagen, Denmark, focused on reliable web development, functional designs and grand ideas.">
-    <meta property="og:title" content="FORN | Web Production and Development">
-    <meta property="og:description" content="FORN is a one-man army production and design studio based in Copenhagen, Denmark, focused on reliable web development, functional designs and grand ideas.">
+    <title>{m.meta_title()}</title>
+    <meta name="description" content={m.meta_description()}>
+    <meta property="og:title" content={m.meta_title()}>
+    <meta property="og:description" content={m.meta_description()}>
     <meta property="og:image" content="https://forn.dk/og_image.jpg">
     <meta property="og:type" content="website">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="FORN | Web Production and Development">
-    <meta name="twitter:description" content="FORN is a one-man army production and design studio based in Copenhagen, Denmark, focused on reliable web development, functional designs and grand ideas.">
+    <meta name="twitter:title" content={m.meta_title()}>
+    <meta name="twitter:description" content={m.meta_description()}>
     <meta name="twitter:image" content="https://forn.dk/og_image.jpg">
 
     {@html `<script type="application/ld+json">
@@ -66,7 +64,7 @@
             "@context": "https://schema.org",
             "@type": "WebPage",
             "name": "FORN",
-            "description": "FORN is a one-man army production and design studio based in Copenhagen, Denmark, focused on reliable web development, functional designs and grand ideas.",
+            "description": "${m.meta_description()}",
             "url": "https://forn.dk",
             "image": "https://forn.dk/og_image.jpg",
             "publisher": {
@@ -75,7 +73,6 @@
             }
         }
     </script>`}
-
 </svelte:head>
 
 <div class="wrapper">
@@ -85,9 +82,7 @@
 </div>
 
 <style lang="scss">
-
     .wrapper {
         padding: 1rem;
     }
-
 </style>
