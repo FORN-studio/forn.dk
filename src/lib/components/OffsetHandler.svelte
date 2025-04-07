@@ -3,7 +3,7 @@
     import { offset } from '$lib/utils/state.svelte.js';
     import { spring } from 'svelte/motion';
 
-    let screenDimensions = { width: 0, height: 0 }
+    let screenDimensions = $state({ width: 0, height: 0 })
 
     let offsetSpring = spring({ x: 0, y: 0 }, {
         stiffness: 0.01,

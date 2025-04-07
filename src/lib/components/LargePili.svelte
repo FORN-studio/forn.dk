@@ -33,7 +33,7 @@
     ]
 
     const pickRandom = () => ids[Math.floor(Math.random() * ids.length)]
-    let selectedPili = $state(pickRandom())
+    let selectedPili = $state(ids[0])
     let timeoutId = $state(null)
     let isTabActive = $state(true)
     let initialPauseComplete = $state(false)

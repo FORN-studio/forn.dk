@@ -33,7 +33,7 @@
     ]
 
     const pickRandom = () => ids[Math.floor(Math.random() * ids.length)]
-    let selectedPili = $state(pickRandom())
+    let selectedPili = $state(ids[0])
     let ping = $state(false)
     let timeoutId = $state(null)
     let isTabActive = $state(true)

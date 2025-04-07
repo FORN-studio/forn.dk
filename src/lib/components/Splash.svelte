@@ -29,9 +29,14 @@
 
     onMount(() => {
         const changedLocale = localStorage.getItem('changed-locale')
+
+        console.log(changedLocale)
         
         if (!changedLocale || (Date.now() - parseInt(changedLocale)) > 60000) {
             softAnimations = false;
+            setTimeout(() => ready = true, 10)
+        } else {
+            setTimeout(() => ready = true, 10)
         }
 
         const logoElements = document.querySelectorAll('#FORN > path')
@@ -46,15 +51,13 @@
                 }
             })
         })
-
-        setTimeout(() => ready = true, 10)
     })
 
 </script>
 
 <svelte:window bind:innerWidth />
 
-<div class="splash" class:ready class:soft-animations={softAnimations}>
+<div class="splash" class:ready>
     <div class="inner">
         <div class="image-wrapper">
             <h1 class="visually-hidden">{m.splash_heading()}</h1>
