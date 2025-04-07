@@ -1,82 +1,68 @@
 <script>
-
-    import Asa from '$lib/assets/asapili/asa.svg';
-    import Bete from '$lib/assets/asapili/bete.svg';
-    import Buni from '$lib/assets/asapili/buni.svg';
-    import Dala from '$lib/assets/asapili/dala.svg';
-    import Dudi from '$lib/assets/asapili/dudi.svg';
-    import Fasi from '$lib/assets/asapili/fasi.svg';
-    import Feno from '$lib/assets/asapili/feno.svg';
-    import Fudo from '$lib/assets/asapili/fudo.svg';
-    import Gano from '$lib/assets/asapili/gano.svg';
-    import Kana from '$lib/assets/asapili/kana.svg';
-    import Kene from '$lib/assets/asapili/kene.svg';
-    import Kodu from '$lib/assets/asapili/kodu.svg';
-    import Mafa from '$lib/assets/asapili/mafa.svg';
-    import Muno from '$lib/assets/asapili/muno.svg';
-    import Nima from '$lib/assets/asapili/nima.svg';
-    import Nugo from '$lib/assets/asapili/nugo.svg';
-    import Pali from '$lib/assets/asapili/pali.svg';
-    import Pili from '$lib/assets/asapili/pili.svg';
-    import Sadi from '$lib/assets/asapili/sadi.svg';
-    import Sibi from '$lib/assets/asapili/sibi.svg';
-    import Sila from '$lib/assets/asapili/sila.svg';
-    import Sufu from '$lib/assets/asapili/sufu.svg';
-    import Sumi from '$lib/assets/asapili/sumi.svg';
-    import Taku from '$lib/assets/asapili/taku.svg';
-    import Tega from '$lib/assets/asapili/tega.svg';
-    import Yaka from '$lib/assets/asapili/yaka.svg';
-    import Yalu from '$lib/assets/asapili/yalu.svg';
-
     import { onMount } from 'svelte'
-    import { scale, fly } from 'svelte/transition'
+    import { fly } from 'svelte/transition'
 
-    const piliComponents = [
-        Asa,
-        Bete,
-        Buni,
-        Dala,
-        Dudi,
-        Fasi,
-        Feno,
-        Fudo,
-        Gano,
-        Kana,
-        Kene,
-        Kodu,
-        Mafa,
-        Muno,
-        Nima,
-        Nugo,
-        Pali,
-        Pili,
-        Sadi,
-        Sibi,
-        Sila,
-        Sufu,
-        Sumi,
-        Taku,
-        Tega,
-        Yaka,
-        Yalu
-    ];
+    const ids = [
+        'asa',
+        'bete',
+        'buni',
+        'dala',
+        'dudi',
+        'fasi',
+        'feno',
+        'fudo',
+        'gano',
+        'kana',
+        'kene',
+        'kodu',
+        'mafa',
+        'muno',
+        'nima',
+        'nugo',
+        'pali',
+        'pili',
+        'sadi',
+        'sibi',
+        'sila',
+        'sufu',
+        'sumi',
+        'taku',
+        'tega',
+        'yaka',
+        'yalu'
+    ]
 
-    const pickRandom = () => piliComponents[Math.floor(Math.random() * piliComponents.length)]
+    const pickRandom = () => ids[Math.floor(Math.random() * ids.length)]
     let selectedPili = $state(pickRandom())
     let ping = $state(false)
-    let intervalId = $state(null)
+    let timeoutId = $state(null)
     let isTabActive = $state(true)
 
     onMount(() => {
-        // Start the interval
-        startPiliInterval();
+        const changePili = () => {
+            // Only schedule next change if tab is active
+            if (isTabActive) {
+                // Pick a random sleep duration between 1 and 4 seconds
+                const sleepDuration = Math.random() * 3 + 1;
+                
+                timeoutId = setTimeout(() => {
+                    // Select a new random Pili
+                    selectedPili = pickRandom();
+                    // Call again to create an infinite loop
+                    changePili();
+                }, sleepDuration * 1000); // Convert to milliseconds
+            }
+        };
         
+        // Start the cycle
+        changePili();
+
         // Add event listeners for visibility change
         document.addEventListener('visibilitychange', handleVisibilityChange);
 
         // Cleanup on component unmount
         return () => {
-            if (intervalId) clearInterval(intervalId);
+            if (timeoutId) clearTimeout(timeoutId);
             document.removeEventListener('visibilitychange', handleVisibilityChange);
         };
     });
@@ -85,24 +71,27 @@
         if (document.hidden) {
             // Tab is not visible, pause the animation
             isTabActive = false;
-            if (intervalId) {
-                clearInterval(intervalId);
-                intervalId = null;
+            if (timeoutId) {
+                clearTimeout(timeoutId);
+                timeoutId = null;
             }
         } else {
             // Tab is visible again, resume the animation
             isTabActive = true;
-            startPiliInterval();
+            changePili();
         }
     }
 
-    function startPiliInterval() {
-        // Only start if not already running and tab is active
-        if (!intervalId && isTabActive) {
-            intervalId = setInterval(() => {
-                selectedPili = pickRandom();
-            }, 1500);
-        }
+    function changePili() {
+        // Pick a random sleep duration between 1 and 4 seconds
+        const sleepDuration = Math.random() * 3 + 1;
+        
+        timeoutId = setTimeout(() => {
+            // Select a new random Pili
+            selectedPili = pickRandom();
+            // Call again to create an infinite loop
+            changePili();
+        }, sleepDuration * 1000);
     }
 
     const handleMouseEnter = () => {
@@ -117,7 +106,7 @@
 
 <div class="pili">
     {#key selectedPili}
-        <img class:ping onmouseenter={handleMouseEnter} in:fly={{ duration: 500, y: -100, delay: 150 }} out:fly={{ duration: 500, y: 100 }} src={selectedPili} alt="Pili" />
+        <img class:ping onmouseenter={handleMouseEnter} in:fly={{ duration: 500, y: -100, delay: 150 }} out:fly={{ duration: 500, y: 100 }} src={`/asapili/${selectedPili}.svg`} alt="Pili" />
     {/key}
 </div>
 
@@ -131,11 +120,6 @@
         display: grid;
         grid-template-columns: 1fr;
         grid-template-rows: 1fr;
-
-        @media (max-width: $tablet) and (min-width: $mobile) {
-            width: 55px;
-            height: 55px;
-        }
         
         img {
             width: 100%;
@@ -148,6 +132,16 @@
             &.ping {
                 animation: ping 1.5s;
             }
+        }
+    }
+
+    @keyframes ping {
+        0% {
+            filter: brightness(0) saturate(100%) invert(11%) sepia(86%) saturate(5000%) hue-rotate(224deg) brightness(94%) contrast(106%);
+        }
+
+        100% {
+            filter: none;
         }
     }
 
