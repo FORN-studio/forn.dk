@@ -33,55 +33,59 @@
     ]
 
     onMount(() => {
-        const piliElements = document.querySelectorAll('.pili.living')
         let intervals = []
         let observers = []
 
-        console.log(piliElements)
+        setTimeout(() => {
+            const piliElements = document.querySelectorAll('.pili.living')
 
-        document.addEventListener('visibilitychange', () => {
-            focus.focused = !document.hidden
-        })
+            console.log(piliElements)
 
-        const isElementInViewport = (element) => {
-            const rect = element.getBoundingClientRect()
-            return (
-                rect.top >= 0 &&
-                rect.left >= 0 &&
-                rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-                rect.right <= (window.innerWidth || document.documentElement.clientWidth)
-            )
-        }
-
-        piliElements.forEach(element => {
-            const img = element.querySelector('img')
-
-            element.addEventListener('mouseenter', () => {
-                img.classList.add('ping')
-
-                setTimeout(() => {
-                    img.classList.remove('ping')
-                }, 1500)
+            document.addEventListener('visibilitychange', () => {
+                focus.focused = !document.hidden
             })
 
-            const sleepDuration = Math.random() * 3 + 1
-            const interval = setInterval(() => {
-                if (isElementInViewport(element)) {
-                    const randomId = ids[Math.floor(Math.random() * ids.length)]
-                    img.src = `/asapili/${randomId}.svg`
-                }
-            }, sleepDuration * 1000)
+            const isElementInViewport = (element) => {
+                const rect = element.getBoundingClientRect()
+                return (
+                    rect.top >= 0 &&
+                    rect.left >= 0 &&
+                    rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+                    rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+                )
+            }
 
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    element.dataset.visible = entry.isIntersecting
+            piliElements.forEach(element => {
+                const img = element.querySelector('img')
+
+                element.addEventListener('mouseenter', () => {
+                    img.classList.add('ping')
+
+                    setTimeout(() => {
+                        img.classList.remove('ping')
+                    }, 1500)
                 })
+
+                const sleepDuration = Math.random() * 3 + 1
+                const interval = setInterval(() => {
+                    if (isElementInViewport(element)) {
+                        const randomId = ids[Math.floor(Math.random() * ids.length)]
+                        img.src = `/asapili/${randomId}.svg`
+                    }
+                }, sleepDuration * 1000)
+
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        element.dataset.visible = entry.isIntersecting
+                    })
+                })
+                
+                observer.observe(element)
+                observers.push(observer)
+                intervals.push(interval)
             })
-            
-            observer.observe(element)
-            observers.push(observer)
-            intervals.push(interval)
-        })
+        }, 500)
+        
 
         return () => {
             intervals.forEach(interval => clearInterval(interval))
