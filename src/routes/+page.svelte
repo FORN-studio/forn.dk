@@ -50,15 +50,15 @@
 </script>
 
 <svelte:head>
-    <title>FORN | Web Production and Development</title>
-    <meta name="description" content="FORN is a one-man army production and design studio based in Copenhagen, Denmark, aimed at web production, extraordinary designs and reliable development.">
+    <title>FORN | Production and Development</title>
+    <meta name="description" content="FORN is a one-man army production and design studio based in Copenhagen, Denmark, focused on reliable web development, functional designs and grand ideas.">
     <meta property="og:title" content="FORN | Web Production and Development">
-    <meta property="og:description" content="FORN is a one-man army production and design studio based in Copenhagen, Denmark, aimed at web production, extraordinary designs and reliable development.">
+    <meta property="og:description" content="FORN is a one-man army production and design studio based in Copenhagen, Denmark, focused on reliable web development, functional designs and grand ideas.">
     <meta property="og:image" content="https://forn.dk/og_image.jpg">
     <meta property="og:type" content="website">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="FORN | Web Production and Development">
-    <meta name="twitter:description" content="FORN is a one-man army production and design studio based in Copenhagen, Denmark, aimed at web production, extraordinary designs and reliable development.">
+    <meta name="twitter:description" content="FORN is a one-man army production and design studio based in Copenhagen, Denmark, focused on reliable web development, functional designs and grand ideas.">
     <meta name="twitter:image" content="https://forn.dk/og_image.jpg">
 
     {@html `<script type="application/ld+json">
@@ -66,7 +66,7 @@
             "@context": "https://schema.org",
             "@type": "WebPage",
             "name": "FORN",
-            "description": "FORN is a one-man army production and design studio based in Copenhagen, Denmark, aimed at web production, extraordinary designs and reliable development.",
+            "description": "FORN is a one-man army production and design studio based in Copenhagen, Denmark, focused on reliable web development, functional designs and grand ideas.",
             "url": "https://forn.dk",
             "image": "https://forn.dk/og_image.jpg",
             "publisher": {
