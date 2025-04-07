@@ -31,6 +31,7 @@
 
     .footer {
         margin-top: 8rem;
+        height: calc(60px * 15);
 
         .pili-rows {
             display: flex;

@@ -25,8 +25,8 @@
     let scrollY = $state(0);
     let circleElement = $state(null);
     let parallaxOffset = spring(0, {
-        stiffness: 0.01,
-        damping: 0.5
+        stiffness: 0.02,
+        damping: 0.05
     })
 
     const handleScroll = () => {

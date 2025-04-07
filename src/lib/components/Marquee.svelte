@@ -29,8 +29,8 @@
 
     let scrollY = $state(0);
     let parallaxOffset = spring(0, {
-        stiffness: 0.01,
-        damping: 0.4
+        stiffness: 0.04,
+        damping: 0.15
     })
 
     const handleScroll = () => {
@@ -61,7 +61,7 @@
         
         @media (max-width: $mobile) {
             padding-top: 8rem;
-            transform: translateY(var(--offset));
+            transform: none;
         }
         
         svg {
