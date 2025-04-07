@@ -16,9 +16,27 @@
 </script>
 
 <div class="footer">
+    <div class="texts">
+        <span>
+            © FORN 2025
+        </span>
+        <span>
+            Symbols from Asa'Pili by P. M.
+        </span>
+        <span>
+            Crafted with <span class="inline-icon"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="none" stroke="#000" stroke-width="1.6"><circle cx="6" cy="6" r="5.21"/><path d="M2.19 9.56 6.02 1.58l2.42 4.96H3.64h4.81l1.49 3.02"/></svg></span> by
+        </span>
+        <span>
+            Adrian E. Bratlann // FORN
+        </span>
+    </div>
+
     <div class="pili-rows">
         {#each piliRows as row}
             <div class="pili-row">
+                {#each Array(15 - row) as _}
+                    <div class="pili-placeholder"></div>
+                {/each}
                 {#each Array(row) as _}
                     <Pili />
                 {/each}
@@ -31,13 +49,36 @@
 
     .footer {
         margin-top: 8rem;
-        height: calc(60px * 15);
 
         .pili-rows {
             display: flex;
             flex-direction: row;
             justify-content: center;
             align-items: flex-end;
+            height: calc(60px * 20);
+            flex-shrink: 0;
+            overflow: hidden;
+        }
+        
+        .pili-placeholder {
+            width: 60px;
+            height: 60px;
+        }
+
+        .texts {
+            display: flex;
+            flex-direction: row;
+            gap: 2rem;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            opacity: .5;
+            font-size: .8rem;
+
+            .inline-icon svg {
+                transform: translateY(0.1rem);
+                margin: 0 .2rem;
+            }
         }
     }
 

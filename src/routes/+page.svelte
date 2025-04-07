@@ -30,6 +30,7 @@
 
 <svelte:head>
     <title>FORN | Web Production and Development</title>
+    <meta name="description" content="FORN is a one-man army production and design studio based in Copenhagen, Denmark, aimed at web production, extraordinary designs and reliable development.">
 </svelte:head>
 
 <div class="wrapper">
