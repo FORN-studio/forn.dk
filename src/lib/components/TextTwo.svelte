@@ -78,6 +78,8 @@
             margin: 1rem 0;
             text-align: right;
             hyphens: auto;
+            max-width: 5ch;
+            margin-left: auto;
 
             @media (max-width: $mobile) {
                 margin-right: $p-inset-mobile;
