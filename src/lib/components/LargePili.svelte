@@ -29,7 +29,7 @@
     import Yalu from '$lib/assets/asapili/yalu.svg';
 
     import { onMount } from 'svelte'
-    import { scale } from 'svelte/transition'
+    import { scale, fly } from 'svelte/transition'
 
     const piliComponents = [
         Asa,
@@ -117,7 +117,7 @@
 
 <div class="pili">
     {#key selectedPili}
-        <img class:ping onmouseenter={handleMouseEnter} in:scale={{ duration: 500, start: 0.8 }} out:scale={{ duration: 500, start: 1.2 }} src={selectedPili} alt="Pili" />
+        <img class:ping onmouseenter={handleMouseEnter} in:fly={{ duration: 500, y: -100, delay: 150 }} out:fly={{ duration: 500, y: 100 }} src={selectedPili} alt="Pili" />
     {/key}
 </div>
 

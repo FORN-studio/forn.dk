@@ -42,6 +42,10 @@
 
     .marquee {
         padding: 14rem 0;
+
+        @media (max-width: $mobile) {
+            padding-top: 8rem;
+        }
         
         svg {
             width: 137vw;

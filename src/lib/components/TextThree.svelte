@@ -78,6 +78,12 @@
         text-align: center;
         gap: 2rem;
         position: relative;
+        margin-top: 8rem;
+
+        @media (max-width: $mobile) {
+            margin-top: 0;
+            padding: 8rem 0;
+        }
 
         .icon {
             text-align: center;

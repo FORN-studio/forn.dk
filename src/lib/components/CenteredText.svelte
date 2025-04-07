@@ -39,6 +39,8 @@
 
 <style lang="scss">
 
+    @use 'src/lib/scss/variables' as *;
+
     .centered-text {
         display: flex;
         flex-direction: column;
@@ -47,6 +49,10 @@
         padding: 14rem 0;
         text-align: center;
         gap: 2rem;
+
+        @media (max-width: $mobile) {
+            padding: 0;
+        }
 
         .text-wrapper {
             display: flex;

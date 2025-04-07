@@ -19,6 +19,10 @@
     .wide-text {
         padding: 14rem 0;
 
+        @media (max-width: $mobile) {
+            padding: 8rem 0;
+        }
+
         .text-wrapper {
             display: flex;
             flex-direction: column;

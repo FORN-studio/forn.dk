@@ -59,6 +59,11 @@
         padding: 14rem 0;
         transform: translateX(var(--offset));
         
+        @media (max-width: $mobile) {
+            padding-top: 8rem;
+            transform: translateY(var(--offset));
+        }
+        
         svg {
             width: 140vw;
             position: relative;
