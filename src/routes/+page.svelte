@@ -10,6 +10,7 @@
     import TextThree from '$lib/components/TextThree.svelte';
     import Contact from '$lib/components/Contact.svelte';
     import Footer from '$lib/components/Footer.svelte';
+    import PiliHandler from '$lib/components/PiliHandler.svelte';
     import { onMount } from 'svelte';
     import { m } from '$lib/paraglide/messages.js';
     import { getLocale } from '$lib/paraglide/runtime.js';
@@ -80,6 +81,8 @@
         <Component />
     {/each}
 </div>
+
+<PiliHandler />
 
 <style lang="scss">
     .wrapper {

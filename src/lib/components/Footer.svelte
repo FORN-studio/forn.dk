@@ -6,7 +6,7 @@
 
     const randomLength = () => Math.floor(Math.random() * 15) + 1
 
-    let piliRows = $state(Array(70).fill(0).map(() => randomLength()))
+    let piliRows = $state(Array(35).fill(0).map(() => randomLength()))
 
     onMount(() => {
         setInterval(() => {
