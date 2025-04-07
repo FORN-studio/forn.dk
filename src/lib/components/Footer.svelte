@@ -14,6 +14,38 @@
         }, 150)
     })
 
+    const ids = [
+        'asa',
+        'bete',
+        'buni',
+        'dala',
+        'dudi',
+        'fasi',
+        'feno',
+        'fudo',
+        'gano',
+        'kana',
+        'kene',
+        'kodu',
+        'mafa',
+        'muno',
+        'nima',
+        'nugo',
+        'pali',
+        'pili',
+        'sadi',
+        'sibi',
+        'sila',
+        'sufu',
+        'sumi',
+        'taku',
+        'tega',
+        'yaka',
+        'yalu'
+    ]
+
+    const randomId = () => ids[Math.floor(Math.random() * ids.length)]
+
 </script>
 
 <div class="footer">
@@ -39,7 +71,7 @@
                     <div class="pili-placeholder"></div>
                 {/each}
                 {#each Array(row) as _}
-                    <Pili />
+                    <Pili initialSymbol={randomId()} />
                 {/each}
             </div>
         {/each}

@@ -1,11 +1,11 @@
 <script>
 
-    let src = $state('/asapili/asa.svg')
+    let { initialSymbol = 'asa' } = $props()
 
 </script>
 
 <div class="pili living">
-    <img src="/asapili/asa.svg" alt="Pili" />
+    <img src={`/asapili/${initialSymbol}.svg`} alt="Pili" />
 </div>
 
 <style lang="scss">
