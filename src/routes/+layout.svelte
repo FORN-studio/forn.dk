@@ -44,7 +44,7 @@
 	nav {
 		position: fixed;
 		top: 20px;
-		right: 20px;
+		left: 20px;
 		z-index: 10;
 		transition: ease all 300ms;
 
@@ -54,6 +54,8 @@
 
 		@media (max-width: $mobile) {
 			top: auto;
+			left: auto;
+			right: 20px;
 			bottom: 20px;
 
 			&.hidden {
