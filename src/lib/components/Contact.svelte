@@ -184,6 +184,7 @@
                     width: 1.5rem;
                     height: 1.5rem;
                     transform: translateY(5px);
+                    flex-shrink: 0;
                 }
             }
 
