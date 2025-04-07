@@ -38,9 +38,19 @@
             gap: .5rem;
             flex-basis: 50%;
             transform: scale(.85);
+            position: relative;
+            z-index: 2;
+
+            @media (max-width: $mobile) {
+                left: -20px;
+            }
 
             .label {
                 writing-mode: vertical-rl;
+
+                @media (max-width: $mobile) {
+                    max-height: 250px;
+                }
             }
 
             img {

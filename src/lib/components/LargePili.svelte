@@ -101,7 +101,7 @@
 
 <div class="pili" bind:this={piliElement}>
     {#key selectedPili}
-        <img in:fly={{ duration: 500, y: -100, delay: 150 }} out:scale={{ duration: 500, start: 0.8 }} src={`/asapili/${selectedPili}.svg`} alt="Pili" />
+        <img in:scale={{ duration: 500, start: 1.1, delay: 150 }} out:scale={{ duration: 500, start: 0.9 }} src={`/asapili/${selectedPili}.svg`} alt="Pili" />
     {/key}
 </div>
 
