@@ -2,6 +2,7 @@
 
     import Pili from '$lib/components/Pili.svelte'
     import { onMount } from 'svelte'
+    import { m } from '$lib/paraglide/messages.js'
 
     const randomLength = () => Math.floor(Math.random() * 15) + 1
 
@@ -18,16 +19,16 @@
 <div class="footer">
     <div class="texts">
         <span>
-            © FORN 2025
+            {m.footer_copyright()}
         </span>
         <span>
-            Symbols from Asa'Pili by P. M.
+            {m.footer_symbols()}
         </span>
         <span>
-            Crafted with <span class="inline-icon"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="none" stroke="#000" stroke-width="1.6"><circle cx="6" cy="6" r="5.21"/><path d="M2.19 9.56 6.02 1.58l2.42 4.96H3.64h4.81l1.49 3.02"/></svg></span> by
+            {m.footer_crafted_with()} <span class="inline-icon"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="none" stroke="#000" stroke-width="1.6"><circle cx="6" cy="6" r="5.21"/><path d="M2.19 9.56 6.02 1.58l2.42 4.96H3.64h4.81l1.49 3.02"/></svg></span> {m.footer_by()}
         </span>
         <span>
-            Adrian E. Bratlann // FORN
+            {m.footer_name()}
         </span>
     </div>
 

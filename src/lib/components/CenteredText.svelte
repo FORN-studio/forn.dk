@@ -1,6 +1,7 @@
 <script>
 
     import Pili from '$lib/components/Pili.svelte'
+    import { m } from '$lib/paraglide/messages.js'
 
     const piliCounts = [
         { breakpoint: 999999, rows: [1, 3, 5, 9, 12, 11, 7, 3, 1] },
@@ -21,9 +22,9 @@
 
 <div class="centered-text">
     <div class="text-wrapper">
-        <p>To rewrite the</p>
-        <h2>Blueprint</h2>
-        <p>(without reinventing the wheel)</p>
+        <p>{m.centered_text_intro()}</p>
+        <h2>{m.centered_text_heading()}</h2>
+        <p>{m.centered_text_outro()}</p>
     </div>
 
     <div class="pili-wrapper">

@@ -3,13 +3,14 @@
     import Portrait from '$lib/assets/eder.jpg'
     import { scale } from 'svelte/transition'
     import LargePili from '$lib/components/LargePili.svelte'
+    import { m } from '$lib/paraglide/messages.js'
 
 </script>
 
 <div class="self-portrait">
     <div class="image-wrapper">
         <img src={Portrait} alt="Eder" />
-        <span class="label">(and i sometimes need ordinary food too)</span>
+        <span class="label">{m.self_portrait_label()}</span>
     </div>
 
     <div class="pili-wrapper">

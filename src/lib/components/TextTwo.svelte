@@ -1,6 +1,7 @@
 <script>
 
     import Pili from '$lib/components/Pili.svelte'
+    import { m } from '$lib/paraglide/messages.js'
 
     const piliCounts = [
         { breakpoint: 999999, rows: [16, 14, 11, 8, 7, 5, 4, 2, 1] },
@@ -32,9 +33,9 @@
     </div>
 
     <div class="text-wrapper">
-        <p>Feeding off of</p>
-        <h2>grand<br /> ambitions</h2>
-        <p>To create solutions that cut through the noise.</p>
+        <p>{m.text_two_intro()}</p>
+        <h2>{m.text_two_heading_line1()}<br /> {m.text_two_heading_line2()}</h2>
+        <p>{m.text_two_outro()}</p>
     </div>
 
 </div>

@@ -20,7 +20,8 @@
 		"sass": "^1.86.3",
 		"svelte": "^5.0.0",
 		"svelte-preprocess": "^6.0.3",
-		"vite": "^6.2.5"
+		"vite": "^6.2.5",
+		"@inlang/paraglide-js": "2.0.11"
 	},
 	"dependencies": {
 		"@sveltejs/adapter-vercel": "^5.7.0",

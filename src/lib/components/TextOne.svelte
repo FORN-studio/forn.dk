@@ -1,17 +1,14 @@
 <script>
-
     import Pili from '$lib/components/Pili.svelte'
-
+    import { m } from '$lib/paraglide/messages.js'
 </script>
 
 <div class="text-one">
-
     <div class="text-wrapper">
-        <p>FORN is a one-man army</p>
-        <h2>Production<br /> and<br /> design</h2>
-        <p>Studio based in Copenhagen,</p>
+        <p>{m.text_one_intro()}</p>
+        <h2>{m.text_one_heading_line1()}<br /> {m.text_one_heading_line2()}<br /> {m.text_one_heading_line3()}</h2>
+        <p>{m.text_one_outro()}</p>
     </div>
-
 </div>
 
 <style lang="scss">

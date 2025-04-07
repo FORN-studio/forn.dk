@@ -1,13 +1,17 @@
+<script>
+    import { m } from '$lib/paraglide/messages.js'
+</script>
+
 <div class="wide-text">
 
     <div class="text-wrapper">
-        <p>I'm good at completely</p>
+        <p>{m.wide_text_intro()}</p>
         <h2 class="spanning">
-            <span>sub</span>
-            <span>mer</span>
-            <span>ging</span>
+            <span>{m.wide_text_heading_part1()}</span>
+            <span>{m.wide_text_heading_part2()}</span>
+            <span>{m.wide_text_heading_part3()}</span>
         </h2>
-        <p>Myself in a single goal, almost drowning in it, and emerging with a solution that feels complete.</p>
+        <p>{m.wide_text_outro()}</p>
     </div>
 
 </div>
