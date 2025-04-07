@@ -21,7 +21,7 @@
     .text-one {
         display: flex;
         flex-direction: row;
-        margin-bottom: 14rem;
+        padding: 8rem 0;
 
         h2 {
             margin: 1rem 0;
@@ -29,6 +29,10 @@
 
         p {
             margin-left: $p-inset;
+
+            @media (max-width: $mobile) {
+                margin-left: $p-inset-mobile;
+            }
         }
     }
 

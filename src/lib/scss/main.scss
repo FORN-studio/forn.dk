@@ -34,6 +34,8 @@ h2 {
     margin-bottom: 1rem;
     color: $accent;
 
+    > * { text-transform: lowercase !important; }
+
     @media (max-width: $tablet) {
         font-size: $fs-xxl;
     }

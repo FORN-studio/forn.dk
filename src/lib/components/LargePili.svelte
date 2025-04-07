@@ -66,20 +66,9 @@
     let ping = $state(false)
 
     onMount(() => {
-        const changePili = () => {
-            // Pick a random sleep duration between 10 and 60 seconds
-            const sleepDuration = Math.random() * 3 + 1; // 1-4 range (floating point)
-            
-            setTimeout(() => {
-                // Select a new random Pili
-                selectedPili = pickRandom();
-                // Call again to create an infinite loop
-                changePili();
-            }, sleepDuration * 1000); // Convert to milliseconds
-        };
-        
-        // Start the cycle
-        changePili();
+        setInterval(() => {
+            selectedPili = pickRandom()
+        }, 1500);
     })
 
     const handleMouseEnter = () => {
@@ -103,8 +92,8 @@
     @use 'src/lib/scss/variables' as *;
 
     .pili {
-        width: 60px;
-        height: 60px;
+        width: 100%;
+        height: 100%;
         display: grid;
         grid-template-columns: 1fr;
         grid-template-rows: 1fr;
@@ -120,20 +109,11 @@
             object-fit: contain;
             grid-column: 1;
             grid-row: 1;
+            filter: brightness(0) saturate(100%) invert(11%) sepia(86%) saturate(5000%) hue-rotate(224deg) brightness(94%) contrast(106%);
 
             &.ping {
                 animation: ping 1.5s;
             }
-        }
-    }
-
-    @keyframes ping {
-        0% {
-            filter: brightness(0) saturate(100%) invert(11%) sepia(86%) saturate(5000%) hue-rotate(224deg) brightness(94%) contrast(106%);
-        }
-
-        100% {
-            filter: none;
         }
     }
 
