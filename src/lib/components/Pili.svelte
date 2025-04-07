@@ -30,11 +30,11 @@
             object-fit: contain;
             grid-column: 1;
             grid-row: 1;
-        }
-    }
 
-    :global(.pili img.ping) {
-        animation: ping 1.5s;
+            &:hover {
+                animation: ping 1.5s;
+            }
+        }
     }
 
     @keyframes ping {
