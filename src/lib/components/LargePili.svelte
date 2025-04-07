@@ -34,7 +34,6 @@
 
     const pickRandom = () => ids[Math.floor(Math.random() * ids.length)]
     let selectedPili = $state(pickRandom())
-    let ping = $state(false)
     let timeoutId = $state(null)
     let isTabActive = $state(true)
     let initialPauseComplete = $state(false)
@@ -98,19 +97,11 @@
         }, 1000);
     }
 
-    const handleMouseEnter = () => {
-        ping = true
-
-        setTimeout(() => {
-            ping = false
-        }, 1500)
-    }
-
 </script>
 
 <div class="pili" bind:this={piliElement}>
     {#key selectedPili}
-        <img class:ping onmouseenter={handleMouseEnter} in:fly={{ duration: 500, y: -100, delay: 150 }} out:scale={{ duration: 500, start: 0.8 }} src={`/asapili/${selectedPili}.svg`} alt="Pili" />
+        <img in:fly={{ duration: 500, y: -100, delay: 150 }} out:scale={{ duration: 500, start: 0.8 }} src={`/asapili/${selectedPili}.svg`} alt="Pili" />
     {/key}
 </div>
 
@@ -132,20 +123,6 @@
             grid-column: 1;
             grid-row: 1;
             filter: brightness(0) saturate(100%) invert(11%) sepia(86%) saturate(5000%) hue-rotate(224deg) brightness(94%) contrast(106%);
-
-            &.ping {
-                animation: ping 1.5s;
-            }
-        }
-    }
-
-    @keyframes ping {
-        0% {
-            filter: brightness(0) saturate(100%) invert(11%) sepia(86%) saturate(5000%) hue-rotate(224deg) brightness(94%) contrast(106%);
-        }
-
-        100% {
-            filter: none;
         }
     }
 
