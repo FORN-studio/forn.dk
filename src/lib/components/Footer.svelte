@@ -60,7 +60,6 @@
             align-items: flex-end;
             height: calc(60px * 20);
             flex-shrink: 0;
-            overflow: hidden;
         }
         
         .pili-placeholder {
