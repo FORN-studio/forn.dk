@@ -37,7 +37,7 @@
         const CHANGE_PROBABILITY = 0.2; // 20% chance to change each visible pili
         const INTERVAL_MS = 200; // Check every 50ms
         
-        const piliElements = document.querySelectorAll('.pili.living');
+        const piliElements = document.querySelectorAll('.pili.living:not(.preset)');
         
         document.addEventListener('visibilitychange', () => {
             focus.focused = !document.hidden;

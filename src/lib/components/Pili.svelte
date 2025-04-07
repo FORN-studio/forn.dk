@@ -4,7 +4,7 @@
 
 </script>
 
-<div class="pili living">
+<div class="pili living" class:preset={initialSymbol !== 'asa'}>
     <img src={`/asapili/${initialSymbol}.svg`} alt="Pili" />
 </div>
 
