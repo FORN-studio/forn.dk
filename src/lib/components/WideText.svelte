@@ -14,8 +14,8 @@
             ease: 'expo.inOut',
             transformOrigin: 'center left',
             scrollTrigger: {
-                trigger: 'h2.spanning',
-                start: 'top 90%',
+                trigger: 'div.wide-text',
+                start: 'top 150%',
                 end: 'bottom 50%',
                 scrub: true
             }
@@ -27,7 +27,7 @@
             duration: 1,
             ease: 'expo.inOut',
             scrollTrigger: {
-                trigger: 'h2.spanning',
+                trigger: 'div.wide-text',
                 start: 'top 70%',
                 end: 'bottom 50%',
                 scrub: true
@@ -42,7 +42,7 @@
             ease: 'expo.inOut',
             transformOrigin: 'center left',
             scrollTrigger: {
-                trigger: 'h2.spanning',
+                trigger: 'div.wide-text',
                 start: 'top 70%',
                 end: 'bottom 50%',
                 scrub: true
