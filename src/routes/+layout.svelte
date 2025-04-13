@@ -3,8 +3,8 @@
 	import '$lib/scss/reset.scss'
 	import OffsetHandler from '$lib/components/OffsetHandler.svelte'
 	import { locales, getLocale, setLocale } from '$lib/paraglide/runtime'
-	import Lenis from 'lenis'
-	import { onMount } from 'svelte'
+	import { gsap, ScrollTrigger, lenis } from '$lib/utils/gsap.svelte'
+	import { onDestroy } from 'svelte'
 
 	let { children } = $props()
 
@@ -15,21 +15,13 @@
 		setLocale(locale)
 	}
 
-	onMount(() => {
-		const lenis = new Lenis({
-            duration: 1.5,
-            autoRaf: true,
-            lerp: 0.3,
-            syncTouch: true,
-            touchMultiplier: 2,
-            touchInertiaMultiplier: 70,
-        })
-
-		lenis.on('scroll', (e) => {
-			scrollY = e.animatedScroll
-		})
+	onDestroy(() => {
+		if (lenis) lenis.destroy()
 	})
+
 </script>
+
+<svelte:window bind:scrollY />
 
 <OffsetHandler />
 

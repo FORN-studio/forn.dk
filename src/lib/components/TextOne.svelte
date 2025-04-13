@@ -1,6 +1,8 @@
 <script>
+
     import Pili from '$lib/components/Pili.svelte'
     import { m } from '$lib/paraglide/messages.js'
+
 </script>
 
 <div class="text-one">
