@@ -19,6 +19,10 @@
         grid-template-columns: 1fr;
         grid-template-rows: 1fr;
 
+        &:hover {
+            animation: ping 1.5s;
+        }
+
         @media (max-width: $tablet) and (min-width: $mobile) {
             width: 55px;
             height: 55px;
@@ -30,10 +34,6 @@
             object-fit: contain;
             grid-column: 1;
             grid-row: 1;
-
-            &:hover {
-                animation: ping 1.5s;
-            }
         }
     }
 

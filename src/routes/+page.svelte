@@ -14,6 +14,8 @@
     import { onMount } from 'svelte';
     import { m } from '$lib/paraglide/messages.js';
     import { getLocale } from '$lib/paraglide/runtime.js';
+    import { gsap, ScrollTrigger } from '$lib/utils/gsap.svelte'
+    import SplitType from 'split-type'
 
     const components = [
         Splash,
@@ -41,6 +43,31 @@
         };
         
         document.addEventListener('visibilitychange', handleVisibilityChange);
+
+        const headers = document.querySelectorAll('h2:not(.spanning)')
+
+        headers.forEach(header => {
+            const split = new SplitType(header)
+            const lines = split.lines
+            const targets = split.chars
+
+            const tl = new gsap.timeline()
+            tl.from(targets, {
+                autoAlpha: 1,
+                yPercent: 100,
+                delay: -0.5,
+                duration: 3,
+                ease: 'expo.inOut',
+                stagger: 0.3,
+                transformOrigin: 'center left',
+                scrollTrigger: {
+                    trigger: header,
+                    start: 'top 120%',
+                    end: 'top 10%',
+                    scrub: true
+                }
+            })
+        }) 
         
         return () => {
             document.removeEventListener('visibilitychange', handleVisibilityChange);
@@ -87,5 +114,9 @@
 <style lang="scss">
     .wrapper {
         padding: 1rem;
+    }
+
+    :global(h2 .line) {
+        overflow: hidden;
     }
 </style>

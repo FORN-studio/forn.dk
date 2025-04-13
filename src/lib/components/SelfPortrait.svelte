@@ -4,12 +4,29 @@
     import { scale } from 'svelte/transition'
     import LargePili from '$lib/components/LargePili.svelte'
     import { m } from '$lib/paraglide/messages.js'
+    import { gsap, ScrollTrigger } from '$lib/utils/gsap.svelte'
+    import { onMount } from 'svelte';
 
+    onMount(() => {
+        gsap.to('.image-wrapper img', {
+            yPercent: -40, // Move image down by 100px during scroll
+            ease: 'none',
+            scrollTrigger: {
+                trigger: '.self-portrait',
+                start: 'top bottom',
+                end: 'bottom top',
+                scrub: true, // Smooth scrubbing effect tied to scroll position
+                invalidateOnRefresh: true // Recalculate on window resize
+            }
+        });
+    })
 </script>
 
 <div class="self-portrait">
     <div class="image-wrapper">
-        <img src={Portrait} alt="Eder" />
+        <div class="inner-img-wrapper">
+            <img src={Portrait} alt="Eder" />
+        </div>
         <span class="label">{m.self_portrait_label()}</span>
     </div>
 
@@ -41,6 +58,12 @@
             position: relative;
             z-index: 2;
 
+            .inner-img-wrapper {
+                width: 100%;
+                height: 100%;
+                overflow: hidden;
+            }
+
             @media (max-width: $mobile) {
                 left: -20px;
             }
@@ -54,8 +77,8 @@
             }
 
             img {
-                width: 100%;
-                height: 100%;
+                width: 140%;
+                height: 140%;
                 object-fit: cover;
             }
         }
@@ -68,12 +91,6 @@
             grid-template-rows: 1fr;
             justify-content: center;
             align-items: center;
-
-            .pili {
-                color: $accent;
-                grid-column: 1;
-                grid-row: 1;
-            }
         }
     }
 

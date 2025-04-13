@@ -28,6 +28,7 @@
 		"@vercel/analytics": "^1.5.0",
 		"gsap": "^3.12.7",
 		"lenis": "^1.2.3",
-		"resend": "^4.2.0"
+		"resend": "^4.2.0",
+		"split-type": "^0.3.4"
 	}
 }

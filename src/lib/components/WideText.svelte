@@ -1,5 +1,55 @@
 <script>
     import { m } from '$lib/paraglide/messages.js'
+    import { gsap, ScrollTrigger } from '$lib/utils/gsap.svelte'
+    import { onMount } from 'svelte';
+
+    onMount(() => {
+        const spanLines = document.querySelectorAll('h2.spanning > div')
+        
+        // First element - moves down from top
+        gsap.from(spanLines[0], {
+            autoAlpha: 0,
+            yPercent: -100,
+            duration: 1,
+            ease: 'expo.inOut',
+            transformOrigin: 'center left',
+            scrollTrigger: {
+                trigger: 'h2.spanning',
+                start: 'top 90%',
+                end: 'bottom 50%',
+                scrub: true
+            }
+        })
+        
+        // Middle element - just fades in
+        gsap.from(spanLines[1], {
+            autoAlpha: 0,
+            duration: 1,
+            ease: 'expo.inOut',
+            scrollTrigger: {
+                trigger: 'h2.spanning',
+                start: 'top 70%',
+                end: 'bottom 50%',
+                scrub: true
+            }
+        })
+        
+        // Last element - moves up from bottom
+        gsap.from(spanLines[2], {
+            autoAlpha: 0,
+            yPercent: 100,
+            duration: 1,
+            ease: 'expo.inOut',
+            transformOrigin: 'center left',
+            scrollTrigger: {
+                trigger: 'h2.spanning',
+                start: 'top 70%',
+                end: 'bottom 50%',
+                scrub: true
+            }
+        })
+    })
+
 </script>
 
 <div class="wide-text">
@@ -7,9 +57,9 @@
     <div class="text-wrapper">
         <p>{m.wide_text_intro()}</p>
         <h2 class="spanning">
-            <span>{m.wide_text_heading_part1()}</span>
-            <span>{m.wide_text_heading_part2()}</span>
-            <span>{m.wide_text_heading_part3()}</span>
+            <div>{m.wide_text_heading_part1()}</div>
+            <div>{m.wide_text_heading_part2()}</div>
+            <div>{m.wide_text_heading_part3()}</div>
         </h2>
         <p>{m.wide_text_outro()}</p>
     </div>
@@ -37,8 +87,9 @@
                 flex-direction: row;
                 width: 100%;
                 justify-content: space-between;
+                overflow: hidden;
 
-                span {
+                div {
                     &:nth-child(2) {
                         margin-top: 6rem;
                     }
