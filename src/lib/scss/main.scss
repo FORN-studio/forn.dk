@@ -68,3 +68,7 @@ p, span, a {
 .word {
 	overflow: hidden;
 }
+
+.line:not(:last-child) {
+	margin-bottom: -1rem;
+}
