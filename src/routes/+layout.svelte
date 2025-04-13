@@ -3,7 +3,7 @@
 	import '$lib/scss/reset.scss'
 	import OffsetHandler from '$lib/components/OffsetHandler.svelte'
 	import { locales, getLocale, setLocale } from '$lib/paraglide/runtime'
-	import { gsap, ScrollTrigger, lenis } from '$lib/utils/gsap.svelte'
+	import { gsap, ScrollTrigger, lenis, ticker } from '$lib/utils/gsap.svelte'
 	import { onDestroy } from 'svelte'
 
 	let { children } = $props()
@@ -16,6 +16,7 @@
 	}
 
 	onDestroy(() => {
+		if (ticker) gsap.ticker.remove(ticker)
 		if (lenis) lenis.destroy()
 	})
 

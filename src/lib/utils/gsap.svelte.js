@@ -4,11 +4,12 @@ import { browser } from '$app/environment'
 import Lenis from 'lenis'
 
 let lenis = null
+let ticker = null
 
 if (browser) {
     lenis = new Lenis({
         duration: 1.5,
-        autoRaf: true,
+        autoRaf: false,
         lerp: 0.3,
         syncTouch: true,
         touchMultiplier: 2,
@@ -21,11 +22,12 @@ if (browser) {
         ScrollTrigger.update()
     })
 
-    gsap.ticker.add((time) => {
+    ticker = (time) => {
         lenis.raf(time * 1000)
-    })
+    }
 
+    gsap.ticker.add(ticker)
     gsap.ticker.lagSmoothing(0)
 }
 
-export { gsap, lenis, ScrollTrigger }
+export { gsap, lenis, ScrollTrigger, ticker }
