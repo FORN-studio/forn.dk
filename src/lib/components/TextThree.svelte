@@ -109,6 +109,12 @@
                     max-width: 250px;
                 }
             }
+
+            h2 {
+                @media (max-width: $mobile) {
+                    font-size: $fs-xl * 1.3;
+                }
+            }
         }
 
         .pili-circle {
