@@ -45,9 +45,11 @@
         document.addEventListener('visibilitychange', handleVisibilityChange);
 
         const headers = document.querySelectorAll('h2:not(.spanning)')
+        const textOne = document.querySelector('.text-one h1 > span.h2')
+        const targets = [...headers, textOne]
 
-        headers.forEach(header => {
-            const split = new SplitType(header)
+        targets.forEach(target => {
+            const split = new SplitType(target)
             const lines = split.lines
             const targets = split.chars
 
@@ -61,7 +63,7 @@
                 stagger: 0.3,
                 transformOrigin: 'center left',
                 scrollTrigger: {
-                    trigger: header,
+                    trigger: target,
                     start: 'top 120%',
                     end: 'top 10%',
                     scrub: true

@@ -58,4 +58,9 @@ a {
 
 p, span, a {
     text-transform: uppercase;
+
+	&:not(.h2) {
+		font-family: 'Helvetica', sans-serif;
+		font-size: $fs-sm;
+	}
 }
