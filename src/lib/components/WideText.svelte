@@ -100,6 +100,8 @@
             }
 
             p {
+                max-width: 30ch;
+                
                 &:nth-child(1) {
                     padding-left: $p-inset;
 
@@ -112,7 +114,6 @@
                     text-align: right;
                     width: 100%;
                     padding-right: $p-inset;
-                    max-width: 450px;
                     align-self: flex-end;
                     padding-top: 1rem;
 

@@ -46,6 +46,7 @@
         span {
             margin-left: $p-inset;
             display: inline-block;
+            max-width: 30ch;
 
             @media (max-width: $mobile) {
                 margin-left: $p-inset-mobile;

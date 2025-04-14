@@ -59,6 +59,11 @@
             display: flex;
             flex-direction: column;
             gap: 1rem;
+
+            p {
+                max-width: 30ch;
+                margin: 0 auto;
+            }
         }
 
         .pili-wrapper {
