@@ -1,6 +1,6 @@
 <script>
 
-    import Portrait from '$lib/assets/eder.jpg'
+    import Portrait from '$lib/assets/kontoreder.webp'
     import { scale } from 'svelte/transition'
     import LargePili from '$lib/components/LargePili.svelte'
     import { m } from '$lib/paraglide/messages.js'
@@ -9,7 +9,7 @@
 
     onMount(() => {
         gsap.to('.image-wrapper img', {
-            yPercent: -40, // Move image down by 100px during scroll
+            scale: 1.4, // Increase scale by 20% during scroll
             ease: 'none',
             scrollTrigger: {
                 trigger: '.self-portrait',
@@ -44,6 +44,8 @@
         flex-direction: row;
         position: relative;
         padding: 14rem 0;
+        justify-content: center;
+        align-items: center;
 
         @media (max-width: $mobile) {
             flex-direction: column;
@@ -53,23 +55,26 @@
             display: flex;
             flex-direction: row;
             gap: .5rem;
-            flex-basis: 50%;
             transform: scale(.85);
             position: relative;
             z-index: 2;
+            width: 70%;
 
             .inner-img-wrapper {
                 width: 100%;
                 height: 100%;
                 overflow: hidden;
+                border-radius: 20px;
             }
 
             @media (max-width: $mobile) {
-                left: -20px;
+                width: 100%;
+                transform: scale(1);
             }
 
             .label {
                 writing-mode: vertical-rl;
+                margin-top: 1rem;
 
                 @media (max-width: $mobile) {
                     max-height: 250px;
@@ -77,20 +82,31 @@
             }
 
             img {
-                width: 140%;
-                height: 140%;
+                width: 120%;
+                height: 120%;
                 object-fit: cover;
             }
         }
 
         .pili-wrapper {
-            flex-basis: 50%;
-            flex-grow: 1;
             display: grid;
             grid-template-columns: 1fr;
             grid-template-rows: 1fr;
             justify-content: center;
             align-items: center;
+            position: absolute;
+            width: 50%;
+            height: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-53%, calc(-50%));
+            z-index: 2;
+
+            @media (max-width: $mobile) {
+                width: 70%;
+                height: 70%;
+                transform: translate(-63%, calc(-50%));
+            }
         }
     }
 
