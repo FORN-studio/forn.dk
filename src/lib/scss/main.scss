@@ -70,5 +70,9 @@ p, span, a {
 }
 
 .line:not(:last-child) {
-	margin-bottom: -1rem;
+	margin-bottom: -2rem;
+
+	@media (max-width: $mobile) {
+		margin-bottom: -1rem;
+	}
 }
