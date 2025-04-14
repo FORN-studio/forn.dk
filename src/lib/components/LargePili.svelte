@@ -1,6 +1,7 @@
 <script>
     import { onMount } from 'svelte'
     import { fly, scale } from 'svelte/transition'
+    import { cubicInOut } from 'svelte/easing'
 
     const ids = [
         'asa',
@@ -36,7 +37,6 @@
     let selectedPili = $state(ids[0])
     let timeoutId = $state(null)
     let isTabActive = $state(true)
-    let initialPauseComplete = $state(false)
     let isInViewport = $state(false)
     let piliElement;
 
@@ -45,7 +45,7 @@
             const [entry] = entries;
             isInViewport = entry.isIntersecting;
             
-            if (isInViewport && isTabActive && initialPauseComplete) {
+            if (isInViewport && isTabActive) {
                 if (!timeoutId) changePili();
             } else if (!isInViewport && timeoutId) {
                 clearTimeout(timeoutId);
@@ -56,13 +56,6 @@
         if (piliElement) {
             observer.observe(piliElement);
         }
-
-        setTimeout(() => {
-            initialPauseComplete = true;
-            if (isTabActive && isInViewport) {
-                changePili();
-            }
-        }, 1000);
 
         document.addEventListener('visibilitychange', handleVisibilityChange);
 
@@ -82,26 +75,26 @@
             }
         } else {
             isTabActive = true;
-            if (initialPauseComplete && isInViewport) {
+            if (isInViewport) {
                 changePili();
             }
         }
     }
 
     function changePili() {
-        if (!initialPauseComplete || !isInViewport) return;
+        if (!isInViewport) return;
+        selectedPili = pickRandom();
         
         timeoutId = setTimeout(() => {
-            selectedPili = pickRandom();
             changePili();
-        }, 1000);
+        }, 3000);
     }
 
 </script>
 
 <div class="pili" bind:this={piliElement}>
     {#key selectedPili}
-        <img in:scale={{ duration: 500, start: 1.1, delay: 150 }} out:scale={{ duration: 500, start: 0.9 }} src={`/asapili/${selectedPili}.svg`} alt="Pili" />
+        <img in:fly={{ duration: 2000, opacity: 1, y: '100%', easing: cubicInOut, delay: 300 }} out:fly={{ duration: 2000, opacity: 1, y: '-100%', easing: cubicInOut }} src={`/asapili/${selectedPili}.svg`} alt="Pili" />
     {/key}
 </div>
 

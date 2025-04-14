@@ -1,7 +1,6 @@
 <script>
 
     import Portrait from '$lib/assets/kontoreder.webp'
-    import { scale } from 'svelte/transition'
     import LargePili from '$lib/components/LargePili.svelte'
     import { m } from '$lib/paraglide/messages.js'
     import { gsap, ScrollTrigger } from '$lib/utils/gsap.svelte'
