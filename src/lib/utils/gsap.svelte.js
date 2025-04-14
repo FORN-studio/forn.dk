@@ -8,12 +8,12 @@ let ticker = null
 
 if (browser) {
     lenis = new Lenis({
-        duration: 1.5,
+        duration: 1,
         autoRaf: false,
         lerp: 0.3,
         syncTouch: true,
-        touchMultiplier: 2,
-        touchInertiaMultiplier: 85
+        touchMultiplier: 1.8,
+        touchInertiaMultiplier: 60
     })
 
     gsap.registerPlugin(ScrollTrigger)

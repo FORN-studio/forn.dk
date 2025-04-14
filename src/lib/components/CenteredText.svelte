@@ -42,6 +42,10 @@
 
     @use 'src/lib/scss/variables' as *;
 
+    :global(.centered-text h2 .line) {
+        white-space: nowrap;
+    }
+
     .centered-text {
         display: flex;
         flex-direction: column;

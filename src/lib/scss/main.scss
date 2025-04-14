@@ -62,6 +62,7 @@ p, span, a {
 	&:not(.h2) {
 		font-family: 'Helvetica', sans-serif;
 		font-size: $fs-sm;
+		line-height: 1.5;
 	}
 }
 
