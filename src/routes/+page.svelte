@@ -64,7 +64,7 @@
                 transformOrigin: 'center left',
                 scrollTrigger: {
                     trigger: target,
-                    start: 'top 120%',
+                    start: 'top 100%',
                     end: 'top 10%',
                     scrub: true
                 }

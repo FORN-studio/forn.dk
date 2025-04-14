@@ -27,6 +27,11 @@
             width: 55px;
             height: 55px;
         }
+
+        @media (max-width: $mobile) {
+            width: 45px;
+            height: 45px;
+        }
         
         img {
             width: 100%;
