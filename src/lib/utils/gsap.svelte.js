@@ -11,7 +11,7 @@ if (browser) {
         duration: 1,
         autoRaf: false,
         lerp: 0.3,
-        syncTouch: true,
+        syncTouch: false,
         touchMultiplier: 1.8,
         touchInertiaMultiplier: 5
     })
