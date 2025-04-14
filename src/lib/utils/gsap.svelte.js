@@ -13,7 +13,7 @@ if (browser) {
         lerp: 0.3,
         syncTouch: true,
         touchMultiplier: 1.8,
-        touchInertiaMultiplier: 60
+        touchInertiaMultiplier: 20
     })
 
     gsap.registerPlugin(ScrollTrigger)
