@@ -122,7 +122,7 @@
             object-fit: contain;
             grid-column: 1;
             grid-row: 1;
-            filter: brightness(0) saturate(100%) invert(11%) sepia(86%) saturate(5000%) hue-rotate(224deg) brightness(94%) contrast(106%);
+            filter: invert(14%) sepia(98%) saturate(3107%) hue-rotate(226deg) brightness(68%) contrast(107%);
         }
     }
 

@@ -25,13 +25,13 @@
 <div class="self-portrait">
     <div class="image-wrapper">
         <div class="inner-img-wrapper">
+            <div class="pili-wrapper">
+                <LargePili />
+            </div>
+
             <img src={Portrait} alt="Eder" />
         </div>
         <span class="label">{m.self_portrait_label()}</span>
-    </div>
-
-    <div class="pili-wrapper">
-        <LargePili />
     </div>
 </div>
 
@@ -55,7 +55,6 @@
             display: flex;
             flex-direction: row;
             gap: .5rem;
-            transform: scale(.85);
             position: relative;
             z-index: 2;
             width: 70%;
@@ -65,6 +64,22 @@
                 height: 100%;
                 overflow: hidden;
                 border-radius: 20px;
+                position: relative;
+
+                .pili-wrapper {
+                    display: grid;
+                    grid-template-columns: 1fr;
+                    grid-template-rows: 1fr;
+                    justify-content: center;
+                    align-items: center;
+                    position: absolute;
+                    width: 90%;
+                    height: 90%;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    z-index: 2;
+                }
             }
 
             @media (max-width: $mobile) {
@@ -85,27 +100,6 @@
                 width: 120%;
                 height: 120%;
                 object-fit: cover;
-            }
-        }
-
-        .pili-wrapper {
-            display: grid;
-            grid-template-columns: 1fr;
-            grid-template-rows: 1fr;
-            justify-content: center;
-            align-items: center;
-            position: absolute;
-            width: 50%;
-            height: 50%;
-            top: 50%;
-            left: 50%;
-            transform: translate(-53%, calc(-50%));
-            z-index: 2;
-
-            @media (max-width: $mobile) {
-                width: 70%;
-                height: 70%;
-                transform: translate(-63%, calc(-50%));
             }
         }
     }
