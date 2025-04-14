@@ -148,7 +148,7 @@
                 flex-direction: row;
                 gap: 1rem;
                 align-items: center;
-                margin-left: $p-inset;
+                margin-left: $p-inset * 2;
 
                 .icon {
                     width: 1.5rem;
@@ -179,6 +179,7 @@
                 gap: 1rem;
                 align-items: center;
                 margin-bottom: 2rem;
+                max-width: 30ch;
 
                 .icon {
                     width: 1.5rem;

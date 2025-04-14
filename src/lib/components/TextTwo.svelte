@@ -89,6 +89,8 @@
         p {
             margin-right: $p-inset;
             text-align: right;
+            max-width: 30ch;
+            margin-left: auto;
 
             @media (max-width: $mobile) {
                 margin-right: 0;
