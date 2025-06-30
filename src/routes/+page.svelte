@@ -21,7 +21,6 @@
         Splash,
         TextOne,
         TextTwo,
-        Testimonials,
         CenteredText,
         SelfPortrait,
         WideText,

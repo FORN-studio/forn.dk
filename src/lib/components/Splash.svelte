@@ -151,7 +151,7 @@
             @media (max-width: $mobile) {
                 flex-direction: row;
                 justify-content: space-between;
-                height: 60dvh;
+                height: 50dvh;
             }
         }
 

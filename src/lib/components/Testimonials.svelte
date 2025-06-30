@@ -63,8 +63,8 @@
         width: calc(100% + 2rem);
         border-right: solid 1px $ultralight-grey;
         border-left: solid 1px $ultralight-grey;
-        margin: 6rem 0;
         margin-left: -1rem;
+        margin-bottom: -4rem;
 
         .embla__container {
             display: flex;

@@ -96,8 +96,13 @@
 		@media (max-width: $mobile) {
 			top: auto;
 			left: auto;
-			right: 20px;
-			bottom: 20px;
+			right: 0;
+			left: 0;
+			bottom: 0;
+			width: 100%;
+			padding: 1rem;
+			background-color: $white;
+			border-top: solid 1px $ultralight-grey;
 
 			&.hidden {
 				transform: translateY(200%);
@@ -161,17 +166,14 @@
 	}
 
 	.button {
-		padding: 10px 20px 6px 20px;
+		padding: 10px 30px 6px 30px;
 		transition: ease all 500ms;
-		animation-name: animate-shadow;
-		animation-duration: 10s;
-		animation-iteration-count: infinite;
-		background-color: $white;
 		display: flex;
 		flex-direction: row;
 		gap: .5rem;
 		align-items: center;
-		border-radius: 9999px;
+		border-radius: 20px 0 20px 0;
+		font-weight: bold;
 
 		> * { pointer-events: none; }
 

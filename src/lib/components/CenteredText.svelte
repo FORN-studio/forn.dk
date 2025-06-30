@@ -2,6 +2,7 @@
 
     import Pili from '$lib/components/Pili.svelte'
     import { m } from '$lib/paraglide/messages.js'
+    import Testimonials from './Testimonials.svelte';
 
     const piliCounts = [
         { breakpoint: 999999, rows: [1, 3, 5, 9, 12, 11, 7, 3, 1] },
@@ -24,7 +25,11 @@
     <div class="text-wrapper">
         <p>{m.centered_text_intro()}</p>
         <h2>{m.centered_text_heading()}</h2>
-        <p>{m.centered_text_outro()}</p>
+        
+        <div class="testimonials">
+            <Testimonials />
+        </div>
+
     </div>
 
     <div class="pili-wrapper">
@@ -41,10 +46,6 @@
 <style lang="scss">
 
     @use 'src/lib/scss/variables' as *;
-
-    :global(.centered-text h2 .line) {
-        white-space: nowrap;
-    }
 
     .centered-text {
         display: flex;
@@ -63,6 +64,7 @@
             display: flex;
             flex-direction: column;
             gap: 1rem;
+            max-width: 100%;
 
             p {
                 max-width: 30ch;
