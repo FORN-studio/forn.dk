@@ -63,14 +63,14 @@
         width: calc(100% + 2rem);
         border-right: solid 1px $ultralight-grey;
         border-left: solid 1px $ultralight-grey;
-        margin: 4rem 0;
+        margin: 6rem 0;
         margin-left: -1rem;
 
         .embla__container {
             display: flex;
             flex-direction: row;
             align-items: stretch;
-            padding: $p-inset;
+            padding: calc($p-inset / 2);
             gap: calc($p-inset / 2);
         }
     }
