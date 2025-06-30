@@ -17,7 +17,7 @@
     </div>
 
     <div class="body">
-        <p>"{testimonial.testimonial}""</p>
+        <p>"{testimonial.testimonial}"</p>
     </div>
 
     <div class="signature">
