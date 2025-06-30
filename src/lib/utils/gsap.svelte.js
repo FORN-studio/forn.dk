@@ -30,4 +30,8 @@ if (browser) {
     gsap.ticker.lagSmoothing(0)
 }
 
-export { gsap, lenis, ScrollTrigger, ticker }
+const easeInOutCubic = (x = 0) => {
+    return x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2
+}
+
+export { gsap, lenis, ScrollTrigger, ticker, easeInOutCubic }

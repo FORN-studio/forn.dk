@@ -57,7 +57,7 @@
             {m.footer_symbols()}
         </span>
         <span>
-            {m.footer_crafted_with()} <span class="inline-icon"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="none" stroke="#000" stroke-width="1.6"><circle cx="6" cy="6" r="5.21"/><path d="M2.19 9.56 6.02 1.58l2.42 4.96H3.64h4.81l1.49 3.02"/></svg></span> {m.footer_by()}
+            {m.footer_crafted_with()} <span class="heart">❤</span> {m.footer_by()}
         </span>
         <span>
             {m.footer_name()}
@@ -85,6 +85,13 @@
     .footer {
         margin-top: 8rem;
 
+        .heart {
+            color: $accent;
+            transform: scale(2);
+            display: inline-block;
+            padding: 0 .3rem;
+        }
+
         .pili-rows {
             display: flex;
             flex-direction: row;
@@ -106,9 +113,12 @@
             justify-content: center;
             align-items: center;
             flex-wrap: wrap;
-            opacity: .5;
             font-size: .8rem;
             margin-bottom: -16rem;
+
+            > span {
+                color: rgb(117, 117, 117);
+            }
 
             @media (max-width: $mobile) {
                 flex-direction: column;

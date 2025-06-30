@@ -11,7 +11,7 @@
 
 </script>
 
-<div class="contact">
+<div class="contact" id="contact">
     <div class="info">
         <span class="header">
             <span class="text">

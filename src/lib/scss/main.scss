@@ -21,8 +21,9 @@ h2,
 h3,
 h4,
 h5,
-h6 {
-	font-family: 'UnifrakturMaguntia', cursive;
+h6,
+.fraktur {
+	font-family: 'UnifrakturMaguntia', cursive !important;
 	font-weight: 400;
 	font-style: normal;
     text-transform: lowercase;
