@@ -35,7 +35,7 @@
 
 <OffsetHandler />
 
-<nav class:hidden={shy}>
+<nav class:hidden={shy} class:floating={scrollY > 300}>
 
 	<div class="cta">
 		<button class="locale-toggle" onclick={() => setLocaleWithoutAnimations(getLocale() === 'da' ? 'en' : 'da')}>
@@ -79,15 +79,18 @@
 
 	nav {
 		position: fixed;
-		top: 20px;
-		left: 20px;
-		z-index: 10;
-		transition: ease all 300ms;
+		top: 0;
+		left: 0;
+		padding: 20px;
+		background-color: $white;
+		z-index: 100;
+		transition: ease all 500ms;
 		display: flex;
 		flex-direction: row;
 		justify-content: space-between;
 		align-items: center;
-		width: calc(100% - 40px);
+		width: 100%;
+
 
 		&.hidden {
 			transform: translateY(-200%);
@@ -106,6 +109,14 @@
 
 			&.hidden {
 				transform: translateY(200%);
+			}
+		}
+
+		@media (min-width: $mobile) {
+			border-bottom: solid 1px transparent;
+
+			&.floating {
+				border-bottom: solid 1px $ultralight-grey;
 			}
 		}
 
@@ -166,14 +177,13 @@
 	}
 
 	.button {
-		padding: 10px 30px 6px 30px;
+		padding: 10px 20px 6px 20px;
 		transition: ease all 500ms;
 		display: flex;
 		flex-direction: row;
 		gap: .5rem;
 		align-items: center;
 		border-radius: 20px 0 20px 0;
-		font-weight: bold;
 
 		> * { pointer-events: none; }
 
