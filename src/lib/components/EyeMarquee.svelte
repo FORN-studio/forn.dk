@@ -62,6 +62,7 @@
 
     .marquee {
         padding: 14rem 0;
+        width: 100%;
 
         @media (max-width: $mobile) {
             transform: translateX(var(--mobile-offset));
@@ -72,7 +73,6 @@
         }
         
         svg {
-            width: 137vw;
             position: relative;
             left: 50%;
             transform: translateX(-50%);
@@ -99,6 +99,10 @@
         animation: owch 1.5s;
     }
 
+    :global(#eye_marquee > path) {
+        fill: $ultralight-grey;
+    }
+
     @keyframes owch {
         0% {
             fill: $accent;
@@ -115,7 +119,7 @@
         }
 
         100% {
-            fill: $black;
+            fill: $ultralight-grey;
         }
     }
 

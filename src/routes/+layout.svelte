@@ -170,7 +170,7 @@
 		overflow: hidden;
 
 		.wrapper {
-			max-width: 1700px;
+			max-width: 1920px;
 			width: 100%;
 			margin: 0 auto;
 		}
