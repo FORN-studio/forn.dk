@@ -52,6 +52,7 @@
         @media (max-width: $mobile) {
             width: 340px;
             padding: calc($padding / 2);
+            border-radius: 40px;
         }
 
         a {
