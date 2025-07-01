@@ -33,7 +33,7 @@
 
     @use 'src/lib/scss/variables.scss' as *;
 
-    $padding: 2rem;
+    $padding: 2.5rem;
 
     .testimonial {
         display: flex;
@@ -47,6 +47,7 @@
         user-select: none;
         border: solid 1px $ultralight-grey;
         text-align: left;
+        border-radius: 60px;
 
         @media (max-width: $mobile) {
             width: 340px;
