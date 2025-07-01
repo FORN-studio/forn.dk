@@ -2,6 +2,7 @@
 
     import emblaCarouselSvelte from "embla-carousel-svelte";
     import Autoplay from "embla-carousel-autoplay";
+    import ClassNames from "embla-carousel-class-names";
     import SingleTestimonial from "$lib/components/SingleTestimonial.svelte";
     import { m } from "$lib/paraglide/messages";
 
@@ -42,7 +43,7 @@
 
 </script>
 
-<div class="embla" use:emblaCarouselSvelte={{ options: { loop: true, align: 'center' }, plugins: [Autoplay()] }}>
+<div class="embla" use:emblaCarouselSvelte={{ options: { loop: true, align: 'center' }, plugins: [Autoplay(), ClassNames()] }}>
 
     <div class="embla__container">
         {#each [...testimonials, ...testimonials] as testimonial}
@@ -72,7 +73,16 @@
             align-items: stretch;
             padding: calc($p-inset / 2);
             gap: calc($p-inset / 2);
+
+            .embla__slide {
+                transition: ease opacity 500ms, ease filter 500ms;
+            }
         }
+    }
+
+    :global(.embla__slide:not(.is-snapped)) {
+        opacity: .3;
+        filter: grayscale(1);
     }
 
 </style>

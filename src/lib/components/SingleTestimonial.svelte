@@ -10,10 +10,6 @@
 <div class="testimonial">
     <div class="img">
         <img src={testimonial.profile_picture} alt="Profile image of {testimonial.name}" />
-
-        <div class="pili">
-            <Pili />
-        </div>
     </div>
 
     <div class="body">
@@ -65,18 +61,21 @@
         }
 
         div.img {
-            width: 65px;
-            height: 65px;
             display: flex;
             flex-direction: row;
+            width: 100%;
             align-items: center;
             gap: $padding;
 
             img {
-                width: 100%;
-                height: 100%;
+                width: 65px;
+                height: 65px;
                 object-fit: cover;
                 border-radius: 50%;
+            }
+
+            .pili {
+                opacity: .1;
             }
         }
 
@@ -85,7 +84,7 @@
                 text-transform: none;
                 font-size: 1rem;
                 color: $dark-grey;
-                max-width: 400px;
+                max-width: 350px;
             }
         }
 
