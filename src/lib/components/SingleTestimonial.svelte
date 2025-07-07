@@ -7,7 +7,7 @@
 
 </script>
 
-<div class="testimonial">
+<a target="_blank" class="testimonial" href={testimonial.url} aria-label={m.visit_site()} title={m.visit_site()}>
     <div class="img">
         <img src={testimonial.profile_picture} alt="Profile image of {testimonial.name}" />
     </div>
@@ -22,12 +22,12 @@
         <span class="title">{testimonial.title}</span>
     </div>
 
-    <a target="_blank" href={testimonial.url} aria-label={m.visit_site()} title={m.visit_site()}>
+    <div class="outbound">
         <span class="icon">
             <svg width="20px" height="20px" viewBox="0 0 24 24" stroke-width="1.5" fill="none" xmlns="http://www.w3.org/2000/svg" color="currentColor"><path d="M9.17137 14.8284L14.8282 9.17152M14.8282 9.17152H9.87848M14.8282 9.17152V14.1213" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M21 3.6V20.4C21 20.7314 20.7314 21 20.4 21H3.6C3.26863 21 3 20.7314 3 20.4V3.6C3 3.26863 3.26863 3 3.6 3H20.4C20.7314 3 21 3.26863 21 3.6Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
         </span>
-    </a>
-</div>
+    </div>
+</a>
 
 <style lang="scss">
 
@@ -35,7 +35,7 @@
 
     $padding: 2.5rem;
 
-    .testimonial {
+    a.testimonial {
         display: flex;
         flex-direction: column;
         padding: $padding;
@@ -48,6 +48,12 @@
         border: solid 1px $ultralight-grey;
         text-align: left;
         border-radius: 60px;
+        text-decoration: none;
+        transition: ease all 500ms;
+
+        &:hover {
+            transform: scale(1.02);
+        }
 
         @media (max-width: $mobile) {
             width: 340px;
@@ -55,7 +61,7 @@
             border-radius: 40px;
         }
 
-        a {
+        .outbound {
             position: absolute;
             bottom: $padding;
             right: $padding;
