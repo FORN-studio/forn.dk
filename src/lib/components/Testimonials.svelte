@@ -41,13 +41,30 @@
         },
     ]
 
+    let emblaApi = $state(null)
+    const onEmblaInit = (event) => {
+        emblaApi = event.detail 
+    }
+
+    const getSlideIdx = (name) => {
+        return testimonials.findIndex(t => t.name == name)
+    }
+
+    const scrollToIdx = (idx) => {
+        emblaApi.scrollTo(idx)
+    }
+
 </script>
 
-<div class="embla" use:emblaCarouselSvelte={{ options: { loop: true, align: 'center' }, plugins: [Autoplay(), ClassNames()] }}>
+<div class="embla" use:emblaCarouselSvelte={{ options: { loop: true, align: 'center' }, plugins: [Autoplay(), ClassNames()] }} onemblaInit={onEmblaInit}>
 
     <div class="embla__container">
         {#each [...testimonials, ...testimonials] as testimonial}
-            <div class="embla__slide">
+            <!-- svelte-ignore a11y_click_events_have_key_events -->
+            <!-- svelte-ignore a11y_no_static_element_interactions -->
+            <div class="embla__slide" onclick={(e) => {
+                scrollToIdx(getSlideIdx(testimonial.name))
+            }}>
                 <SingleTestimonial {testimonial} />
             </div>
         {/each}

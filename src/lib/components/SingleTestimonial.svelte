@@ -5,9 +5,15 @@
 
     let { testimonial } = $props()
 
+    let selfNode = $state(null)
+
 </script>
 
-<a target="_blank" class="testimonial" href={testimonial.url} aria-label={m.visit_site()} title={m.visit_site()}>
+<a bind:this={selfNode} target="_blank" class="testimonial" href={testimonial.url} aria-label={m.visit_site()} title={m.visit_site()} onclick={(e) => {
+    if (!selfNode.parentElement.classList.contains('is-snapped')) {
+        e.preventDefault()
+    }
+}}>
     <div class="img">
         <img src={testimonial.profile_picture} alt="Profile image of {testimonial.name}" />
     </div>
