@@ -64,8 +64,14 @@
         width: calc(100% + 2rem);
         border-right: solid 1px $ultralight-grey;
         border-left: solid 1px $ultralight-grey;
-        margin: 6rem 0;
+        margin: 2rem 0;
+        margin-bottom: 0;
         margin-left: -1rem;
+
+        @media (max-width: $mobile) {
+            margin-bottom: -1rem;
+            margin-top: 0rem;
+        }
 
         .embla__container {
             display: flex;

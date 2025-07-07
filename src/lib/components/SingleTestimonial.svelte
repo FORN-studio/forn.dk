@@ -60,6 +60,11 @@
             bottom: $padding;
             right: $padding;
             color: $accent;
+
+            @media (max-width: $mobile) {
+                bottom: calc($padding / 2);
+                right: calc($padding / 2);
+            }
         }
 
         div.img {
@@ -97,6 +102,10 @@
             gap: .5rem;
             margin-top: 5rem;
             flex-grow: 1;
+
+            @media (max-width: $mobile) {
+                margin-top: .5rem;
+            }
 
             img {
                 width: 120px;
