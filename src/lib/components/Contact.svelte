@@ -177,12 +177,13 @@
             .rows-wrapper {
                 display: flex;
                 flex-direction: row;
-                gap: 1rem;
-                margin-left: $p-inset * 0.9;
+                gap: 2.5rem;
+                margin-left: $p-inset;
 
                 @media (max-width: $mobile) {
                     margin-left: 0;
                     justify-content: center;
+                    gap: 2rem;
                 }
 
                 .outer-row {
