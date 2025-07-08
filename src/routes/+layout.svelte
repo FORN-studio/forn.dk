@@ -105,7 +105,7 @@
 			width: 100%;
 			padding: 1rem;
 			background-color: $white;
-			border-top: solid 1px $ultralight-grey;
+			box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 
 			&.hidden {
 				transform: translateY(200%);
