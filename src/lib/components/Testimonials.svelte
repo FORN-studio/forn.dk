@@ -43,27 +43,43 @@
 
     let emblaApi = $state(null)
     const onEmblaInit = (event) => {
-        emblaApi = event.detail 
+        emblaApi = event.detail
+    }
+
+    const onEmblaSelect = (event) => {
+        console.log(e)
     }
 
     const getSlideIdx = (name) => {
         return testimonials.findIndex(t => t.name == name)
     }
 
+    const scrollOnce = (target) => {
+        const current = emblaApi.selectedScrollSnap()
+        
+        if (current === target) return
+        
+        const direction = (current > target && current + 1 !== testimonials.length * 2) || current == 0 && target + 1 == testimonials.length * 2
+            ? 'prev'
+            : 'next'
+        if (direction === 'next') emblaApi.scrollTo(current + 1)
+        else if (direction === 'prev') emblaApi.scrollTo(current - 1)
+    }
+
     const scrollToIdx = (idx) => {
         emblaApi.scrollTo(idx)
+        console.log(emblaApi.selectedScrollSnap())
     }
 
 </script>
-
 <div class="embla" use:emblaCarouselSvelte={{ options: { loop: true, align: 'center' }, plugins: [Autoplay(), ClassNames()] }} onemblaInit={onEmblaInit}>
 
     <div class="embla__container">
-        {#each [...testimonials, ...testimonials] as testimonial}
+        {#each [...testimonials, ...testimonials] as testimonial, i}
             <!-- svelte-ignore a11y_click_events_have_key_events -->
             <!-- svelte-ignore a11y_no_static_element_interactions -->
             <div class="embla__slide" onclick={(e) => {
-                scrollToIdx(getSlideIdx(testimonial.name))
+                scrollOnce(i)
             }}>
                 <SingleTestimonial {testimonial} />
             </div>
