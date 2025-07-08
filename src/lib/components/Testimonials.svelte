@@ -54,12 +54,14 @@
         return testimonials.findIndex(t => t.name == name)
     }
 
-    const scrollOnce = (target) => {
+    const scrollTo = (target) => {
         const current = emblaApi.selectedScrollSnap()
 
         if (current === target) return
 
         const total = testimonials.length * 2
+
+        // find best path to target (least steps)
         const fw = (target - current + total) % total
         const bw = (current - target + total) % total
         const direction = fw <= bw ? 1 : -1
@@ -75,7 +77,7 @@
             <!-- svelte-ignore a11y_click_events_have_key_events -->
             <!-- svelte-ignore a11y_no_static_element_interactions -->
             <div class="embla__slide" onclick={(e) => {
-                scrollOnce(i)
+                scrollTo(i)
             }}>
                 <SingleTestimonial {testimonial} />
             </div>
