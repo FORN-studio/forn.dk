@@ -9,7 +9,7 @@
     let selfNode = $state(null)
     let outbound = $state(false)
 
-    const toggleOutbound = () => {
+    const toggleOutbound = (e) => {
         if (!selfNode.parentElement.classList.contains('is-snapped')) {
             e.preventDefault()
             return

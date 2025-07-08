@@ -56,19 +56,15 @@
 
     const scrollOnce = (target) => {
         const current = emblaApi.selectedScrollSnap()
-        
-        if (current === target) return
-        
-        const direction = (current > target && current + 1 !== testimonials.length * 2) || current == 0 && target + 1 == testimonials.length * 2
-            ? 'prev'
-            : 'next'
-        if (direction === 'next') emblaApi.scrollTo(current + 1)
-        else if (direction === 'prev') emblaApi.scrollTo(current - 1)
-    }
 
-    const scrollToIdx = (idx) => {
-        emblaApi.scrollTo(idx)
-        console.log(emblaApi.selectedScrollSnap())
+        if (current === target) return
+
+        const total = testimonials.length * 2
+        const fw = (target - current + total) % total
+        const bw = (current - target + total) % total
+        const direction = fw <= bw ? 1 : -1
+
+        emblaApi.scrollTo(current + direction)
     }
 
 </script>
