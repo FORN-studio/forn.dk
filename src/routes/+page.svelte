@@ -10,7 +10,6 @@
     import TextThree from '$lib/components/TextThree.svelte';
     import Contact from '$lib/components/Contact.svelte';
     import Footer from '$lib/components/Footer.svelte';
-    import PiliHandler from '$lib/components/PiliHandler.svelte';
     import { onMount } from 'svelte';
     import { m } from '$lib/paraglide/messages.js';
     import { getLocale } from '$lib/paraglide/runtime.js';
@@ -29,6 +28,10 @@
         Contact,
         Footer
     ]
+
+    // for later dynamic import
+    let PiliHandler = $state(null)
+    let OffsetHandler = $state(null)
 
     let currentLanguage = $state(getLocale())
 
@@ -69,6 +72,22 @@
                 }
             })
         }) 
+
+        const loadHandlers = () => {
+            import('$lib/components/PiliHandler.svelte').then(m => {
+                PiliHandler = m.default
+            })
+            import('$lib/components/OffsetHandler.svelte').then(m => {
+                OffsetHandler = m.default
+            })
+        }
+
+        // mount handlers on requestIdleCallback
+        if ('requestIdleCallback' in window) {
+            requestIdleCallback(loadHandlers, { timeout: 2000 })
+        } else {
+            setTimeout(loadHandlers, 500)
+        }
         
         return () => {
             document.removeEventListener('visibilitychange', handleVisibilityChange);
@@ -110,7 +129,13 @@
     {/each}
 </div>
 
-<PiliHandler />
+{#if PiliHandler}
+    <PiliHandler />
+{/if}
+
+{#if OffsetHandler}
+    <OffsetHandler />
+{/if}
 
 <style lang="scss">
     .wrapper {

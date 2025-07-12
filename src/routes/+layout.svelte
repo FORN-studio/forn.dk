@@ -1,7 +1,6 @@
 <script>
 	import '$lib/scss/main.scss'
 	import '$lib/scss/reset.scss'
-	import OffsetHandler from '$lib/components/OffsetHandler.svelte'
 	import { locales, getLocale, setLocale } from '$lib/paraglide/runtime'
 	import { gsap, lenis, ticker, easeInOutCubic } from '$lib/utils/gsap.svelte'
 	import { onDestroy } from 'svelte'
@@ -32,8 +31,6 @@
 </script>
 
 <svelte:window bind:scrollY onscroll={handleScroll} />
-
-<OffsetHandler />
 
 <nav class:hidden={shy} class:floating={scrollY > 300}>
 
