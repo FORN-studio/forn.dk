@@ -26,6 +26,10 @@
             display: flex;
             flex-direction: column;
             align-items: flex-start;
+
+            span:not(.h2) {
+                font-weight: 400;
+            }
         }
 
         .h2 {

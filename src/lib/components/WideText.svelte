@@ -90,6 +90,8 @@
                 overflow: hidden;
 
                 div {
+                    padding-bottom: 20px;
+
                     &:nth-child(2) {
                         margin-top: 6rem;
                     }

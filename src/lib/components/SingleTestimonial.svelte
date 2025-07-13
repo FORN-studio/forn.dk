@@ -195,8 +195,9 @@
                 color: $accent;
 
                 @media (max-width: $mobile) {
-                    font-size: 2.5rem;
+                    font-size: 2rem;
                     line-height: 2.5rem;
+                    max-width: 10ch;
                 }
             }
 

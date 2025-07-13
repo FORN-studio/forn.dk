@@ -1,6 +1,14 @@
 @use 'variables' as *;
 
 @font-face {
+	font-family: 'Modernoir';
+	src: url('/modernoir/modernoir.woff2') format('woff2');
+	font-weight: 100 900;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
 	font-family: 'Helvetica';
 	src: url('/helvetica/helvetica.woff') format('woff');
 	font-weight: normal;
@@ -23,8 +31,8 @@ h4,
 h5,
 h6,
 .fraktur {
-	font-family: 'UnifrakturMaguntia', cursive !important;
-	font-weight: 400;
+	font-family: 'Modernoir', cursive !important;
+	font-weight: 500;
 	font-style: normal;
     text-transform: lowercase;
     line-height: 1;
@@ -69,6 +77,8 @@ p, span, a {
 
 .word {
 	overflow: hidden;
+	padding-bottom: 10px;
+	margin-bottom: -10px;
 }
 
 .line:not(:last-child) {
