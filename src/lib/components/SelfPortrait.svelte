@@ -28,7 +28,11 @@
                 <LargePili />
             </div>
 
-            <img src={Portrait} alt="Eder" />
+            <enhanced:img 
+                src="/static/kontoreder.webp" 
+                alt="Eder"
+                sizes="(min-width:1920px) 1600px, (min-width:1280px) 900px, (min-width:760px) 700px"
+            />
         </div>
         <span class="label">{m.self_portrait_label()}</span>
     </div>
@@ -38,6 +42,12 @@
 
     @use 'src/lib/scss/variables' as *;
 
+    :global(.inner-img-wrapper img) {
+        width: 120% !important;
+        height: 120% !important;
+        object-fit: cover;
+    }
+
     .self-portrait {
         display: flex;
         flex-direction: row;
@@ -45,6 +55,8 @@
         padding: 14rem 0;
         justify-content: center;
         align-items: center;
+        max-width: 800px;
+        margin: 0 auto;
 
         @media (max-width: $mobile) {
             flex-direction: column;
@@ -80,7 +92,7 @@
                     height: 90%;
                     top: 50%;
                     left: 50%;
-                    transform: translate(-50%, -50%);
+                    transform: translate(-50%, -65%);
                     z-index: 2;
                 }
             }
@@ -97,12 +109,6 @@
                 @media (max-width: $mobile) {
                     max-height: 250px;
                 }
-            }
-
-            img {
-                width: 120%;
-                height: 120%;
-                object-fit: cover;
             }
         }
     }
