@@ -7,7 +7,7 @@ const resend = new Resend(RESEND_API_KEY);
 export const config = {
     isr: {
         expiration: 60 * 60 * 24 * 3, // 3 days
-        bypassToken: 'forn'
+        bypassToken: 'AUypiv28BYq/93Gy9Q==7MoqZvEmI/SjVsl2CgBPUYo8GTvr1ZJKNN7g=='
     }
 }
 
