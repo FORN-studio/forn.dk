@@ -4,7 +4,7 @@
     import TextTwo from '$lib/components/TextTwo.svelte';
     import Testimonials from '$lib/components/Testimonials.svelte';
     import CenteredText from '$lib/components/CenteredText.svelte';
-    import SelfPortrait from '$lib/components/SelfPortrait.svelte';
+    import Bento from '$lib/components/Bento.svelte'
     import WideText from '$lib/components/WideText.svelte';
     import EyeMarquee from '$lib/components/EyeMarquee.svelte';
     import TextThree from '$lib/components/TextThree.svelte';
@@ -21,7 +21,7 @@
         TextOne,
         TextTwo,
         CenteredText,
-        SelfPortrait,
+        Bento,
         WideText,
         EyeMarquee,
         TextThree,
