@@ -4,6 +4,13 @@ import { fail } from '@sveltejs/kit';
 
 const resend = new Resend(RESEND_API_KEY);
 
+export const config = {
+    isr: {
+        expiration: 60 * 60 * 24 * 3, // 3 days
+        bypassToken: 'forn'
+    }
+}
+
 export const actions = {
     default: async ({ request }) => {
         const formData = await request.formData();
