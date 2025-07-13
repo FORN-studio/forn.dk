@@ -78,7 +78,7 @@
             margin: 1rem 0;
             text-align: right;
             hyphens: auto;
-            max-width: 5ch;
+            max-width: 6ch;
             margin-left: auto;
 
             @media (max-width: $mobile) {
