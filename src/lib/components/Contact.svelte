@@ -148,7 +148,7 @@
 
         .strikethrough {
             text-decoration: line-through;
-            opacity: .3;
+            opacity: .5;
         }
 
         .info {
