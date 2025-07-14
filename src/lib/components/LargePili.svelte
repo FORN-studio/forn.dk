@@ -94,7 +94,7 @@
 
 <div class="pili" bind:this={piliElement}>
     {#key selectedPili}
-        <img in:fly={{ duration: 2000, opacity: 1, y: '230%', easing: cubicInOut, delay: 300 }} out:fly={{ duration: 2000, opacity: 1, y: '-230%', easing: cubicInOut }} src={`/asapili/${selectedPili}.svg`} alt="Pili" />
+        <img in:fly={{ duration: 2000, opacity: 1, y: '250%', easing: cubicInOut, delay: 300 }} out:fly={{ duration: 2000, opacity: 1, y: '-250%', easing: cubicInOut }} src={`/asapili/${selectedPili}.svg`} alt="Pili" />
     {/key}
 </div>
 

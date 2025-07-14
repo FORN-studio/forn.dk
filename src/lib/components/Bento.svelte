@@ -177,6 +177,10 @@
 
                 &.consultancy {
                     min-width: 350px;
+
+                    @media (max-width: $mobile) {
+                        min-width: 310px;
+                    }
                 }
 
                 h3 {
