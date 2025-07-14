@@ -94,7 +94,7 @@
 
 <div class="pili" bind:this={piliElement}>
     {#key selectedPili}
-        <img in:fly={{ duration: 2000, opacity: 1, y: '100%', easing: cubicInOut, delay: 300 }} out:fly={{ duration: 2000, opacity: 1, y: '-100%', easing: cubicInOut }} src={`/asapili/${selectedPili}.svg`} alt="Pili" />
+        <img in:fly={{ duration: 2000, opacity: 1, y: '150%', easing: cubicInOut, delay: 300 }} out:fly={{ duration: 2000, opacity: 1, y: '-150%', easing: cubicInOut }} src={`/asapili/${selectedPili}.svg`} alt="Pili" />
     {/key}
 </div>
 
@@ -115,7 +115,7 @@
             object-fit: contain;
             grid-column: 1;
             grid-row: 1;
-            filter: invert(14%) sepia(98%) saturate(3107%) hue-rotate(226deg) brightness(68%) contrast(107%);
+            filter: opacity(0.3);
         }
     }
 

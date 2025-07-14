@@ -1,6 +1,7 @@
 <script>
 
     import BentoGradient from "$lib/components/BentoGradient.svelte";
+    import LargePili from "$lib/components/LargePili.svelte";
     import { m } from "$lib/paraglide/messages";
 
     const icons = {
@@ -47,8 +48,8 @@
     <!-- websites -->
     {@render textItem(m.bento_one_title(), m.bento_one_subtitle(), 'websites', m.bento_one_paragraph())}
 
-    <div class="item pili living">
-        <img src="/asapili/asa.svg" alt="Pili" />
+    <div class="item pili">
+        <LargePili />
     </div>
 
     <!-- consultancy -->
@@ -81,6 +82,10 @@
         align-items: stretch;
         gap: 20px;
 
+        @media (max-width: $mobile) {
+            margin-top: 8rem;
+        }
+
         .item {
             flex-basis: 21%;
             flex-grow: 1;
@@ -94,6 +99,8 @@
                 align-items: center;
                 border: solid 1px $ultralight-grey;
                 border-radius: 40px;
+                overflow: hidden;
+                padding: 80px;
 
                 img {
                     filter: opacity(0.25);
