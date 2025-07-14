@@ -102,7 +102,7 @@
 			width: 100%;
 			padding: 1rem;
 			background-color: $white;
-			box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+			border-top: solid 1px $ultralight-grey;
 
 			&.hidden {
 				transform: translateY(200%);
@@ -113,7 +113,7 @@
 			border-bottom: solid 1px transparent;
 
 			&.floating {
-				box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+				border-color: $ultralight-grey;
 			}
 		}
 
@@ -193,24 +193,6 @@
 			text-decoration: none;
 			color: $accent;
 			transform: scale(1.05);
-		}
-	}
-
-	@keyframes animate-shadow {
-		0% {
-			box-shadow: rgba($accent, 0.36) 0px 10px 36px 0px, rgba($accent, 0.16) 0px 0px 0px 1px, inset rgba($accent, 0.16) 0px 3px 16px 0px;
-		}
-		25% {
-			box-shadow: rgba($accent, 0.26) 2px 7px 16px 3px, rgba($accent, 0.16) 0px 0px 0px 1px, inset rgba($accent, 0.16) 0px 3px 16px 0px;
-		}
-		50% {
-			box-shadow: rgba($accent, 0.45) -3px 18px 46px -5px, rgba($accent, 0.16) 0px 0px 0px 1px, inset rgba($accent, 0.16) 0px 3px 16px 0px;
-		}
-		75% {
-			box-shadow: rgba($accent, 0.20) 0px 3px 15px 1px, rgba($accent, 0.16) 0px 0px 0px 1px, inset rgba($accent, 0.16) 0px 3px 16px 0px;
-		}
-		100% {
-			box-shadow: rgba($accent, 0.36) 0px 10px 36px 0px, rgba($accent, 0.16) 0px 0px 0px 1px, inset rgba($accent, 0.16) 0px 3px 16px 0px;
 		}
 	}
 

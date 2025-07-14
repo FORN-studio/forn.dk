@@ -83,6 +83,10 @@
 
         .item {
             flex-basis: 21%;
+            flex-grow: 1;
+            min-height: 250px;
+            max-width: calc(100vh - 2rem);
+            min-width: 300px;
 
             &.pili {
                 display: flex;
@@ -103,19 +107,18 @@
                 display: flex;
                 flex-direction: column;
                 gap: 3rem;
-                flex-grow: 1;
 
                 &.webapps {
                     flex-basis: 15%;
                 }
 
-                &:last-child {
-                    flex-grow: 1;
-                }
-
                 h3 {
                     color: $accent;
                     font-size: 4rem;
+
+                    @media (max-width: $mobile) {
+                        font-size: 3rem;
+                    }
                 }
 
                 .subtitle {
@@ -137,7 +140,6 @@
                 overflow: hidden;
                 border-radius: 40px;
                 min-width: 250px;
-                flex-grow: 1;
                 
                 .portrait-img {
                     width: 100%;
