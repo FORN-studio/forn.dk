@@ -100,7 +100,7 @@
                 border: solid 1px $ultralight-grey;
                 border-radius: 40px;
                 overflow: hidden;
-                padding: 80px;
+                padding: 120px;
 
                 img {
                     filter: opacity(0.25);
@@ -121,7 +121,8 @@
 
                 h3 {
                     color: $accent;
-                    font-size: 4rem;
+                    font-size: 3.5rem;
+                    white-space: pre-wrap;
 
                     @media (max-width: $mobile) {
                         font-size: 3rem;

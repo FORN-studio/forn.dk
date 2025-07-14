@@ -203,6 +203,10 @@
       width: 100%;
       border: solid 1px $ultralight-grey;
       border-radius: 40px;
+
+      @media (min-width: 1920px) {
+        max-height: 420px;
+      }
     }
     
     canvas {
