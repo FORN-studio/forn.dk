@@ -93,13 +93,13 @@
             max-width: calc(100vh - 2rem);
             min-width: 300px;
             background-color: $white;
+            border-radius: 40px;
 
             &.pili {
                 display: flex;
                 justify-content: center;
                 align-items: center;
                 border: solid 1px $ultralight-grey;
-                border-radius: 40px;
                 overflow: hidden;
                 padding: 120px;
 
@@ -111,7 +111,6 @@
             &.textual {
                 border: solid 1px $ultralight-grey;
                 padding: 3rem;
-                border-radius: 40px;
                 display: flex;
                 flex-direction: column;
                 gap: 3rem;
@@ -147,7 +146,6 @@
 
             &.portrait {
                 overflow: hidden;
-                border-radius: 40px;
                 min-width: 250px;
                 
                 .portrait-img {
