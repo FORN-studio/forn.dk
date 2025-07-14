@@ -183,7 +183,7 @@
                 @media (max-width: $mobile) {
                     margin-left: 0;
                     justify-content: center;
-                    gap: 2rem;
+                    gap: 1.5rem;
                 }
 
                 .outer-row {
@@ -198,6 +198,10 @@
                 flex-direction: row;
                 gap: 1rem;
                 align-items: center;
+
+                @media (max-width: $mobile) {
+                    gap: .4rem;
+                }
 
                 .icon {
                     width: 1.5rem;

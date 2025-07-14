@@ -111,6 +111,7 @@
 
 		@media (min-width: $mobile) {
 			border-bottom: solid 1px transparent;
+			background-color: $broken-white;
 
 			&.floating {
 				border-color: $ultralight-grey;

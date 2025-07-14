@@ -92,6 +92,7 @@
             min-height: 250px;
             max-width: calc(100vh - 2rem);
             min-width: 300px;
+            background-color: $white;
 
             &.pili {
                 display: flex;
