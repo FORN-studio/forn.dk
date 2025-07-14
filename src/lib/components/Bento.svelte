@@ -103,6 +103,10 @@
                 overflow: hidden;
                 padding: 120px;
 
+                @media (max-width: 1560px) and (min-width: 942px) {
+                    display: none;
+                }
+
                 img {
                     filter: opacity(0.25);
                 }
@@ -117,6 +121,10 @@
 
                 &.webapps {
                     flex-basis: 15%;
+                }
+
+                &.consultancy {
+                    min-width: 350px;
                 }
 
                 h3 {
