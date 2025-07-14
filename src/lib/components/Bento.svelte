@@ -140,7 +140,7 @@
                 }
 
                 .icon {
-                    color: $dark-grey;
+                    color: $accent;
                 }
             }
 
