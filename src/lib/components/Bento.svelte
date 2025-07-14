@@ -2,6 +2,7 @@
 
     import BentoGradient from "$lib/components/BentoGradient.svelte";
     import LargePili from "$lib/components/LargePili.svelte";
+    import { lenis } from "$lib/utils/gsap.svelte";
     import { m } from "$lib/paraglide/messages";
 
     const icons = {
@@ -32,6 +33,19 @@
         <p>
             {paragraph}
         </p>
+
+        <a class="cta" href="#contact" onclick={(e) => {
+            e.preventDefault()
+            const target = document.querySelector('#contact')
+            lenis.scrollTo(target, { duration: 2 })
+        }}>
+            <span class="text">
+                {m.nav_contact()}
+            </span>
+            <span class="icon">
+                <svg width="24px" height="24px" viewBox="0 0 24 24" stroke-width="1.5" fill="none" xmlns="http://www.w3.org/2000/svg" color="currentColor"><path d="M3 12L21 12M21 12L12.5 3.5M21 12L12.5 20.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+            </span>
+        </a>
     </div>
 {/snippet}
 
@@ -119,6 +133,44 @@
                 flex-direction: column;
                 gap: 3rem;
 
+                @media (max-width: $mobile) {
+                    padding: 2rem;
+                }
+
+                @media (any-pointer: fine) {
+                    &:not(:hover) {
+                        a.cta {
+                            opacity: 0;
+                        }
+
+                        p {
+                            transform: translateY(40px);
+                        }
+                    }
+                }
+
+                a.cta {
+                    display: flex;
+                    flex-direction: row;
+                    flex-wrap: nowrap;
+                    gap: .5rem;
+                    align-items: center;
+                    margin-bottom: -1rem;
+                    margin-top: -1.5rem;
+                    text-decoration: none;
+                    transition: ease all 300ms;
+                    height: 20px;
+
+                    @media (max-width: $mobile) {
+                        margin-bottom: -.5rem;
+                    }
+
+                    &:hover {
+                        gap: 1rem;
+                        color: $accent;
+                    }
+                }
+
                 &.webapps {
                     flex-basis: 15%;
                 }
@@ -145,6 +197,7 @@
                     text-transform: none;
                     font-size: 1rem;
                     margin-top: auto;
+                    transition: ease all 250ms;
                 }
 
                 .icon {
