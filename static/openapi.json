@@ -5,6 +5,10 @@
       "version": "1.0.0",
       "description": "API for retrieving different prompt types by ID"
     },
+    "servers": {
+        "url": "https://forn.dk",
+        "description": "Main API server"
+    },
     "paths": {
       "/api/prompts/{id}": {
         "get": {
