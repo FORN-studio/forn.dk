@@ -1,8 +1,11 @@
 import { error } from "@sveltejs/kit";
 import { json } from "@sveltejs/kit";
 
-export const GET = ({ params }) => {
-    console.log(params.id)
+export const GET = ({ params, url }) => {
+    
+    const key = url.searchParams.get('key')
+
+    if (key !== 'sesam sesam') return json({ success: false, error: 'Invalid key' })
 
     let prompt = null
     switch(Number(params.id)) {
