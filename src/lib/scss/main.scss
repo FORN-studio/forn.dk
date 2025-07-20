@@ -1,23 +1,23 @@
 @use 'variables' as *;
 
 @font-face {
-	font-family: 'Modernoir';
-	src: url('/modernoir/modernoir.woff2') format('woff2');
+	font-family: 'Mod';
+	src: url('/mod/mod.woff2') format('woff2');
 	font-weight: 100 900;
 	font-style: normal;
 	font-display: swap;
 }
 
 @font-face {
-	font-family: 'Helvetica';
-	src: url('/helvetica/helvetica.woff') format('woff');
+	font-family: 'Hel';
+	src: url('/satoshi/satoshi-danish.woff') format('woff');
 	font-weight: normal;
 	font-style: normal;
 	font-display: swap;
 }
 
 body {
-	font-family: 'Helvetica', sans-serif;
+	font-family: 'Hel', sans-serif;
 	margin: 0;
 	padding: 0;
 	color: $black;
@@ -31,7 +31,7 @@ h4,
 h5,
 h6,
 .fraktur {
-	font-family: 'Modernoir', cursive !important;
+	font-family: 'Mod', cursive !important;
 	font-weight: 500;
 	font-style: normal;
     text-transform: lowercase;
@@ -69,7 +69,7 @@ p, span, a {
     text-transform: uppercase;
 
 	&:not(.h2) {
-		font-family: 'Helvetica', sans-serif;
+		font-family: 'Hel', sans-serif;
 		font-size: $fs-sm;
 		line-height: 1.5;
 	}
