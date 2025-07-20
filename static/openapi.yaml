@@ -1,70 +1,73 @@
 {
-  "openapi": "3.1.0",
-  "info": {
-    "title": "Prompt Generator API",
-    "version": "1.0.0",
-    "description": "Retrieves prompt instructions based on the provided ID and a user-specific access key."
-  },
-  "servers": [
+  'openapi': '3.1.0',
+  'info':
     {
-      "url": "https://forn.dk"
-    }
-  ],
-  "paths": {
-    "/prompts/{id}": {
-      "get": {
-        "operationId": "getPromptById",
-        "summary": "Get prompt by ID",
-        "description": "Returns a prompt instruction if the correct key is provided.",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "description": "The ID of the prompt to retrieve.",
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "name": "key",
-            "in": "query",
-            "required": true,
-            "description": "User-specific key to access the prompt.",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Successful response or error with reason.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "success": {
-                      "type": "boolean"
-                    },
-                    "prompt": {
-                      "type": "string",
-                      "description": "The prompt instruction, present only if success is true.",
-                      "nullable": true
-                    },
-                    "error": {
-                      "type": "string",
-                      "description": "Error message, present only if success is false.",
-                      "nullable": true
-                    }
+      'title': 'Prompt Generator API',
+      'version': '1.0.0',
+      'description': 'Retrieves prompt instructions based on the provided ID and a user-specific access key.'
+    },
+  'servers': [{ 'url': 'https://forn.dk' }],
+  'paths':
+    {
+      '/prompts/{id}':
+        {
+          'get':
+            {
+              'operationId': 'getPromptById',
+              'summary': 'Get prompt by ID',
+              'description': 'Returns a prompt instruction if the correct key is provided.',
+              'parameters':
+                [
+                  {
+                    'name': 'id',
+                    'in': 'path',
+                    'required': true,
+                    'description': 'The ID of the prompt to retrieve.',
+                    'schema': { 'type': 'integer' }
                   },
-                  "required": ["success"]
+                  {
+                    'name': 'key',
+                    'in': 'query',
+                    'required': true,
+                    'description': 'User-specific key to access the prompt.',
+                    'schema': { 'type': 'string' }
+                  }
+                ],
+              'responses':
+                {
+                  '200':
+                    {
+                      'description': 'Successful response or error with reason.',
+                      'content':
+                        {
+                          'application/json':
+                            {
+                              'schema':
+                                {
+                                  'type': 'object',
+                                  'properties':
+                                    {
+                                      'success': { 'type': 'boolean' },
+                                      'prompt':
+                                        {
+                                          'type': 'string',
+                                          'description': 'The prompt instruction, present only if success is true.',
+                                          'nullable': true
+                                        },
+                                      'error':
+                                        {
+                                          'type': 'string',
+                                          'description': 'Error message, present only if success is false.',
+                                          'nullable': true
+                                        }
+                                    },
+                                  'required': ['success']
+                                }
+                            }
+                        }
+                    }
                 }
-              }
             }
-          }
         }
-      }
     }
-  }
 }

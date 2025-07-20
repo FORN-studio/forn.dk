@@ -1,31 +1,31 @@
 <script>
-    import { onMount, onDestroy } from 'svelte';
-    
-    let canvas;
-    let gl;
-    let program;
-    let animationId;
-    let startTime = Date.now();
-    
-    let gridSize = 500;
-    let seed = $state(764);
-    let speed = $state(3.2);
-    let threshold = $state(0.99);
-    let scale = $state(3.0);
-    
-    // Reset time when seed changes for consistent starting position
-    $effect(() => {
-        if (seed) startTime = Date.now();
-    })
-    
-    const vertexShaderSource = `
+	import { onMount, onDestroy } from 'svelte'
+
+	let canvas
+	let gl
+	let program
+	let animationId
+	let startTime = Date.now()
+
+	let gridSize = 500
+	let seed = $state(764)
+	let speed = $state(3.2)
+	let threshold = $state(0.99)
+	let scale = $state(3.0)
+
+	// Reset time when seed changes for consistent starting position
+	$effect(() => {
+		if (seed) startTime = Date.now()
+	})
+
+	const vertexShaderSource = `
       attribute vec2 a_position;
       void main() {
         gl_Position = vec4(a_position, 0.0, 1.0);
       }
-    `;
-    
-    const fragmentShaderSource = `
+    `
+
+	const fragmentShaderSource = `
       precision highp float;
       
       uniform float u_time;
@@ -99,121 +99,115 @@
         // Output
         gl_FragColor = vec4(finalColor, 1.0);
       }
-    `;
-    
-    function createShader(gl, type, source) {
-      const shader = gl.createShader(type);
-      gl.shaderSource(shader, source);
-      gl.compileShader(shader);
-      if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
-        console.error('Shader compile error:', gl.getShaderInfoLog(shader));
-        gl.deleteShader(shader);
-        return null;
-      }
-      return shader;
-    }
-    
-    function createProgram(gl, vertexShader, fragmentShader) {
-      const program = gl.createProgram();
-      gl.attachShader(program, vertexShader);
-      gl.attachShader(program, fragmentShader);
-      gl.linkProgram(program);
-      if (!gl.getProgramParameter(program, gl.LINK_STATUS)) {
-        console.error('Program link error:', gl.getProgramInfoLog(program));
-        return null;
-      }
-      return program;
-    }
-    
-    function initWebGL() {
-      gl = canvas.getContext('webgl');
-      if (!gl) {
-        console.error('WebGL not supported');
-        return;
-      }
-      
-      const vertexShader = createShader(gl, gl.VERTEX_SHADER, vertexShaderSource);
-      const fragmentShader = createShader(gl, gl.FRAGMENT_SHADER, fragmentShaderSource);
-      program = createProgram(gl, vertexShader, fragmentShader);
-      
-      // Create quad vertices
-      const vertices = new Float32Array([
-        -1, -1,
-         1, -1,
-        -1,  1,
-         1,  1,
-      ]);
-      
-      const buffer = gl.createBuffer();
-      gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
-      gl.bufferData(gl.ARRAY_BUFFER, vertices, gl.STATIC_DRAW);
-      
-      const positionLocation = gl.getAttribLocation(program, 'a_position');
-      gl.enableVertexAttribArray(positionLocation);
-      gl.vertexAttribPointer(positionLocation, 2, gl.FLOAT, false, 0, 0);
-    }
-    
-    function render(time) {
-      if (!gl || !program) return;
-      
-      canvas.width = gridSize;
-      canvas.height = gridSize;
-      gl.viewport(0, 0, gridSize, gridSize);
-      
-      gl.useProgram(program);
-      
-      // Set uniforms
-      const currentTime = (Date.now() - startTime) * 0.001;
-      gl.uniform1f(gl.getUniformLocation(program, 'u_time'), currentTime);
-      gl.uniform1f(gl.getUniformLocation(program, 'u_seed'), seed);
-      gl.uniform1f(gl.getUniformLocation(program, 'u_speed'), speed);
-      gl.uniform1f(gl.getUniformLocation(program, 'u_threshold'), threshold);
-      gl.uniform1f(gl.getUniformLocation(program, 'u_scale'), scale);
-      gl.uniform2f(gl.getUniformLocation(program, 'u_resolution'), gridSize, gridSize);
-      
-      // Draw
-      gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
-      
-      animationId = requestAnimationFrame(render);
-    }
-    
-    onMount(() => {
-      initWebGL();
-      render(0);
-    });
-    
-    onDestroy(() => {
-      if (animationId) {
-        cancelAnimationFrame(animationId);
-      }
-    });
-  </script>
-  
-  <div class="container">
-    <canvas bind:this={canvas} width={gridSize} height={gridSize}></canvas>
-  </div>
-  
-  <style lang="scss">
+    `
 
-    @use 'src/lib/scss/variables.scss' as *;
+	function createShader(gl, type, source) {
+		const shader = gl.createShader(type)
+		gl.shaderSource(shader, source)
+		gl.compileShader(shader)
+		if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
+			console.error('Shader compile error:', gl.getShaderInfoLog(shader))
+			gl.deleteShader(shader)
+			return null
+		}
+		return shader
+	}
 
-    .container {
-      display: flex;
-      height: 100%;
-      width: 100%;
-      border: solid 1px $ultralight-grey;
-      border-radius: 40px;
+	function createProgram(gl, vertexShader, fragmentShader) {
+		const program = gl.createProgram()
+		gl.attachShader(program, vertexShader)
+		gl.attachShader(program, fragmentShader)
+		gl.linkProgram(program)
+		if (!gl.getProgramParameter(program, gl.LINK_STATUS)) {
+			console.error('Program link error:', gl.getProgramInfoLog(program))
+			return null
+		}
+		return program
+	}
 
-      @media (min-width: 1920px) {
-        max-height: 420px;
-      }
-    }
-    
-    canvas {
-      image-rendering: crisp-edges;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      border-radius: 40px;
-    }
-  </style>
+	function initWebGL() {
+		gl = canvas.getContext('webgl')
+		if (!gl) {
+			console.error('WebGL not supported')
+			return
+		}
+
+		const vertexShader = createShader(gl, gl.VERTEX_SHADER, vertexShaderSource)
+		const fragmentShader = createShader(gl, gl.FRAGMENT_SHADER, fragmentShaderSource)
+		program = createProgram(gl, vertexShader, fragmentShader)
+
+		// Create quad vertices
+		const vertices = new Float32Array([-1, -1, 1, -1, -1, 1, 1, 1])
+
+		const buffer = gl.createBuffer()
+		gl.bindBuffer(gl.ARRAY_BUFFER, buffer)
+		gl.bufferData(gl.ARRAY_BUFFER, vertices, gl.STATIC_DRAW)
+
+		const positionLocation = gl.getAttribLocation(program, 'a_position')
+		gl.enableVertexAttribArray(positionLocation)
+		gl.vertexAttribPointer(positionLocation, 2, gl.FLOAT, false, 0, 0)
+	}
+
+	function render(time) {
+		if (!gl || !program) return
+
+		canvas.width = gridSize
+		canvas.height = gridSize
+		gl.viewport(0, 0, gridSize, gridSize)
+
+		gl.useProgram(program)
+
+		// Set uniforms
+		const currentTime = (Date.now() - startTime) * 0.001
+		gl.uniform1f(gl.getUniformLocation(program, 'u_time'), currentTime)
+		gl.uniform1f(gl.getUniformLocation(program, 'u_seed'), seed)
+		gl.uniform1f(gl.getUniformLocation(program, 'u_speed'), speed)
+		gl.uniform1f(gl.getUniformLocation(program, 'u_threshold'), threshold)
+		gl.uniform1f(gl.getUniformLocation(program, 'u_scale'), scale)
+		gl.uniform2f(gl.getUniformLocation(program, 'u_resolution'), gridSize, gridSize)
+
+		// Draw
+		gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4)
+
+		animationId = requestAnimationFrame(render)
+	}
+
+	onMount(() => {
+		initWebGL()
+		render(0)
+	})
+
+	onDestroy(() => {
+		if (animationId) {
+			cancelAnimationFrame(animationId)
+		}
+	})
+</script>
+
+<div class="container">
+	<canvas bind:this={canvas} width={gridSize} height={gridSize}></canvas>
+</div>
+
+<style lang="scss">
+	@use 'src/lib/scss/variables.scss' as *;
+
+	.container {
+		display: flex;
+		height: 100%;
+		width: 100%;
+		border: solid 1px $ultralight-grey;
+		border-radius: 40px;
+
+		@media (min-width: 1920px) {
+			max-height: 420px;
+		}
+	}
+
+	canvas {
+		image-rendering: crisp-edges;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		border-radius: 40px;
+	}
+</style>

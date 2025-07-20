@@ -26,19 +26,24 @@
 		shy = scrollingDown && scrollY > 200
 		lastScrollY = scrollY
 	}
-
 </script>
 
 <svelte:window bind:scrollY onscroll={handleScroll} />
 
 <nav class:hidden={shy} class:floating={scrollY > 300}>
-
 	<div class="cta">
-		<button class="locale-toggle" onclick={() => setLocaleWithoutAnimations(getLocale() === 'da' ? 'en' : 'da')}>
+		<button
+			class="locale-toggle"
+			onclick={() => setLocaleWithoutAnimations(getLocale() === 'da' ? 'en' : 'da')}
+		>
 			<span class="lang da" class:active={getLocale() === 'da'}>DA</span>
 			<div class="handle-wrapper" class:toggled={getLocale() === 'en'}>
 				<div class="handle">
-					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22ZM9.71002 19.6674C8.74743 17.6259 8.15732 15.3742 8.02731 13H4.06189C4.458 16.1765 6.71639 18.7747 9.71002 19.6674ZM10.0307 13C10.1811 15.4388 10.8778 17.7297 12 19.752C13.1222 17.7297 13.8189 15.4388 13.9693 13H10.0307ZM19.9381 13H15.9727C15.8427 15.3742 15.2526 17.6259 14.29 19.6674C17.2836 18.7747 19.542 16.1765 19.9381 13ZM4.06189 11H8.02731C8.15732 8.62577 8.74743 6.37407 9.71002 4.33256C6.71639 5.22533 4.458 7.8235 4.06189 11ZM10.0307 11H13.9693C13.8189 8.56122 13.1222 6.27025 12 4.24799C10.8778 6.27025 10.1811 8.56122 10.0307 11ZM14.29 4.33256C15.2526 6.37407 15.8427 8.62577 15.9727 11H19.9381C19.542 7.8235 17.2836 5.22533 14.29 4.33256Z"></path></svg>
+					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+						><path
+							d="M12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22ZM9.71002 19.6674C8.74743 17.6259 8.15732 15.3742 8.02731 13H4.06189C4.458 16.1765 6.71639 18.7747 9.71002 19.6674ZM10.0307 13C10.1811 15.4388 10.8778 17.7297 12 19.752C13.1222 17.7297 13.8189 15.4388 13.9693 13H10.0307ZM19.9381 13H15.9727C15.8427 15.3742 15.2526 17.6259 14.29 19.6674C17.2836 18.7747 19.542 16.1765 19.9381 13ZM4.06189 11H8.02731C8.15732 8.62577 8.74743 6.37407 9.71002 4.33256C6.71639 5.22533 4.458 7.8235 4.06189 11ZM10.0307 11H13.9693C13.8189 8.56122 13.1222 6.27025 12 4.24799C10.8778 6.27025 10.1811 8.56122 10.0307 11ZM14.29 4.33256C15.2526 6.37407 15.8427 8.62577 15.9727 11H19.9381C19.542 7.8235 17.2836 5.22533 14.29 4.33256Z"
+						></path></svg
+					>
 				</div>
 			</div>
 			<span class="lang en" class:active={getLocale() === 'en'}>EN</span>
@@ -47,18 +52,26 @@
 		<div class="backdrop"></div>
 	</div>
 
-	<a href="#contact" class="button" onclick={(e) => {
-		e.preventDefault()
-		const targetId = e.target.hash
-		const target = document.querySelector(targetId)
-		lenis.scrollTo(target, { duration: 2 })
-	}}>
+	<a
+		href="#contact"
+		class="button"
+		onclick={(e) => {
+			e.preventDefault()
+			const targetId = e.target.hash
+			const target = document.querySelector(targetId)
+			lenis.scrollTo(target, { duration: 2 })
+		}}
+	>
 		<span class="text">
 			{m.nav_contact()}
 		</span>
 
 		<span class="icon">
-			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M16 13V5H6V13C6 14.1046 6.89543 15 8 15H14C15.1046 15 16 14.1046 16 13ZM5 3H20C21.1046 3 22 3.89543 22 5V8C22 9.10457 21.1046 10 20 10H18V13C18 15.2091 16.2091 17 14 17H8C5.79086 17 4 15.2091 4 13V4C4 3.44772 4.44772 3 5 3ZM18 5V8H20V5H18ZM2 19H20V21H2V19Z"></path></svg>
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+				><path
+					d="M16 13V5H6V13C6 14.1046 6.89543 15 8 15H14C15.1046 15 16 14.1046 16 13ZM5 3H20C21.1046 3 22 3.89543 22 5V8C22 9.10457 21.1046 10 20 10H18V13C18 15.2091 16.2091 17 14 17H8C5.79086 17 4 15.2091 4 13V4C4 3.44772 4.44772 3 5 3ZM18 5V8H20V5H18ZM2 19H20V21H2V19Z"
+				></path></svg
+			>
 		</span>
 	</a>
 </nav>
@@ -70,7 +83,6 @@
 </div>
 
 <style lang="scss">
-
 	@use 'src/lib/scss/variables' as *;
 
 	nav {
@@ -86,7 +98,6 @@
 		justify-content: space-between;
 		align-items: center;
 		width: 100%;
-
 
 		&.hidden {
 			transform: translateY(-200%);
@@ -178,22 +189,23 @@
 		transition: ease all 500ms;
 		display: flex;
 		flex-direction: row;
-		gap: .5rem;
+		gap: 0.5rem;
 		align-items: center;
 		border-radius: 20px 0 20px 0;
 
-		> * { pointer-events: none; }
+		> * {
+			pointer-events: none;
+		}
 
 		.icon {
 			width: 20px;
 			height: 22px;
 		}
-		
+
 		&:hover {
 			text-decoration: none;
 			color: $accent;
 			transform: scale(1.05);
 		}
 	}
-
 </style>

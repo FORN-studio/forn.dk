@@ -1,53 +1,56 @@
 <script>
-    import { offset } from '$lib/utils/state.svelte.js';
-    import { spring } from 'svelte/motion';
-    import { onMount } from 'svelte';
+	import { offset } from '$lib/utils/state.svelte.js'
+	import { spring } from 'svelte/motion'
+	import { onMount } from 'svelte'
 
-    let screenDimensions = $state({ width: 0, height: 0 })
-    let rafId = null;
-    let lastUpdate = 0;
-    const THROTTLE_MS = 50; // Update at most every 50ms
+	let screenDimensions = $state({ width: 0, height: 0 })
+	let rafId = null
+	let lastUpdate = 0
+	const THROTTLE_MS = 50 // Update at most every 50ms
 
-    let offsetSpring = spring({ x: 0, y: 0 }, {
-        stiffness: 0.01,
-        damping: 0.3,
-    })
+	let offsetSpring = spring(
+		{ x: 0, y: 0 },
+		{
+			stiffness: 0.01,
+			damping: 0.3
+		}
+	)
 
-    $effect(() => {
-        offset.x = ($offsetSpring.x - (screenDimensions.width / 2)) / 30;
-        offset.y = ($offsetSpring.y - (screenDimensions.height / 2)) / 30;
-    })
+	$effect(() => {
+		offset.x = ($offsetSpring.x - screenDimensions.width / 2) / 30
+		offset.y = ($offsetSpring.y - screenDimensions.height / 2) / 30
+	})
 
-    const updatePosition = (x, y) => {
-        const now = Date.now();
-        if (now - lastUpdate < THROTTLE_MS) return;
-        
-        lastUpdate = now;
-        if (rafId) cancelAnimationFrame(rafId);
-        
-        rafId = requestAnimationFrame(() => {
-            $offsetSpring = { x, y };
-        });
-    }
+	const updatePosition = (x, y) => {
+		const now = Date.now()
+		if (now - lastUpdate < THROTTLE_MS) return
 
-    const handleMouseMove = (e) => {
-        updatePosition(e.clientX, e.clientY);
-    }
+		lastUpdate = now
+		if (rafId) cancelAnimationFrame(rafId)
 
-    const handleOrientation = (e) => {
-        updatePosition(e.gamma * 20, e.beta * 20);
-    }
+		rafId = requestAnimationFrame(() => {
+			$offsetSpring = { x, y }
+		})
+	}
 
-    onMount(() => {
-        return () => {
-            if (rafId) cancelAnimationFrame(rafId);
-        };
-    });
+	const handleMouseMove = (e) => {
+		updatePosition(e.clientX, e.clientY)
+	}
+
+	const handleOrientation = (e) => {
+		updatePosition(e.gamma * 20, e.beta * 20)
+	}
+
+	onMount(() => {
+		return () => {
+			if (rafId) cancelAnimationFrame(rafId)
+		}
+	})
 </script>
 
-<svelte:window 
-    bind:innerHeight={screenDimensions.height} 
-    bind:innerWidth={screenDimensions.width} 
-    onmousemove={handleMouseMove} 
-    ondeviceorientation={handleOrientation} 
+<svelte:window
+	bind:innerHeight={screenDimensions.height}
+	bind:innerWidth={screenDimensions.width}
+	onmousemove={handleMouseMove}
+	ondeviceorientation={handleOrientation}
 />

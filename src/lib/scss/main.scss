@@ -34,26 +34,28 @@ h6,
 	font-family: 'Mod', cursive !important;
 	font-weight: 500;
 	font-style: normal;
-    text-transform: lowercase;
-    line-height: 1;
+	text-transform: lowercase;
+	line-height: 1;
 }
 
 h2 {
-    font-size: $fs-xxxl;
-    margin-bottom: 1rem;
-    color: $accent;
+	font-size: $fs-xxxl;
+	margin-bottom: 1rem;
+	color: $accent;
 
-    > * { text-transform: lowercase !important; }
+	> * {
+		text-transform: lowercase !important;
+	}
 
-    @media (max-width: $tablet) {
-        font-size: $fs-xxl;
-    }
+	@media (max-width: $tablet) {
+		font-size: $fs-xxl;
+	}
 
-    @media (max-width: $mobile) {
-        font-size: $fs-xl;
-        word-break: break-word;
-        hyphens: auto;
-    }
+	@media (max-width: $mobile) {
+		font-size: $fs-xl;
+		word-break: break-word;
+		hyphens: auto;
+	}
 }
 
 a {
@@ -65,8 +67,10 @@ a {
 	}
 }
 
-p, span, a {
-    text-transform: uppercase;
+p,
+span,
+a {
+	text-transform: uppercase;
 
 	&:not(.h2) {
 		font-family: 'Hel', sans-serif;
