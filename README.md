@@ -1,6 +1,6 @@
 # FORN
 
-![web deployment](https://img.shields.io/badge/Web_Deployment-FORN-00218f?style=flat-square&link=https%3A%2F%2Fforn.dk)
+[Website](https://forn.dk)
 
 Portfolio site for FORN, a one-man web design and development agency based in Copenhagen. This is my playground; don't expect things to align to standards.
 
