@@ -2,7 +2,7 @@
 
     import BentoGradient from "$lib/components/BentoGradient.svelte";
     import LargePili from "$lib/components/LargePili.svelte";
-    import { lenis } from "$lib/utils/gsap.svelte";
+    import { lenis } from "$lib/utils/lenis";
     import { m } from "$lib/paraglide/messages";
 
     const icons = {

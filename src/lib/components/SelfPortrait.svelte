@@ -3,21 +3,22 @@
     import Portrait from '$lib/assets/kontoreder.webp'
     import LargePili from '$lib/components/LargePili.svelte'
     import { m } from '$lib/paraglide/messages.js'
-    import { gsap, ScrollTrigger } from '$lib/utils/gsap.svelte'
-    import { onMount } from 'svelte';
+    import { scrollAnimations } from '$lib/utils/scroll-animations.js'
+    import { onMount, onDestroy } from 'svelte';
 
     onMount(() => {
-        gsap.to('.image-wrapper img', {
-            scale: 1.4, // Increase scale by 20% during scroll
-            ease: 'none',
-            scrollTrigger: {
-                trigger: '.self-portrait',
-                start: 'top bottom',
-                end: 'bottom top',
-                scrub: true, // Smooth scrubbing effect tied to scroll position
-                invalidateOnRefresh: true // Recalculate on window resize
-            }
-        });
+        const imageElement = document.querySelector('.image-wrapper img')
+        if (imageElement) {
+            scrollAnimations.animateParallaxScale(imageElement, {
+                scaleFrom: 1,
+                scaleTo: 1.4,
+                triggerSelector: '.self-portrait'
+            })
+        }
+    })
+
+    onDestroy(() => {
+        scrollAnimations.destroy()
     })
 </script>
 

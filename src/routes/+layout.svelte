@@ -2,7 +2,7 @@
 	import '$lib/scss/main.scss'
 	import '$lib/scss/reset.scss'
 	import { locales, getLocale, setLocale } from '$lib/paraglide/runtime'
-	import { gsap, lenis, ticker, easeInOutCubic } from '$lib/utils/gsap.svelte'
+	import { lenis, easeInOutCubic } from '$lib/utils/lenis'
 	import { onDestroy } from 'svelte'
 	import { m } from '$lib/paraglide/messages'
 
@@ -18,7 +18,6 @@
 	}
 
 	onDestroy(() => {
-		if (ticker) gsap.ticker.remove(ticker)
 		if (lenis) lenis.destroy()
 	})
 

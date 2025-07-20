@@ -13,8 +13,7 @@
     import { onMount } from 'svelte';
     import { m } from '$lib/paraglide/messages.js';
     import { getLocale } from '$lib/paraglide/runtime.js';
-    import { gsap, ScrollTrigger } from '$lib/utils/gsap.svelte'
-    import SplitType from 'split-type'
+    import { scrollAnimations } from '$lib/utils/scroll-animations.js'
 
     const components = [
         Splash,
@@ -48,30 +47,9 @@
 
         const headers = document.querySelectorAll('h2:not(.spanning)')
         const textOne = document.querySelector('.text-one h1 > span.h2')
-        const targets = [...headers, textOne]
+        const targets = [...headers, textOne].filter(Boolean)
 
-        targets.forEach(target => {
-            const split = new SplitType(target)
-            const lines = split.lines
-            const targets = split.chars
-
-            const tl = new gsap.timeline()
-            tl.from(targets, {
-                autoAlpha: 1,
-                yPercent: 100,
-                delay: -0.5,
-                duration: 3,
-                ease: 'expo.inOut',
-                stagger: 0.3,
-                transformOrigin: 'center left',
-                scrollTrigger: {
-                    trigger: target,
-                    start: 'top 110%',
-                    end: 'top 10%',
-                    scrub: true
-                }
-            })
-        }) 
+        scrollAnimations.animateTextReveal(targets) 
 
         const loadHandlers = () => {
             import('$lib/components/PiliHandler.svelte').then(m => {
@@ -91,6 +69,7 @@
         
         return () => {
             document.removeEventListener('visibilitychange', handleVisibilityChange);
+            scrollAnimations.destroy();
         };
     })
 </script>

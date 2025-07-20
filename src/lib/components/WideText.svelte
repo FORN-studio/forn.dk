@@ -1,53 +1,36 @@
 <script>
     import { m } from '$lib/paraglide/messages.js'
-    import { gsap, ScrollTrigger } from '$lib/utils/gsap.svelte'
-    import { onMount } from 'svelte';
+    import { scrollAnimations } from '$lib/utils/scroll-animations.js'
+    import { onMount, onDestroy } from 'svelte';
 
     onMount(() => {
         const spanLines = document.querySelectorAll('h2.spanning > div')
         
-        // First element - moves down from top
-        gsap.from(spanLines[0], {
-            autoAlpha: 0,
-            yPercent: -100,
-            duration: 1,
-            ease: 'expo.inOut',
-            transformOrigin: 'center left',
-            scrollTrigger: {
-                trigger: 'div.wide-text',
-                start: 'top 150%',
-                end: 'bottom 50%',
-                scrub: true
-            }
-        })
-        
-        // Middle element - just fades in
-        gsap.from(spanLines[1], {
-            autoAlpha: 0,
-            duration: 1,
-            ease: 'expo.inOut',
-            scrollTrigger: {
-                trigger: 'div.wide-text',
-                start: 'top 70%',
-                end: 'bottom 50%',
-                scrub: true
-            }
-        })
-        
-        // Last element - moves up from bottom
-        gsap.from(spanLines[2], {
-            autoAlpha: 0,
-            yPercent: 100,
-            duration: 1,
-            ease: 'expo.inOut',
-            transformOrigin: 'center left',
-            scrollTrigger: {
-                trigger: 'div.wide-text',
-                start: 'top 70%',
-                end: 'bottom 50%',
-                scrub: true
-            }
-        })
+        if (spanLines.length >= 3) {
+            const animations = [
+                {
+                    element: spanLines[0],
+                    from: { autoAlpha: 0, yPercent: -100 },
+                    trigger: 'div.wide-text'
+                },
+                {
+                    element: spanLines[1],
+                    from: { autoAlpha: 0 },
+                    trigger: 'div.wide-text'
+                },
+                {
+                    element: spanLines[2],
+                    from: { autoAlpha: 0, yPercent: 100 },
+                    trigger: 'div.wide-text'
+                }
+            ]
+            
+            scrollAnimations.animateMultiElementReveal(animations)
+        }
+    })
+
+    onDestroy(() => {
+        scrollAnimations.destroy()
     })
 
 </script>
