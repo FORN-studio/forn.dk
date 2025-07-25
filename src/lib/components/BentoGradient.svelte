@@ -13,7 +13,7 @@
 	let threshold = $state(0.99)
 	let scale = $state(3.0)
 
-	// Reset time when seed changes for consistent starting position
+	// reset time on seed change
 	$effect(() => {
 		if (seed) startTime = Date.now()
 	})
@@ -35,7 +35,7 @@
       uniform float u_scale;
       uniform vec2 u_resolution;
       
-      // Simplex 2D noise
+      // simplex 2d noise
       vec3 permute(vec3 x) { return mod(((x*34.0)+1.0)*x, 289.0); }
   
       float snoise(vec2 v) {
@@ -71,32 +71,30 @@
         
         float t = u_time * u_speed * 0.3;
         
-        // Use seed to create deterministic offsets
+        // use seed for deterministic offsets
         float seedOffset = u_seed * 0.1;
         vec2 seedVec = vec2(
             sin(u_seed * 0.543) * 10.0,
             cos(u_seed * 0.876) * 10.0
         );
         
-        // Create flow field using layered noise with rotating offsets
-        // Seed affects the spatial offset, ensuring deterministic starting positions
+        // layered noise flow field with rotating offsets
         float angle = 0.0;
         angle += snoise(pos + seedVec + vec2(cos(t * 0.1) * 0.5, sin(t * 0.1) * 0.5)) * 3.14159;
         angle += snoise(pos * 1.5 + seedVec * 0.7 + vec2(sin(t * 0.15) * 0.3, cos(t * 0.15) * 0.3)) * 1.5;
         angle += snoise(pos * 0.5 + seedVec * 1.3 + vec2(cos(t * 0.05 + 1.57), sin(t * 0.05 + 1.57))) * 0.5;
         
-        // Map angle to 0-1 (upward = 0, downward = 1)
+        // map angle to 0-1
         float value = (sin(angle + seedOffset) + 1.0) * 0.5;
         
-        // Hard threshold for blob shapes
+        // hard threshold for blobs
         float shape = smoothstep(u_threshold - 0.02, u_threshold + 0.02, value);
 
-        vec3 shapeColor = vec3(0.754, 0.754, 0.754); // #EEDDC3
-        vec3 bgColor = vec3(1.0, 1.0, 1.0); // Black background
+        vec3 shapeColor = vec3(0.754, 0.754, 0.754);
+        vec3 bgColor = vec3(1.0, 1.0, 1.0);
 
         vec3 finalColor = mix(bgColor, shapeColor, shape);
         
-        // Output
         gl_FragColor = vec4(finalColor, 1.0);
       }
     `
@@ -136,7 +134,7 @@
 		const fragmentShader = createShader(gl, gl.FRAGMENT_SHADER, fragmentShaderSource)
 		program = createProgram(gl, vertexShader, fragmentShader)
 
-		// Create quad vertices
+		// quad vertices
 		const vertices = new Float32Array([-1, -1, 1, -1, -1, 1, 1, 1])
 
 		const buffer = gl.createBuffer()
@@ -157,7 +155,7 @@
 
 		gl.useProgram(program)
 
-		// Set uniforms
+		// uniforms
 		const currentTime = (Date.now() - startTime) * 0.001
 		gl.uniform1f(gl.getUniformLocation(program, 'u_time'), currentTime)
 		gl.uniform1f(gl.getUniformLocation(program, 'u_seed'), seed)
@@ -166,7 +164,7 @@
 		gl.uniform1f(gl.getUniformLocation(program, 'u_scale'), scale)
 		gl.uniform2f(gl.getUniformLocation(program, 'u_resolution'), gridSize, gridSize)
 
-		// Draw
+		// draw
 		gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4)
 
 		animationId = requestAnimationFrame(render)
