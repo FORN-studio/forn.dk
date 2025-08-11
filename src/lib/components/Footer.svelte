@@ -56,10 +56,20 @@
 			{m.footer_copyright()}
 		</span>
 		<span>
+			CVR 39172569
+		</span>
+		<span>
 			{m.footer_symbols()}
 		</span>
 		<span>
-			{m.footer_crafted_with()} <span class="heart">❤</span>
+			{m.footer_crafted_with()} 
+			<span class="inline-icon">
+				<svg width="16px" height="16px" stroke-width="1.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" color="#000000"><path d="M18 19V22" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M18 16C18 15 17 14 15 14C14.6978 14 14.355 14 14.0002 14C12.3434 14 11 12.6569 11 11V8.5C11 7.11929 12.1193 6 13.5 6V6H14" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M22 16C22 11.5 20 10.5 18 10C20 9.5 22 9 22 6C22 3 19.5 2 18 2" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M22 19V22" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><rect x="2" y="19" width="12" height="3" rx="0.6" stroke="#000000" stroke-width="1.5"></rect></svg>
+			</span>
+			+
+			<span class="inline-icon">
+				<svg width="16px" height="16px" viewBox="0 0 24 24" stroke-width="1.5" fill="none" xmlns="http://www.w3.org/2000/svg" color="#000000"><path d="M17 11.6V15C17 18.3137 14.3137 21 11 21H9C5.68629 21 3 18.3137 3 15V11.6C3 11.2686 3.26863 11 3.6 11H16.4C16.7314 11 17 11.2686 17 11.6Z" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M12 9C12 8 12.7143 7 14.1429 7V7C15.7208 7 17 5.72081 17 4.14286V3.5" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M8 9V8.5C8 6.84315 9.34315 5.5 11 5.5V5.5C12.1046 5.5 13 4.60457 13 3.5V3" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M16 11H18.5C19.8807 11 21 12.1193 21 13.5C21 14.8807 19.8807 16 18.5 16H17" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+			</span>
 			{m.footer_by()}
 		</span>
 		<span>
@@ -87,11 +97,9 @@
 	.footer {
 		margin-top: 8rem;
 
-		.heart {
+		.inline-icon {
 			color: $accent;
-			transform: scale(2);
 			display: inline-block;
-			padding: 0 0.3rem;
 		}
 
 		.pili-rows {
@@ -116,7 +124,6 @@
 			align-items: center;
 			flex-wrap: wrap;
 			font-size: 0.8rem;
-			margin-bottom: -16rem;
 
 			> span {
 				color: rgb(117, 117, 117);
