@@ -15,14 +15,6 @@
 			url: 'https://www.epact.dk/'
 		},
 		{
-			signature: 'signatures/fady.png',
-			title: 'Marketing Lead at K-Ink',
-			name: 'Fady Allan',
-			testimonial: m.fady_testimonial(),
-			profile_picture: 'testimonial_profiles/fady.webp',
-			url: 'https://k-ink.forn.dk/'
-		},
-		{
 			signature: 'signatures/dino.png',
 			title: 'CEO at Dinomite',
 			name: 'Dino Visnjic',
