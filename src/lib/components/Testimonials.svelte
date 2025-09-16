@@ -15,6 +15,14 @@
 			url: 'https://www.epact.dk/'
 		},
 		{
+			signature: null,
+			title: 'CEO at Blackbridge Solutions',
+			name: 'Niklas Appelmann',
+			testimonial: m.nik_testimonial(),
+			profile_picture: 'testimonial_profiles/nik.webp',
+			url: 'https://blackbridge.forn.dk'
+		},
+		{
 			signature: 'signatures/dino.png',
 			title: 'CEO at Dinomite',
 			name: 'Dino Visnjic',
