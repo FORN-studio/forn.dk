@@ -20,7 +20,7 @@
 			name: 'Niklas Appelmann',
 			testimonial: m.nik_testimonial(),
 			profile_picture: 'testimonial_profiles/nik.webp',
-			url: 'https://blackbridge.forn.dk'
+			url: 'https://blackbridge.solutions'
 		},
 		{
 			signature: 'signatures/dino.png',
