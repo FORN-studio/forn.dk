@@ -1,5 +1,5 @@
 <script>
-	import Portrait from '$lib/assets/kontoreder.webp'
+	import Portrait from '$lib/assets/polaroideder.webp'
 	import LargePili from '$lib/components/LargePili.svelte'
 	import { m } from '$lib/paraglide/messages.js'
 	import { scrollAnimations } from '$lib/utils/scroll-animations.js'
@@ -29,7 +29,7 @@
 			</div>
 
 			<enhanced:img
-				src="/static/kontoreder.webp"
+				src="/static/polaroideder.webp"
 				alt="Eder"
 				sizes="(min-width:1920px) 1600px, (min-width:1280px) 900px, (min-width:760px) 700px"
 			/>

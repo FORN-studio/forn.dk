@@ -68,7 +68,7 @@
 
 <div class="bento">
 	<div class="item portrait">
-		<enhanced:img class="portrait-img" src="/static/kontoreder.webp" alt="Eder" />
+		<enhanced:img class="portrait-img" src="/static/polaroideder.webp" alt="Eder" />
 	</div>
 
 	<!-- websites -->
