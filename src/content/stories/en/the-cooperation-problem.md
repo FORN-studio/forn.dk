@@ -27,6 +27,6 @@ This is where column effects came from, triggering when work moves through stage
 
 ## honesty
 
-We use Balladic to build Balladic, which is the only honest way I know to test whether a tool actually supports work or merely organizes the appearance of it. If the distance grows between what's happening and what's visible, we feel it immediately, and that feedback loop has shaped every decision about what the platform does and - more often - what it refuses to do.
+We use [Balladic](https://balladic.com) to build Balladic, which is the only honest way I know to test whether a tool actually supports work or merely organizes the appearance of it. If the distance grows between what's happening and what's visible, we feel it immediately, and that feedback loop has shaped every decision about what the platform does and - more often - what it refuses to do.
 
 Build it for yourself, then see if it holds when others bring their own shape.

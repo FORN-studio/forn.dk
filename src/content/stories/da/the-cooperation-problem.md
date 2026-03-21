@@ -27,6 +27,6 @@ Det er her kolonneeffekter kom fra, der udløses når arbejde bevæger sig genne
 
 ## ærlighed
 
-Vi bruger Balladic til at bygge Balladic, hvilket er den eneste ærlige måde jeg kender til at teste om et værktøj rent faktisk understøtter arbejde eller blot organiserer udseendet af det. Hvis afstanden vokser mellem det der sker og det der er synligt, mærker vi det med det samme, og den feedback-loop har formet enhver beslutning om hvad platformen gør og - oftere - hvad den nægter at gøre.
+Vi bruger [Balladic](https://balladic.com) til at bygge Balladic, hvilket er den eneste ærlige måde jeg kender til at teste om et værktøj rent faktisk understøtter arbejde eller blot organiserer udseendet af det. Hvis afstanden vokser mellem det der sker og det der er synligt, mærker vi det med det samme, og den feedback-loop har formet enhver beslutning om hvad platformen gør og - oftere - hvad den nægter at gøre.
 
 Byg det til dig selv, og se så om det holder når andre medbringer deres egen form.
