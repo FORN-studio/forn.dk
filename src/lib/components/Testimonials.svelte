@@ -4,53 +4,20 @@
 	import ClassNames from 'embla-carousel-class-names'
 	import SingleTestimonial from '$lib/components/SingleTestimonial.svelte'
 	import { m } from '$lib/paraglide/messages'
+	import { getStories } from '$lib/utils/stories.js'
 
-	const testimonials = [
-		{
-			signature: 'signatures/victor.png',
-			title: 'CEO at ePact',
-			name: 'Victor P. Holmark',
-			testimonial: m.victor_testimonial(),
-			profile_picture: 'testimonial_profiles/victor.webp',
-			url: 'https://www.epact.dk/'
-		},
-		{
-			signature: null,
-			title: 'CEO at Blackbridge Solutions',
-			name: 'Niklas Appelmann',
-			testimonial: m.nik_testimonial(),
-			profile_picture: 'testimonial_profiles/nik.webp',
-			url: 'https://blackbridge.solutions'
-		},
-		{
-			signature: 'signatures/dino.png',
-			title: 'CEO at Dinomite',
-			name: 'Dino Visnjic',
-			testimonial: m.dino_testimonial(),
-			profile_picture: 'testimonial_profiles/dino.webp',
-			url: 'https://dinomite.dk/'
-		},
-		{
-			signature: 'signatures/mette.png',
-			title: 'Selvstændig Psykolog',
-			name: 'Mette Bratlann',
-			testimonial: m.mette_testimonial(),
-			profile_picture: 'testimonial_profiles/mette.webp',
-			url: 'https://mettebratlann.dk/'
-		}
-	]
+	let stories = $state([])
+	getStories().then((s) => {
+		stories = s
+	})
 
 	let emblaApi = $state(null)
 	const onEmblaInit = (event) => {
 		emblaApi = event.detail
 	}
 
-	const onEmblaSelect = (event) => {
-		console.log(e)
-	}
-
-	const getSlideIdx = (name) => {
-		return testimonials.findIndex((t) => t.name == name)
+	const getSlideIdx = (slug) => {
+		return stories.findIndex((s) => s.slug === slug)
 	}
 
 	const scrollTo = (target) => {
@@ -58,9 +25,8 @@
 
 		if (current === target) return
 
-		const total = testimonials.length * 2
+		const total = stories.length * 2
 
-		// find best path to target (least steps)
 		const fw = (target - current + total) % total
 		const bw = (current - target + total) % total
 		const direction = fw <= bw ? 1 : -1
@@ -124,29 +90,31 @@
 	</div>
 </div>
 
-<div
-	class="embla"
-	use:emblaCarouselSvelte={{
-		options: { loop: true, align: 'center' },
-		plugins: [Autoplay(), ClassNames()]
-	}}
-	onemblaInit={onEmblaInit}
->
-	<div class="embla__container">
-		{#each [...testimonials, ...testimonials] as testimonial, i}
-			<!-- svelte-ignore a11y_click_events_have_key_events -->
-			<!-- svelte-ignore a11y_no_static_element_interactions -->
-			<div
-				class="embla__slide"
-				onclick={(e) => {
-					scrollTo(i)
-				}}
-			>
-				<SingleTestimonial {testimonial} />
-			</div>
-		{/each}
+{#if stories.length}
+	<div
+		class="embla"
+		use:emblaCarouselSvelte={{
+			options: { loop: true, align: 'center' },
+			plugins: [Autoplay(), ClassNames()]
+		}}
+		onemblaInit={onEmblaInit}
+	>
+		<div class="embla__container">
+			{#each [...stories, ...stories] as story, i}
+				<!-- svelte-ignore a11y_click_events_have_key_events -->
+				<!-- svelte-ignore a11y_no_static_element_interactions -->
+				<div
+					class="embla__slide"
+					onclick={(e) => {
+						scrollTo(i)
+					}}
+				>
+					<SingleTestimonial {story} />
+				</div>
+			{/each}
+		</div>
 	</div>
-</div>
+{/if}
 
 <style lang="scss">
 	@use 'src/lib/scss/variables.scss' as *;

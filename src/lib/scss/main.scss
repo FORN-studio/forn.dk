@@ -92,3 +92,34 @@ a {
 		margin-bottom: -1rem;
 	}
 }
+
+// page transitions
+@keyframes scale-out {
+	from {
+		opacity: 1;
+		transform: scale(1);
+	}
+	to {
+		opacity: 0;
+		transform: scale(0.95);
+	}
+}
+
+@keyframes scale-in {
+	from {
+		opacity: 0;
+		transform: scale(1.05);
+	}
+	to {
+		opacity: 1;
+		transform: scale(1);
+	}
+}
+
+::view-transition-old(root) {
+	animation: scale-out 250ms ease both;
+}
+
+::view-transition-new(root) {
+	animation: scale-in 250ms ease both;
+}

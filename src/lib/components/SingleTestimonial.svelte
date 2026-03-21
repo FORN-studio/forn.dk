@@ -1,9 +1,9 @@
 <script>
 	import { m } from '$lib/paraglide/messages'
-	import Pili from '$lib/components/Pili.svelte'
 	import { fly } from 'svelte/transition'
+	import Ironwork from '$lib/components/Ironwork.svelte'
 
-	let { testimonial } = $props()
+	let { story } = $props()
 
 	let selfNode = $state(null)
 	let outbound = $state(false)
@@ -21,26 +21,23 @@
 <div
 	class:outbound
 	bind:this={selfNode}
-	class="testimonial"
+	class="story-card"
 	role="button"
 	tabindex="0"
-	aria-label={m.visit_site()}
-	title={m.visit_site()}
+	aria-label={m.read_story()}
+	title={m.read_story()}
 	onclick={toggleOutbound}
 	onkeydown={toggleOutbound}
 >
-	<div class="img">
-		<img src={testimonial.profile_picture} alt="Profile image of {testimonial.name}" />
-	</div>
+	<Ironwork />
 
 	<div class="body">
-		<p>"{testimonial.testimonial}"</p>
+		<p>{story.description}</p>
 	</div>
 
 	<div class="signature">
-		<!-- <img src={testimonial.signature} alt="Decorative signature" /> -->
-		<span class="fraktur">{testimonial.name}</span>
-		<span class="title">{testimonial.title}</span>
+		<span class="fraktur">{story.title}</span>
+		<span class="title">{story.category}</span>
 	</div>
 
 	<div class="outbound-icon">
@@ -54,13 +51,7 @@
 				xmlns="http://www.w3.org/2000/svg"
 				color="currentColor"
 				><path
-					d="M9.17137 14.8284L14.8282 9.17152M14.8282 9.17152H9.87848M14.8282 9.17152V14.1213"
-					stroke="currentColor"
-					stroke-width="1.5"
-					stroke-linecap="round"
-					stroke-linejoin="round"
-				></path><path
-					d="M21 3.6V20.4C21 20.7314 20.7314 21 20.4 21H3.6C3.26863 21 3 20.7314 3 20.4V3.6C3 3.26863 3.26863 3 3.6 3H20.4C20.7314 3 21 3.26863 21 3.6Z"
+					d="M3 12L21 12M21 12L12.5 3.5M21 12L12.5 20.5"
 					stroke="currentColor"
 					stroke-width="1.5"
 					stroke-linecap="round"
@@ -74,31 +65,24 @@
 		<a
 			transition:fly={{ duration: 500, y: 120, opacity: 1 }}
 			class="outbound-link"
-			target="_blank"
-			href={testimonial.url}
-			aria-label={m.visit_site()}
-			title={m.visit_site()}
+			href="/stories/{story.slug}"
+			aria-label={m.read_story()}
+			title={m.read_story()}
 		>
 			<span class="text">
-				{m.visit_site()}
+				{m.read_story()}
 			</span>
 			<span class="icon">
 				<svg
 					width="24px"
 					height="24px"
-					stroke-width="2"
 					viewBox="0 0 24 24"
+					stroke-width="2"
 					fill="none"
 					xmlns="http://www.w3.org/2000/svg"
 					color="currentColor"
 					><path
-						d="M14 11.9976C14 9.5059 11.683 7 8.85714 7C8.52241 7 7.41904 7.00001 7.14286 7.00001C4.30254 7.00001 2 9.23752 2 11.9976C2 14.376 3.70973 16.3664 6 16.8714C6.36756 16.9525 6.75006 16.9952 7.14286 16.9952"
-						stroke="currentColor"
-						stroke-width="2"
-						stroke-linecap="round"
-						stroke-linejoin="round"
-					></path><path
-						d="M10 11.9976C10 14.4893 12.317 16.9952 15.1429 16.9952C15.4776 16.9952 16.581 16.9952 16.8571 16.9952C19.6975 16.9952 22 14.7577 22 11.9976C22 9.6192 20.2903 7.62884 18 7.12383C17.6324 7.04278 17.2499 6.99999 16.8571 6.99999"
+						d="M3 12L21 12M21 12L12.5 3.5M21 12L12.5 20.5"
 						stroke="currentColor"
 						stroke-width="2"
 						stroke-linecap="round"
@@ -115,7 +99,7 @@
 
 	$padding: 2.5rem;
 
-	.testimonial {
+	.story-card {
 		display: flex;
 		flex-direction: column;
 		padding: $padding;
@@ -200,25 +184,6 @@
 			}
 		}
 
-		div.img {
-			display: flex;
-			flex-direction: row;
-			width: 100%;
-			align-items: center;
-			gap: $padding;
-
-			img {
-				width: 65px;
-				height: 65px;
-				object-fit: cover;
-				border-radius: 50%;
-			}
-
-			.pili {
-				opacity: 0.1;
-			}
-		}
-
 		div.body {
 			p {
 				text-transform: none;
@@ -238,10 +203,6 @@
 
 			@media (max-width: $mobile) {
 				margin-top: 0.5rem;
-			}
-
-			img {
-				width: 120px;
 			}
 
 			span.fraktur {

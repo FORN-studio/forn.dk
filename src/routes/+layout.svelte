@@ -4,6 +4,7 @@
 	import { locales, getLocale, setLocale } from '$lib/paraglide/runtime'
 	import { lenis, easeInOutCubic } from '$lib/utils/lenis'
 	import { onDestroy } from 'svelte'
+	import { onNavigate } from '$app/navigation'
 	import { m } from '$lib/paraglide/messages'
 
 	let { children } = $props()
@@ -21,6 +22,17 @@
 		if (lenis) lenis.destroy()
 	})
 
+	onNavigate((navigation) => {
+		if (!document.startViewTransition) return
+
+		return new Promise((resolve) => {
+			document.startViewTransition(async () => {
+				resolve()
+				await navigation.complete
+			})
+		})
+	})
+
 	const handleScroll = () => {
 		const scrollingDown = lastScrollY < scrollY
 		shy = scrollingDown && scrollY > 200
@@ -30,7 +42,7 @@
 
 <svelte:window bind:scrollY onscroll={handleScroll} />
 
-<nav class:hidden={shy} class:floating={scrollY > 300}>
+<nav class:hidden={shy && scrollY > 100} class:floating={scrollY > 300}>
 	<div class="cta">
 		<button
 			class="locale-toggle"
@@ -53,13 +65,14 @@
 	</div>
 
 	<a
-		href="#contact"
+		href="/#contact"
 		class="button"
 		onclick={(e) => {
-			e.preventDefault()
-			const targetId = e.target.hash
-			const target = document.querySelector(targetId)
-			lenis.scrollTo(target, { duration: 2 })
+			const target = document.querySelector('#contact')
+			if (target) {
+				e.preventDefault()
+				lenis.scrollTo(target, { duration: 2 })
+			}
 		}}
 	>
 		<span class="text">

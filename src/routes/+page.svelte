@@ -2,7 +2,6 @@
 	import Splash from '$lib/components/Splash.svelte'
 	import TextOne from '$lib/components/TextOne.svelte'
 	import TextTwo from '$lib/components/TextTwo.svelte'
-	import Testimonials from '$lib/components/Testimonials.svelte'
 	import CenteredText from '$lib/components/CenteredText.svelte'
 	import Bento from '$lib/components/Bento.svelte'
 	import WideText from '$lib/components/WideText.svelte'
