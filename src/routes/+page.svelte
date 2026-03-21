@@ -32,6 +32,41 @@
 	let OffsetHandler = $state(null)
 
 	let currentLanguage = $state(getLocale())
+	const canonical = currentLanguage === 'da' ? 'https://forn.dk/' : 'https://forn.dk/en'
+	const jsonLd = {
+		'@context': 'https://schema.org',
+		'@graph': [
+			{
+				'@type': 'WebSite',
+				name: 'FORN',
+				url: 'https://forn.dk',
+				description: m.meta_description(),
+				inLanguage: ['da', 'en']
+			},
+			{
+				'@type': 'ProfessionalService',
+				name: 'FORN',
+				url: 'https://forn.dk',
+				image: 'https://forn.dk/og_image.jpg',
+				description: m.meta_description(),
+				founder: {
+					'@type': 'Person',
+					name: 'Adrian Elias Bratlann'
+				},
+				address: {
+					'@type': 'PostalAddress',
+					addressLocality: 'Copenhagen',
+					addressCountry: 'DK'
+				},
+				knowsAbout: [
+					'Platform Engineering',
+					'Machine Learning',
+					'Web Development',
+					'Systems Architecture'
+				]
+			}
+		]
+	}
 
 	onMount(() => {
 		const handleVisibilityChange = () => {
@@ -76,29 +111,23 @@
 <svelte:head>
 	<title>{m.meta_title()}</title>
 	<meta name="description" content={m.meta_description()} />
+	<link rel="canonical" href={canonical} />
+	<link rel="alternate" hreflang="da" href="https://forn.dk/" />
+	<link rel="alternate" hreflang="en" href="https://forn.dk/en" />
+	<link rel="alternate" hreflang="x-default" href="https://forn.dk/" />
 	<meta property="og:title" content={m.meta_title()} />
 	<meta property="og:description" content={m.meta_description()} />
 	<meta property="og:image" content="https://forn.dk/og_image.jpg" />
+	<meta property="og:url" content={canonical} />
 	<meta property="og:type" content="website" />
+	<meta property="og:site_name" content="FORN" />
+	<meta property="og:locale" content={currentLanguage === 'da' ? 'da_DK' : 'en_US'} />
+	<meta property="og:locale:alternate" content={currentLanguage === 'da' ? 'en_US' : 'da_DK'} />
 	<meta name="twitter:card" content="summary_large_image" />
 	<meta name="twitter:title" content={m.meta_title()} />
 	<meta name="twitter:description" content={m.meta_description()} />
 	<meta name="twitter:image" content="https://forn.dk/og_image.jpg" />
-
-	{@html `<script type="application/ld+json">
-        {
-            "@context": "https://schema.org",
-            "@type": "WebPage",
-            "name": "FORN",
-            "description": "${m.meta_description()}",
-            "url": "https://forn.dk",
-            "image": "https://forn.dk/og_image.jpg",
-            "publisher": {
-                "@type": "Organization",
-                "name": "FORN"
-            }
-        }
-    </script>`}
+	{@html `<script type="application/ld+json">${JSON.stringify(jsonLd)}</script>`}
 </svelte:head>
 
 <div class="wrapper">

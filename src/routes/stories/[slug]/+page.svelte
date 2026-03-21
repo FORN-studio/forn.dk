@@ -2,6 +2,7 @@
 	import Ironwork from '$lib/components/Ironwork.svelte'
 	import Pili from '$lib/components/Pili.svelte'
 	import { m } from '$lib/paraglide/messages.js'
+	import { getLocale } from '$lib/paraglide/runtime.js'
 
 	let { data } = $props()
 
@@ -15,6 +16,37 @@
 			? allStories[currentIndex + 1]
 			: null
 	)
+
+	let locale = $derived(getLocale())
+	let canonical = $derived(
+		locale === 'da'
+			? `https://forn.dk/stories/${metadata.slug}`
+			: `https://forn.dk/en/stories/${metadata.slug}`
+	)
+	let articleJsonLd = $derived({
+		'@context': 'https://schema.org',
+		'@type': 'Article',
+		headline: metadata.title,
+		description: metadata.description,
+		datePublished: metadata.date,
+		author: {
+			'@type': 'Person',
+			name: 'Adrian Elias Bratlann',
+			url: 'https://forn.dk'
+		},
+		publisher: {
+			'@type': 'Organization',
+			name: 'FORN',
+			url: 'https://forn.dk',
+			logo: {
+				'@type': 'ImageObject',
+				url: 'https://forn.dk/og_image.jpg'
+			}
+		},
+		mainEntityOfPage: canonical,
+		image: 'https://forn.dk/og_image.jpg',
+		articleSection: metadata.category
+	})
 
 	let readProgress = $state(0)
 	let articleEl = $state(null)
@@ -119,6 +151,26 @@
 <svelte:head>
 	<title>{metadata.title} | FORN</title>
 	<meta name="description" content={metadata.description} />
+	<link rel="canonical" href={canonical} />
+	<link rel="alternate" hreflang="da" href={`https://forn.dk/stories/${metadata.slug}`} />
+	<link rel="alternate" hreflang="en" href={`https://forn.dk/en/stories/${metadata.slug}`} />
+	<link rel="alternate" hreflang="x-default" href={`https://forn.dk/stories/${metadata.slug}`} />
+	<meta property="og:title" content={`${metadata.title} | FORN`} />
+	<meta property="og:description" content={metadata.description} />
+	<meta property="og:image" content="https://forn.dk/og_image.jpg" />
+	<meta property="og:url" content={canonical} />
+	<meta property="og:type" content="article" />
+	<meta property="og:site_name" content="FORN" />
+	<meta property="og:locale" content={locale === 'da' ? 'da_DK' : 'en_US'} />
+	<meta property="og:locale:alternate" content={locale === 'da' ? 'en_US' : 'da_DK'} />
+	<meta property="article:published_time" content={metadata.date} />
+	<meta property="article:author" content="Adrian Elias Bratlann" />
+	<meta property="article:section" content={metadata.category} />
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:title" content={`${metadata.title} | FORN`} />
+	<meta name="twitter:description" content={metadata.description} />
+	<meta name="twitter:image" content="https://forn.dk/og_image.jpg" />
+	{@html `<script type="application/ld+json">${JSON.stringify(articleJsonLd)}</script>`}
 </svelte:head>
 
 <div class="progress-line" style="transform: scaleY({readProgress})"></div>
