@@ -3,7 +3,7 @@ title: maskinen du ikke kan logge ind på
 description: Om oplevelsen af at arbejde med Talos Linux på tværs af virtualiserede, bare metal og Hetzner-miljøer - og hvad der sker når operativsystemet fjerner selve præmissen om at logge ind.
 category: Platform Engineering
 slug: the-machine-you-cant-log-into
-date: 2026-03-21
+date: 2026-02-22
 icon: infrastructure
 ---
 

@@ -3,7 +3,7 @@ title: the machine you can't log into
 description: On the experience of working with Talos Linux across virtualized, bare metal and Hetzner environments - and what happens when the OS removes the premise of logging in.
 category: Platform Engineering
 slug: the-machine-you-cant-log-into
-date: 2026-03-21
+date: 2026-02-22
 icon: infrastructure
 ---
 

@@ -3,7 +3,7 @@ title: konsent
 description: Om det første jeg nogensinde byggede - en konsensusbaseret beslutningsplatform inspireret af anarkosyndikalistiske organisationsmodeller, hardcodede secrets og det hele.
 category: Arkitektur
 slug: konsent
-date: 2026-03-21
+date: 2026-01-11
 icon: architecture
 ---
 

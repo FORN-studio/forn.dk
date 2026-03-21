@@ -3,7 +3,7 @@ title: frameworket der ikke er
 description: Om Sveltes compiler-filosofi, SvelteKits komplekse simplicitet, og et lille lokale i Stockholm hvor et community opdagede at det var virkeligt.
 category: Web Development
 slug: the-framework-that-isnt-there
-date: 2026-03-21
+date: 2026-02-08
 icon: webapp
 ---
 

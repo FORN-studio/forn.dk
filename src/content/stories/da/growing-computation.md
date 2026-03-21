@@ -3,7 +3,7 @@ title: voksende beregning
 description: Om emergens, eksotiske beregningssubstrater, og et grid af identiske celler der lærte at balancere en stang gennem selvorganisering.
 category: Machine Learning
 slug: growing-computation
-date: 2026-03-21
+date: 2026-01-25
 icon: ml
 ---
 

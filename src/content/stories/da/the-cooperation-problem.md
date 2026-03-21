@@ -3,7 +3,7 @@ title: samarbejdets problem
 description: Om den flydende natur i menneskeligt samarbejde, afstanden mellem arbejdet og dem der går op i det, og hvorfor Balladic nægter at påtvinge en form.
 category: Produkt
 slug: the-cooperation-problem
-date: 2026-03-21
+date: 2026-03-22
 icon: webapp
 ---
 

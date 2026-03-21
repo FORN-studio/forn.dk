@@ -3,7 +3,7 @@ title: konsent
 description: On the first thing I ever built - a consensus-based decision-making platform inspired by anarcho-syndicalist organizational models, hardcoded secrets and all.
 category: Architecture
 slug: konsent
-date: 2026-03-21
+date: 2026-01-11
 icon: architecture
 ---
 

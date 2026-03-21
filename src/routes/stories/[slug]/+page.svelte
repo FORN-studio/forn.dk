@@ -28,7 +28,7 @@
 		'@type': 'Article',
 		headline: metadata.title,
 		description: metadata.description,
-		datePublished: metadata.date,
+		datePublished: `${metadata.date}T00:00:00+01:00`,
 		author: {
 			'@type': 'Person',
 			name: 'Adrian Elias Bratlann',
@@ -163,7 +163,7 @@
 	<meta property="og:site_name" content="FORN" />
 	<meta property="og:locale" content={locale === 'da' ? 'da_DK' : 'en_US'} />
 	<meta property="og:locale:alternate" content={locale === 'da' ? 'en_US' : 'da_DK'} />
-	<meta property="article:published_time" content={metadata.date} />
+	<meta property="article:published_time" content={`${metadata.date}T00:00:00+01:00`} />
 	<meta property="article:author" content="Adrian Elias Bratlann" />
 	<meta property="article:section" content={metadata.category} />
 	<meta name="twitter:card" content="summary_large_image" />

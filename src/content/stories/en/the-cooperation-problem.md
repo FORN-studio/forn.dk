@@ -3,7 +3,7 @@ title: the cooperation problem
 description: On the fluid nature of human cooperation, the distance between work and the people who care about it, and why Balladic refuses to impose a shape.
 category: Product
 slug: the-cooperation-problem
-date: 2026-03-21
+date: 2026-03-22
 icon: webapp
 ---
 

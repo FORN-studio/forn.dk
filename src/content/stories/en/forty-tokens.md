@@ -3,7 +3,7 @@ title: forty tokens
 description: On building a character-level transformer that cleans addresses - a two-million-parameter argument for specialization over scale.
 category: Machine Learning
 slug: forty-tokens
-date: 2026-03-21
+date: 2026-03-08
 icon: ml
 ---
 

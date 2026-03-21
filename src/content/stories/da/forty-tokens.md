@@ -3,7 +3,7 @@ title: fyrre tokens
 description: Om at bygge en character-level transformer der renser adresser - et argument med to millioner parametre for specialisering over skala.
 category: Machine Learning
 slug: forty-tokens
-date: 2026-03-21
+date: 2026-03-08
 icon: ml
 ---
 

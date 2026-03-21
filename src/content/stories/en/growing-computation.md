@@ -3,7 +3,7 @@ title: growing computation
 description: On emergence, exotic computing substrates, and a grid of identical cells that learned to balance a pole through self-organization.
 category: Machine Learning
 slug: growing-computation
-date: 2026-03-21
+date: 2026-01-25
 icon: ml
 ---
 

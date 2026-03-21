@@ -3,7 +3,7 @@ title: the framework that isn't there
 description: On Svelte's compiler philosophy, SvelteKit's complex simplicity, and a small room in Stockholm where a community discovered it was real.
 category: Web Development
 slug: the-framework-that-isnt-there
-date: 2026-03-21
+date: 2026-02-08
 icon: webapp
 ---
 
