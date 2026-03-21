@@ -7,6 +7,13 @@ const resend = new Resend(RESEND_API_KEY)
 export const actions = {
 	default: async ({ request }) => {
 		const formData = await request.formData()
+
+		const honeypot = formData.get('website')
+		if (honeypot) return fail(400, { error: 'Invalid submission' })
+
+		const t = Number(formData.get('t'))
+		if (!t || Date.now() - t < 2000) return fail(400, { error: 'Invalid submission' })
+
 		const name = formData.get('name')
 		const email = formData.get('email')
 		const message = formData.get('message')

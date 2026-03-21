@@ -7,6 +7,7 @@
 	let textareaValue = $state('')
 	let sending = $state(false)
 	let success = $state(false)
+	let loadedAt = $state(Date.now())
 </script>
 
 <div class="contact" id="contact">
@@ -120,6 +121,8 @@
 				{m.contact_header_my_way_alt()}
 			</span>
 		</span>
+		<input type="text" name="website" class="hp" tabindex="-1" autocomplete="off" />
+		<input type="hidden" name="t" value={loadedAt} />
 		<div class="inputs">
 			<div class="form-group">
 				<input required type="text" name="name" placeholder={m.contact_placeholder_name()} />
@@ -195,6 +198,15 @@
 
 <style lang="scss">
 	@use 'src/lib/scss/variables' as *;
+
+	.hp {
+		position: absolute;
+		left: -9999px;
+		opacity: 0;
+		height: 0;
+		width: 0;
+		pointer-events: none;
+	}
 
 	.contact {
 		display: flex;
