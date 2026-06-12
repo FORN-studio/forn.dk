@@ -9,7 +9,7 @@ icon: infrastructure
 
 In early June, the Danish Agency for Digital Government (Digitaliseringsstyrelsen) launched its new platform, AltID, meant to serve as a digital ID card and a voluntary addition to MitID. The idea is that with the app, you can simply show that you're over 18 without being forced to share your name or any other personal information.
 
-But central parts of the published code behind the app are missing, and that leaves citizens with no real way of verifying whether their right to privacy is protected.
+But central parts of [the published code](https://git.govcloud.dk/digitaliseringsstyrelsen-public/altid-source-code/altid-kildekode) behind the app are missing, and that leaves citizens with no real way of verifying whether their right to privacy is protected.
 
 AltID is built on the principle that the sensitive information is not gathered in a central register but lives locally on the citizen's own phone. This moves the entire question of trust to a single place: the app itself. That is exactly why it is so important that we, collectively, are given the opportunity to inspect and verify the app's behavior - that is, what data it collects and what it does with it.
 

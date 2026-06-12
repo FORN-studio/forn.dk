@@ -9,7 +9,7 @@ icon: infrastructure
 
 Digitaliseringsstyrelsen lancerede i starten af juni deres nye platform, AltID, der skal fungere som et digitalt ID-kort og er en frivillig tilføjelse til MitID. Idéen er, at man med appen kan nøjes med at vise, at man er over 18 år uden at være tvunget til at dele navn eller andre personoplysninger.
 
-Men der mangler centrale dele i den offentliggjorte kode bag appen, og det efterlader borgerne uden reel mulighed for at efterprøve, om deres ret til privatliv er beskyttet.
+Men der mangler centrale dele i [den offentliggjorte kode](https://git.govcloud.dk/digitaliseringsstyrelsen-public/altid-source-code/altid-kildekode) bag appen, og det efterlader borgerne uden reel mulighed for at efterprøve, om deres ret til privatliv er beskyttet.
 
 AltID er bygget på et princip om, at de følsomme oplysninger ikke samles i et centralt register, men ligger lokalt på borgerens egen telefon. Det flytter altså hele tillidsspørgsmålet ét sted hen: til selve appen. Netop derfor er det så vigtigt, at vi i fællesskab bliver givet muligheden for at inspicere og verificere appens opførsel - altså hvilken data den indsamler og hvad den stiller op med det.
 
