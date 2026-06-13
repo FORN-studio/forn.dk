@@ -1,5 +1,5 @@
 ---
-title: AltID er en katastrofe for retten til privatliv
+title: AltID og debatten om Open Source
 description: Det nye digitale ID-kort fra Digitaliseringsstyrelsen bliver markedsført som gennemsigtigt, men i virkeligheden må borgerne afgive følsomme data i blinde.
 category: Privatliv
 slug: altid

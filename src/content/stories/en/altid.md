@@ -1,5 +1,5 @@
 ---
-title: AltID is a disaster for the right to privacy
+title: AltID and the debate on open source
 description: The new digital ID card from the Danish Agency for Digital Government is marketed as transparent, but in reality citizens are asked to hand over sensitive data blindly.
 category: Privacy
 slug: altid
