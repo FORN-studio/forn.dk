@@ -4,12 +4,10 @@
 	import ClassNames from 'embla-carousel-class-names'
 	import SingleTestimonial from '$lib/components/SingleTestimonial.svelte'
 	import { m } from '$lib/paraglide/messages'
-	import { getStories } from '$lib/utils/stories.js'
+	import { page } from '$app/state'
+	import { href } from '$lib/utils/href.js'
 
-	let stories = $state([])
-	getStories().then((s) => {
-		stories = s
-	})
+	let stories = $derived(page.data.stories ?? [])
 
 	let emblaApi = $state(null)
 	const onEmblaInit = (event) => {
@@ -116,6 +114,60 @@
 	</div>
 {/if}
 
+<a class="all-stories" href={href('/stories')}>
+	<div class="arrow">
+		<svg
+			width="24px"
+			height="24px"
+			stroke-width="1.5"
+			viewBox="0 0 24 24"
+			fill="none"
+			xmlns="http://www.w3.org/2000/svg"
+			color="currentColor"
+			><path
+				d="M20 14C18.8954 14 18 13.1046 18 12C18 10.8954 18.8954 10 20 10C21.1046 10 22 10.8954 22 12C22 13.1046 21.1046 14 20 14Z"
+				stroke="currentColor"
+				stroke-width="1.5"
+				stroke-linecap="round"
+				stroke-linejoin="round"
+			></path><path
+				d="M15 12H2M2 12L5 9M2 12L5 15"
+				stroke="currentColor"
+				stroke-width="1.5"
+				stroke-linecap="round"
+				stroke-linejoin="round"
+			></path></svg
+		>
+	</div>
+
+	<span class="text">{m.all_stories()}</span>
+
+	<div class="arrow">
+		<svg
+			width="24px"
+			height="24px"
+			stroke-width="1.5"
+			viewBox="0 0 24 24"
+			fill="none"
+			xmlns="http://www.w3.org/2000/svg"
+			color="currentColor"
+			><path
+				d="M4 14C2.89543 14 2 13.1046 2 12C2 10.8954 2.89543 10 4 10C5.10457 10 6 10.8954 6 12C6 13.1046 5.10457 14 4 14Z"
+				stroke="currentColor"
+				stroke-width="1.5"
+				stroke-linecap="round"
+				stroke-linejoin="round"
+			></path><path
+				d="M9 12H22M22 12L19 9M22 12L19 15"
+				stroke="currentColor"
+				stroke-width="1.5"
+				stroke-linecap="round"
+				stroke-linejoin="round"
+			></path></svg
+		>
+	</div>
+</a>
+
 <style lang="scss">
 	@use 'src/lib/scss/variables.scss' as *;
 
@@ -177,6 +229,27 @@
 					ease opacity 500ms,
 					ease filter 500ms;
 			}
+		}
+	}
+
+	.all-stories {
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
+		align-items: center;
+		gap: 1rem;
+		margin-top: 3rem;
+		color: $accent;
+		text-decoration: none;
+		transition: ease gap 300ms;
+
+		&:hover {
+			gap: 1.5rem;
+			text-decoration: none;
+		}
+
+		.text {
+			margin-top: -0.3rem;
 		}
 	}
 

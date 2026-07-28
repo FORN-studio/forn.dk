@@ -1,7 +1,7 @@
 <script>
 	import { m } from '$lib/paraglide/messages'
-	import { fly } from 'svelte/transition'
 	import Ironwork from '$lib/components/Ironwork.svelte'
+	import { href } from '$lib/utils/href.js'
 
 	let { story } = $props()
 
@@ -61,37 +61,34 @@
 		</span>
 	</div>
 
-	{#if outbound}
-		<a
-			transition:fly={{ duration: 500, y: 120, opacity: 1 }}
-			class="outbound-link"
-			href="/stories/{story.slug}"
-			aria-label={m.read_story()}
-			title={m.read_story()}
-		>
-			<span class="text">
-				{m.read_story()}
-			</span>
-			<span class="icon">
-				<svg
-					width="24px"
-					height="24px"
-					viewBox="0 0 24 24"
+	<a
+		class="outbound-link"
+		href={href(`/stories/${story.slug}`)}
+		aria-label={m.read_story()}
+		title={m.read_story()}
+	>
+		<span class="text">
+			{m.read_story()}
+		</span>
+		<span class="icon">
+			<svg
+				width="24px"
+				height="24px"
+				viewBox="0 0 24 24"
+				stroke-width="2"
+				fill="none"
+				xmlns="http://www.w3.org/2000/svg"
+				color="currentColor"
+				><path
+					d="M3 12L21 12M21 12L12.5 3.5M21 12L12.5 20.5"
+					stroke="currentColor"
 					stroke-width="2"
-					fill="none"
-					xmlns="http://www.w3.org/2000/svg"
-					color="currentColor"
-					><path
-						d="M3 12L21 12M21 12L12.5 3.5M21 12L12.5 20.5"
-						stroke="currentColor"
-						stroke-width="2"
-						stroke-linecap="round"
-						stroke-linejoin="round"
-					></path></svg
-				>
-			</span>
-		</a>
-	{/if}
+					stroke-linecap="round"
+					stroke-linejoin="round"
+				></path></svg
+			>
+		</span>
+	</a>
 </div>
 
 <style lang="scss">
@@ -156,9 +153,13 @@
 			text-decoration: none;
 			border-radius: 9999px;
 
+			// parked below the card's overflow until the card is flipped
+			transform: translateY(120px);
+			pointer-events: none;
+
 			&:hover {
 				box-shadow: rgba(0, 0, 139, 0.2) 0px 7px 29px 0px;
-				transform: scale(1.02);
+				scale: 1.02;
 			}
 
 			.icon {
@@ -170,6 +171,11 @@
 				font-weight: bold;
 				letter-spacing: 2px;
 			}
+		}
+
+		&.outbound .outbound-link {
+			transform: none;
+			pointer-events: auto;
 		}
 
 		.outbound-icon {

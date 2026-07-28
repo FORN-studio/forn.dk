@@ -59,5 +59,8 @@
 	"bento_four_title": "Architecture",
 	"bento_four_paragraph": "I build systems that shouldn't need me, and leverage experience from development, operations and business alike to create cohesion across professional boundaries.",
 	"error_back_button": "Let's get out of here",
-	"next_story": "Next"
+	"next_story": "Next",
+	"all_stories": "All stories",
+	"stories_title": "stories",
+	"stories_description": "Writing on architecture, infrastructure, machine learning and building software that shouldn't need me."
 }

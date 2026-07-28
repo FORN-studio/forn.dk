@@ -3,6 +3,8 @@
 	import Pili from '$lib/components/Pili.svelte'
 	import { m } from '$lib/paraglide/messages.js'
 	import { getLocale } from '$lib/paraglide/runtime.js'
+	import { formatDate } from '$lib/utils/stories.js'
+	import { href } from '$lib/utils/href.js'
 
 	let { data } = $props()
 
@@ -28,7 +30,7 @@
 		'@type': 'Article',
 		headline: metadata.title,
 		description: metadata.description,
-		datePublished: `${metadata.date}T00:00:00+01:00`,
+		datePublished: metadata.date,
 		author: {
 			'@type': 'Person',
 			name: 'Adrian Elias Bratlann',
@@ -71,15 +73,6 @@
 
 	// centered icicle for the section break
 	const breakColumns = [1, 2, 3, 4, 5, 4, 3, 2, 1]
-
-	const formatDate = (dateStr) => {
-		const date = new Date(dateStr)
-		return date.toLocaleDateString('en-US', {
-			year: 'numeric',
-			month: 'long',
-			day: 'numeric'
-		})
-	}
 
 	// re-initialize animations and scroll handlers when the story changes
 	let scrollCleanup = null
@@ -163,7 +156,7 @@
 	<meta property="og:site_name" content="FORN" />
 	<meta property="og:locale" content={locale === 'da' ? 'da_DK' : 'en_US'} />
 	<meta property="og:locale:alternate" content={locale === 'da' ? 'en_US' : 'da_DK'} />
-	<meta property="article:published_time" content={`${metadata.date}T00:00:00+01:00`} />
+	<meta property="article:published_time" content={metadata.date} />
 	<meta property="article:author" content="Adrian Elias Bratlann" />
 	<meta property="article:section" content={metadata.category} />
 	<meta name="twitter:card" content="summary_large_image" />
@@ -177,7 +170,7 @@
 
 <article class="story" bind:this={articleEl}>
 	<header class:mounted>
-		<a class="back-top" href="/" style="--delay: 0ms">
+		<a class="back-top" href={href('/')} style="--delay: 0ms">
 			<svg
 				width="16px"
 				height="16px"
@@ -202,7 +195,7 @@
 			<Ironwork />
 		</div>
 		<p class="description" style="--delay: 650ms">{metadata.description}</p>
-		<time datetime={metadata.date} style="--delay: 800ms">{formatDate(metadata.date)}</time>
+		<time datetime={metadata.date} style="--delay: 800ms">{formatDate(metadata.date, locale)}</time>
 	</header>
 
 	<div class="content" bind:this={contentEl}>
@@ -224,7 +217,7 @@
 	</div>
 
 	{#if nextStory}
-		<a class="next-story" href="/stories/{nextStory.slug}">
+		<a class="next-story" href={href(`/stories/${nextStory.slug}`)}>
 			<span class="label">{m.next_story()}</span>
 			<span class="fraktur next-title">{nextStory.title}</span>
 			<span class="next-arrow">
@@ -249,28 +242,53 @@
 		</a>
 	{/if}
 
-	<a class="back" href="/">
-		<span class="icon">
-			<svg
-				width="20px"
-				height="20px"
-				viewBox="0 0 24 24"
-				stroke-width="1.5"
-				fill="none"
-				xmlns="http://www.w3.org/2000/svg"
-				color="currentColor"
-			>
-				<path
-					d="M21 12L3 12M3 12L11.5 3.5M3 12L11.5 20.5"
-					stroke="currentColor"
+	<div class="story-footer">
+		<a class="back" href={href('/')}>
+			<span class="icon">
+				<svg
+					width="20px"
+					height="20px"
+					viewBox="0 0 24 24"
 					stroke-width="1.5"
-					stroke-linecap="round"
-					stroke-linejoin="round"
-				></path>
-			</svg>
-		</span>
-		<span class="text">FORN</span>
-	</a>
+					fill="none"
+					xmlns="http://www.w3.org/2000/svg"
+					color="currentColor"
+				>
+					<path
+						d="M21 12L3 12M3 12L11.5 3.5M3 12L11.5 20.5"
+						stroke="currentColor"
+						stroke-width="1.5"
+						stroke-linecap="round"
+						stroke-linejoin="round"
+					></path>
+				</svg>
+			</span>
+			<span class="text">FORN</span>
+		</a>
+
+		<a class="back" href={href('/stories')}>
+			<span class="text">{m.all_stories()}</span>
+			<span class="icon">
+				<svg
+					width="20px"
+					height="20px"
+					viewBox="0 0 24 24"
+					stroke-width="1.5"
+					fill="none"
+					xmlns="http://www.w3.org/2000/svg"
+					color="currentColor"
+				>
+					<path
+						d="M3 12L21 12M21 12L12.5 3.5M21 12L12.5 20.5"
+						stroke="currentColor"
+						stroke-width="1.5"
+						stroke-linecap="round"
+						stroke-linejoin="round"
+					></path>
+				</svg>
+			</span>
+		</a>
+	</div>
 
 	{#each scatterConfigs as config, i}
 		{#if scatterTops[i] > 0}
@@ -624,14 +642,21 @@
 			}
 		}
 
+		.story-footer {
+			display: flex;
+			flex-direction: row;
+			justify-content: space-between;
+			align-items: center;
+			gap: 1rem;
+			margin: 4rem auto 0;
+			max-width: 680px;
+		}
+
 		.back {
 			display: inline-flex;
 			flex-direction: row;
 			align-items: center;
 			gap: 0.5rem;
-			margin: 4rem auto 0;
-			max-width: 680px;
-			width: 100%;
 			color: $accent;
 			text-decoration: none;
 			transition: ease all 300ms;

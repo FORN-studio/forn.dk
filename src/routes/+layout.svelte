@@ -6,6 +6,7 @@
 	import { onDestroy } from 'svelte'
 	import { onNavigate } from '$app/navigation'
 	import { m } from '$lib/paraglide/messages'
+	import { href } from '$lib/utils/href.js'
 
 	let { children } = $props()
 
@@ -65,7 +66,7 @@
 	</div>
 
 	<a
-		href="/#contact"
+		href={href('/#contact')}
 		class="button"
 		onclick={(e) => {
 			const target = document.querySelector('#contact')

@@ -17,6 +17,15 @@ export async function getStories(locale) {
 	return stories.sort((a, b) => new Date(b.date) - new Date(a.date))
 }
 
+export function formatDate(dateStr, locale) {
+	const lang = locale || getLocale()
+	return new Date(dateStr).toLocaleDateString(lang === 'da' ? 'da-DK' : 'en-US', {
+		year: 'numeric',
+		month: 'long',
+		day: 'numeric'
+	})
+}
+
 export async function getStory(slug, locale) {
 	const lang = locale || getLocale()
 	const localeFiles = files[lang] || files['da']

@@ -4,22 +4,36 @@ export const prerender = true
 
 export async function GET() {
 	const stories = await getStories('en')
-	const today = new Date().toISOString().split('T')[0]
+	const latest = stories[0].date
 
 	const urls = [
 		{
 			loc: 'https://forn.dk/',
-			lastmod: today,
+			lastmod: latest,
 			priority: '1.0',
 			da: 'https://forn.dk/',
 			en: 'https://forn.dk/en'
 		},
 		{
 			loc: 'https://forn.dk/en',
-			lastmod: today,
+			lastmod: latest,
 			priority: '0.9',
 			da: 'https://forn.dk/',
 			en: 'https://forn.dk/en'
+		},
+		{
+			loc: 'https://forn.dk/stories',
+			lastmod: latest,
+			priority: '0.9',
+			da: 'https://forn.dk/stories',
+			en: 'https://forn.dk/en/stories'
+		},
+		{
+			loc: 'https://forn.dk/en/stories',
+			lastmod: latest,
+			priority: '0.8',
+			da: 'https://forn.dk/stories',
+			en: 'https://forn.dk/en/stories'
 		},
 		...stories.flatMap((s) => [
 			{

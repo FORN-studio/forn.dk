@@ -1,12 +1,13 @@
 <script>
 	import { page } from '$app/state'
 	import { m } from '$lib/paraglide/messages'
+	import { href } from '$lib/utils/href.js'
 </script>
 
 <div class="error">
 	<h1>{page.status}</h1>
 
-	<a href="/">
+	<a href={href('/')}>
 		{m.error_back_button()}
 	</a>
 </div>

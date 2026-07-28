@@ -59,5 +59,8 @@
 	"bento_four_title": "Arkitektur",
 	"bento_four_paragraph": "Jeg bygger systemer der ikke skal have brug for mig, og udnytter erfaring fra både udvikling, drift og forretning til at skabe sammenhængskraft på tværs af faggrænser.",
 	"error_back_button": "Få mig væk herfra",
-	"next_story": "Næste"
+	"next_story": "Næste",
+	"all_stories": "Alle historier",
+	"stories_title": "historier",
+	"stories_description": "Skriverier om arkitektur, infrastruktur, maskinlæring og det at bygge software der ikke skal have brug for mig."
 }
