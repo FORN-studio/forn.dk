@@ -4,7 +4,7 @@
 	import { locales, getLocale, setLocale } from '$lib/paraglide/runtime'
 	import { lenis, easeInOutCubic } from '$lib/utils/lenis'
 	import { onDestroy } from 'svelte'
-	import { onNavigate } from '$app/navigation'
+	import { onNavigate, afterNavigate } from '$app/navigation'
 	import { m } from '$lib/paraglide/messages'
 	import { href } from '$lib/utils/href.js'
 
@@ -32,6 +32,12 @@
 				await navigation.complete
 			})
 		})
+	})
+
+	// lenis keeps its own scroll state, so sveltekit's reset doesn't reach it
+	afterNavigate(({ to, type }) => {
+		if (type === 'popstate' || to?.url.hash) return
+		lenis?.scrollTo(0, { immediate: true })
 	})
 
 	const handleScroll = () => {
